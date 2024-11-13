@@ -1,0 +1,188 @@
+@use "./variables" as *;
+
+// --------- Text Styles Tablet/Desktop ---------
+@mixin tablet-page-header {
+  font-size: 2rem;
+  line-height: 2.5rem;
+  font-weight: 600;
+}
+
+@mixin tablet-subheader {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 600;
+}
+
+@mixin tablet-labels-links-buttons {
+  font-size: 0.875rem;
+  line-height: 1.375rem;
+  font-weight: 600;
+}
+
+@mixin tablet-table-header {
+  font-size: 0.75rem;
+  line-height: 1.125rem;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+@mixin tablet-p1-body-large {
+  font-size: 1rem;
+  line-height: 1.125rem;
+  font-weight: 400;
+}
+
+@mixin tablet-p2-body-medium {
+  font-size: 0.875rem;
+  line-height: 1.375rem;
+  font-weight: 400;
+}
+
+@mixin tablet-p3-body-small {
+  font-size: 0.75rem;
+  line-height: 1.125rem;
+  font-weight: 400;
+}
+
+// --------- Text Styles Mobile ---------
+
+@mixin mobile-page-header {
+  font-size: 1.75rem;
+  line-height: 2.25rem;
+  font-weight: 600;
+}
+
+@mixin mobile-subheader {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+}
+
+@mixin mobile-labels-links-buttons {
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+}
+
+@mixin mobile-table-header {
+  font-size: 0.6875rem;
+  line-height: 1rem;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+@mixin mobile-p1-body-large {
+  font-size: 0.9375rem;
+  line-height: 1.625rem;
+  font-weight: 400;
+}
+
+@mixin mobile-p2-body-medium {
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+  font-weight: 400;
+}
+
+@mixin mobile-p3-body-small {
+  font-size: 0.6875rem;
+  line-height: 1rem;
+  font-weight: 400;
+}
+
+// --------- Buttons ---------
+
+@mixin primary-button {
+  background-color: $Instock-Indigo;
+  color: $White;
+  height: 2.25rem;
+  border-radius: 20px;
+  @include tablet {
+    padding: 0 $padding-16;
+    height: 2.375rem;
+  }
+}
+
+@mixin primary-hover-state {
+  @include primary-button;
+  background-color: $Graphite;
+}
+
+@mixin secondary-button {
+  background-color: $White;
+  color: $Graphite;
+  height: 2.25rem;
+  border-radius: 20px;
+  border: 1px solid $Cloud;
+  @include tablet {
+    padding: 0 $padding-16;
+    height: 2.375rem;
+  }
+}
+
+@mixin secondary-hover-state {
+  @include secondary-button;
+  color: $Instock-Indigo;
+  border-color: $Instock-Indigo;
+}
+
+@mixin delete-button {
+  background-color: $Red;
+  color: $White;
+  height: 2.25rem;
+  border-radius: 20px;
+  @include tablet {
+    padding: 0 $padding-16;
+    height: 2.375rem;
+  }
+}
+
+@mixin delete-hover-state {
+  @include delete-button;
+  background-color: $Graphite;
+}
+
+// --------- Form Fields ---------
+@mixin form-field {
+  border-radius: 20px;
+  border: 1px solid $Cloud;
+  height: 2.25rem;
+  @include tablet {
+    height: 2.375rem;
+  }
+}
+
+// --------- Tags ---------
+@mixin out-of-stock-tag {
+  background-color: $Red-Tag;
+  color: $Red;
+  padding: 0 $padding-8;
+  border-radius: 1.25rem;
+  height: 1.5rem;
+  @include tablet {
+    height: 1.625rem;
+  }
+}
+
+@mixin in-stock-tag {
+  background-color: $Green-Tag;
+  color: $Green;
+  padding: 0 $padding-8;
+  border-radius: 1.25rem;
+  height: 1.5rem;
+  @include tablet {
+    height: 1.625rem;
+  }
+}
+
+// --------- Media queries ---------
+@mixin tablet {
+  @media screen and (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: $desktop-breakpoint) {
+    @content;
+  }
+}

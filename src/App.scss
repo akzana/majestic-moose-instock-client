@@ -1,3 +1,11 @@
+@use "./styles/variables" as *;
+@use "./styles/mixins" as *;
+
 * {
   font-family: "Titillium Web", "Arial", sans-serif;
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
 }

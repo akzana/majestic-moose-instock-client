@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Warehouses() {
+function WarehouseList() {
   return (
-    <div>Warehouses</div>
+    <div>WarehouseList</div>
   )
 }
 
-export default Warehouses
+export default WarehouseList

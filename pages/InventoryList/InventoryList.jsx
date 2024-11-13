@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Inventory() {
+function InventoryList() {
   return (
-    <div>Inventory</div>
+    <div>InventoryList</div>
   )
 }
 
-export default Inventory
+export default InventoryList

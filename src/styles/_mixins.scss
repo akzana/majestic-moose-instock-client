@@ -1,13 +1,95 @@
 @use "./variables" as *;
 
-// Headers
+// --------- Text Styles Tablet/Desktop ---------
 @mixin tablet-page-header {
-  font-size: 32px;
-  line-height: 40px;
+  font-size: 2rem;
+  line-height: 2.5rem;
   font-weight: 600;
 }
 
-// Media queries
+@mixin tablet-subheader {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 600;
+}
+
+@mixin tablet-labels-links-buttons {
+  font-size: 0.875rem;
+  line-height: 1.375rem;
+  font-weight: 600;
+}
+
+@mixin tablet-table-header {
+  font-size: 0.75rem;
+  line-height: 1.125rem;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+@mixin tablet-p1-body-large {
+  font-size: 1rem;
+  line-height: 1.125rem;
+  font-weight: 400;
+}
+
+@mixin tablet-p2-body-medium {
+  font-size: 0.875rem;
+  line-height: 1.375rem;
+  font-weight: 400;
+}
+
+@mixin tablet-p3-body-small {
+  font-size: 0.75rem;
+  line-height: 1.125rem;
+  font-weight: 400;
+}
+
+// --------- Text Styles Mobile ---------
+
+@mixin mobile-page-header {
+  font-size: 1.75rem;
+  line-height: 2.25rem;
+  font-weight: 600;
+}
+
+@mixin mobile-subheader {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+}
+
+@mixin mobile-labels-links-buttons {
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+}
+
+@mixin mobile-table-header {
+  font-size: 0.6875rem;
+  line-height: 1rem;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+@mixin mobile-p1-body-large {
+  font-size: 0.9375rem;
+  line-height: 1.625rem;
+  font-weight: 400;
+}
+
+@mixin mobile-p2-body-medium {
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+  font-weight: 400;
+}
+
+@mixin mobile-p3-body-small {
+  font-size: 0.6875rem;
+  line-height: 1rem;
+  font-weight: 400;
+}
+
+// --------- Media queries ---------
 @mixin tablet {
   @media screen and (min-width: $tablet-breakpoint) {
     @content;

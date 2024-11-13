@@ -89,6 +89,91 @@
   font-weight: 400;
 }
 
+// --------- Buttons ---------
+
+@mixin primary-button {
+  background-color: $Instock-Indigo;
+  color: $White;
+  height: 2.25rem;
+  border-radius: 20px;
+  @include tablet {
+    padding: 0 $padding-16;
+    height: 2.375rem;
+  }
+}
+
+@mixin primary-hover-state {
+  @include primary-button;
+  background-color: $Graphite;
+}
+
+@mixin secondary-button {
+  background-color: $White;
+  color: $Graphite;
+  height: 2.25rem;
+  border-radius: 20px;
+  border: 1px solid $Cloud;
+  @include tablet {
+    padding: 0 $padding-16;
+    height: 2.375rem;
+  }
+}
+
+@mixin secondary-hover-state {
+  @include secondary-button;
+  color: $Instock-Indigo;
+  border-color: $Instock-Indigo;
+}
+
+@mixin delete-button {
+  background-color: $Red;
+  color: $White;
+  height: 2.25rem;
+  border-radius: 20px;
+  @include tablet {
+    padding: 0 $padding-16;
+    height: 2.375rem;
+  }
+}
+
+@mixin delete-hover-state {
+  @include delete-button;
+  background-color: $Graphite;
+}
+
+// --------- Form Fields ---------
+@mixin form-field {
+  border-radius: 20px;
+  border: 1px solid $Cloud;
+  height: 2.25rem;
+  @include tablet {
+    height: 2.375rem;
+  }
+}
+
+// --------- Tags ---------
+@mixin out-of-stock-tag {
+  background-color: $Red-Tag;
+  color: $Red;
+  padding: 0 $padding-8;
+  border-radius: 1.25rem;
+  height: 1.5rem;
+  @include tablet {
+    height: 1.625rem;
+  }
+}
+
+@mixin in-stock-tag {
+  background-color: $Green-Tag;
+  color: $Green;
+  padding: 0 $padding-8;
+  border-radius: 1.25rem;
+  height: 1.5rem;
+  @include tablet {
+    height: 1.625rem;
+  }
+}
+
 // --------- Media queries ---------
 @mixin tablet {
   @media screen and (min-width: $tablet-breakpoint) {

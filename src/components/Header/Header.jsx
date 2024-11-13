@@ -9,10 +9,12 @@ function Header() {
         <img src={Logo} alt="InStock Logo" className="header__logo" />
       </Link>
       <nav className="header__nav">
-        <Link to="/warehouses" className="header__nav-link header__nav-link--warehouses">
+        <Link
+          to="/warehouses"
+          className="header__nav-link header__nav-link--active">
           Warehouses
         </Link>
-        <Link to="/inventory" className="header__nav-link header__nav-link--inventory">
+        <Link to="/inventory" className="header__nav-link">
           Inventory
         </Link>
       </nav>

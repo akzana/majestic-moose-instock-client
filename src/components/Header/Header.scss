@@ -1,0 +1,71 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
+@use "../../App.scss" as *;
+
+.header {
+  background-color: $Graphite;
+  display: flex;
+  flex-direction: column;
+  padding: $padding-24 0;
+
+  @include tablet {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: $padding-24;
+  }
+
+  @include desktop {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: $padding-24;
+  }
+
+  &__logo-link {
+    align-self: center;
+    padding-bottom: $padding-24;
+    @include tablet {
+        padding-bottom: 0rem;
+    }
+
+    @include desktop {
+        padding-bottom: 0rem;
+    }
+  }
+  &__nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    &-link {
+      color: $Cloud;
+      text-decoration: none;
+      list-style: none;
+      padding: 0.5rem 2.4375rem;
+
+      @include tablet {
+        padding: $padding-16;
+      }
+      @include desktop {
+        padding: $padding-16;
+      }
+
+      &--active {
+        background-color: $Instock-Black;
+        color: $White;
+        border-radius: 30px;
+      }
+    }
+
+    &-link:hover {
+      text-decoration: underline;
+      color: $White;
+    }
+
+    &-link:active {
+        text-decoration: underline;
+        color: $White;
+      }
+  }
+}

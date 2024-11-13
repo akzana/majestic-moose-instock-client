@@ -1,0 +1,21 @@
+@use "./variables" as *;
+
+// Headers
+@mixin tablet-page-header {
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 600;
+}
+
+// Media queries
+@mixin tablet {
+  @media screen and (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: $desktop-breakpoint) {
+    @content;
+  }
+}

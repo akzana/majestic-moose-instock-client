@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Header from "./components/Header/Header";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import WarehouseList from "../pages/WarehouseList/WarehouseList";
 import WarehouseDetails from "../pages/WarehouseDetails/WarehouseDetails";
@@ -12,8 +13,8 @@ import Footer from './components/footer/footer';
 function App() {
 
   return (
-    <>
      <BrowserRouter>
+      <Header />
       <Routes>
         <Route path="/" element={<WarehouseList />} />
         <Route path="/warehouses" element={<WarehouseList />} />
@@ -28,7 +29,6 @@ function App() {
       </Routes>
       <Footer />
     </BrowserRouter>
-    </>
   )
 }
 

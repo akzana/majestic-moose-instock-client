@@ -26,6 +26,7 @@ function App() {
         <Route path="/inventory/edit/:id" element={<EditInventoryItem />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
     </>
   )

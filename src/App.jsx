@@ -12,7 +12,6 @@ import EditInventoryItem from "../pages/EditInventoryItem/EditInventoryItem";
 function App() {
 
   return (
-    <>
      <BrowserRouter>
       <Routes>
         <Route path="/" element={<WarehouseList />} />
@@ -27,7 +26,6 @@ function App() {
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
-    </>
   )
 }
 

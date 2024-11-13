@@ -1,50 +1,10 @@
 @use '../../src/styles/variables' as *;
 @use '../../src/styles/mixins' as *;
 
-
-// header 
-.WarehouseDetails__header{
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-    padding: 0 24px;
-
-    border-bottom: 1px solid $Cloud;
-}
-
-.arrow_back{
-    padding-right: 16px;
-}
-
-.WarehouseDetails__title{
-    @include mobile-page-header;
-    margin: 24px 0px;
-}
-
-.edit_white{
-    width: 24px;  /* Equal width and height */
-    height: 24px;
-    border-radius: 50%;  /* Makes it circular */
-    background-color: $Instock-Indigo;  /* Circle with a blue background */
-}
-
-// .general-info__layout{
-//     justify-content: space-between;
-// }
-
-// general information
-.general-info__title{
-    color: $Slate;
-    @include mobile-table-header;
-}
-
-.WarehouseDetails__general-info .general-info__content{
-    color: $Instock-Black;
-    @include mobile-p2-body-medium ;
-}
-
-.general-info__layout{
-    display: flex;
-    flex-direction: rows;
-    justify-content: space-between;
+.card{
+    width: 85%;    
+    margin: 0 auto;
+    background-color: #fff; 
+    border-radius: 5px;     
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }

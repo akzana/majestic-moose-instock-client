@@ -1,0 +1,30 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+// general information
+.warehouse_details{
+    padding: 0 24px;
+}
+
+.general-info__title{
+    color: $Slate;
+    @include mobile-table-header;
+}
+
+.WarehouseDetails__general-info .general-info__content{
+    color: $Instock-Black;
+    @include mobile-p2-body-medium ;
+}
+
+.general-info__layout{
+    display: flex;
+    flex-direction: rows;
+}
+
+.general-info__contactname,
+.general-info__contactinfo,
+.general-info__address {
+    flex: 1; 
+    padding: 0 24px; 
+    box-sizing: border-box;
+}

@@ -1,0 +1,22 @@
+.WarehouseDetails__header{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    padding: 0 24px;
+}
+
+.arrow_back{
+    padding-right: 16px;
+}
+
+.WarehouseDetails__title{
+    font-size: 28px;
+    line-height: 36px;
+}
+
+.edit_white{
+    width: 24px;  /* Equal width and height */
+    height: 24px;
+    border-radius: 50%;  /* Makes it circular */
+    background-color: blue;  /* Circle with a blue background */
+}

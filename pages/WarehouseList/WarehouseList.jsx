@@ -22,6 +22,8 @@ const WarehouseList = () => {
 
   return (
     <div className="warehouse__list">
+      <h2 className="warehouse__heading">Warehouses</h2>
+      
       <div className="warehouse__search">
         <input
           type="text"

@@ -9,7 +9,7 @@ import Inventory from "../pages/InventoryList/InventoryList";
 import InventoryItem from "../pages/InventoryItemDetails/InventoryItemDetails";
 import AddInventoryItem from "../pages/AddInventoryItem/AddInventoryItem";
 import EditInventoryItem from "../pages/EditInventoryItem/EditInventoryItem";
-
+import Footer from './components/footer/footer';
 function App() {
 
   return (
@@ -27,6 +27,7 @@ function App() {
         <Route path="/inventory/edit/:id" element={<EditInventoryItem />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   )
 }

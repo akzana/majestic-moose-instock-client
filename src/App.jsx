@@ -13,7 +13,7 @@ import EditInventoryItem from "../pages/EditInventoryItem/EditInventoryItem";
 function App() {
 
   return (
-     <BrowserRouter>
+    <BrowserRouter>
       <Header />
       <Routes>
         <Route path="/" element={<WarehouseList />} />
@@ -23,7 +23,7 @@ function App() {
         <Route path="/warehouses/edit/:id" element={<EditWarehouse />} />
         <Route path="/inventory" element={<Inventory />} />
         <Route path="/inventory/:id" element={<InventoryItem />} />
-        <Route path="/inventory/add" element={<AddInventoryItem/>} />
+        <Route path="/inventory/add" element={<AddInventoryItem />} />
         <Route path="/inventory/edit/:id" element={<EditInventoryItem />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

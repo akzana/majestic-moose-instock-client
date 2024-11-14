@@ -46,3 +46,24 @@
     height: 24px;
     border-radius: 50%;  
 }
+
+
+.edit_button {
+    display: none;
+}
+
+@media (min-width: $tablet-breakpoint) {
+    .edit_white-container{
+        display: none;
+    }
+    .edit_button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $Instock-Indigo; 
+        border-radius: 20px;
+        padding: 0px 16px;
+        text-decoration: none;
+        color: white; 
+    }
+}

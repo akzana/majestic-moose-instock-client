@@ -20,6 +20,10 @@ export default function WarehouseDetailsHeader(){
             <Link to="/warehouse/edit" className="edit_white-container">
                 <img className="edit_white" src={Edit_white} alt="go to edit warehouse page" />
             </Link>
+            <Link to="/warehouse/edit" className="edit_white-container edit_button">
+                <img className="edit_white" src={Edit_white} alt="go to edit warehouse page" />
+                <span className="edit_text">Edit</span>
+            </Link>
         </div>        
         </>
         )

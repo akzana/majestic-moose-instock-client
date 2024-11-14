@@ -9,6 +9,7 @@ export default function WarehouseDetailsGeneralInfo() {
                     <h1 className="general-info__title">WAREHOUSE ADDRESS:</h1>
                     <p className="general-info__content">33 Pearl Streert SW, Washington, USA</p>
                 </div>
+                <div className="divider"></div>
                 <div className="general-info__layout">
                     <div className="general-info__contactname">
                         <h1 className="general-info__title">CONTACT NAME:</h1>

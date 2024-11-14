@@ -2,9 +2,6 @@
 @use '../../styles/mixins' as *;
 
 // general information
-.warehouse_details{
-    padding: 0 24px;
-}
 
 .general-info__title{
     color: $Slate;
@@ -27,4 +24,41 @@
     flex: 1; 
     padding: 0 24px; 
     box-sizing: border-box;
+}
+
+
+@media (min-width: $tablet-breakpoint) {
+    .WarehouseDetails__general-info{
+        display: flex;
+        flex-direction: rows;
+    }
+    .general-info__address {
+        flex: 0 0 40%;  
+        padding: 0 24px;
+        box-sizing: border-box;
+    }
+    
+    .general-info__layout {
+        display: flex;
+        flex: 0 0 60%; 
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    
+    .general-info__address,
+    .general-info__contactname,
+    .general-info__contactinfo {
+        position: relative;
+    }
+
+    //   divider
+    .general-info__contactname::before{
+        content: "";
+        position: absolute;
+        top:12px;
+        bottom: 12px;
+        left: 0px;
+        width: 1px;
+        background-color: $Cloud; 
+    }
 }

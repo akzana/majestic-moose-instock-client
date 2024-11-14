@@ -6,7 +6,7 @@ import WarehouseDetails from "../pages/WarehouseDetails/WarehouseDetails";
 import AddWarehouse from "../pages/AddWarehouse/AddWarehouse";
 import EditWarehouse from "../pages/EditWarehouse/EditWarehouse";
 import Inventory from "../pages/InventoryList/InventoryList";
-import InventoryItem from "../pages/InventoryItemDetails/InventoryItemDetails";
+import InventoryItem from "../pages/InventoryItem/InventoryItem";
 import AddInventoryItem from "../pages/AddInventoryItem/AddInventoryItem";
 import EditInventoryItem from "../pages/EditInventoryItem/EditInventoryItem";
 import Footer from './components/footer/footer';

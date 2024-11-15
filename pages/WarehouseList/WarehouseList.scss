@@ -65,6 +65,11 @@
     border-bottom: 1px solid $Cloud;
     padding: $padding-8;
 
+    &:hover{
+      background-color: rgba($Instock-Indigo, 0.1); 
+     
+    }
+
     @include tablet {
       flex-direction: row;
       justify-content: space-between;
@@ -91,12 +96,13 @@
     @include tablet {
       font-size: 0.875rem; 
       line-height: 1.25rem;
-      width: 35%;
+      width: 45%;
     }
 
     @include desktop {
       font-size: 1rem;
       line-height: 1.5rem;
+      width: 45%;
     }
   }
 }

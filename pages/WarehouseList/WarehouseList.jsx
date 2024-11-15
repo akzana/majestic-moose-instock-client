@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./WarehouseList.scss";
 import WarehouseHeader from "../../src/components/WarehouseHeader/WarehouseHeader";
+import DeleteModal from "../../src/components/DeleteModal/DeleteModal";
 import rightAarrowIcon from "../../src/assets/Icons/chevron_right-24px.svg";
 import sortIcon from "../../src/assets/Icons/sort-24px.svg";
 import deleteIcon from "../../src/assets/Icons/delete_outline-24px.svg";
@@ -11,6 +12,8 @@ const API_URL = "http://localhost:8080/api/warehouses";
 
 const WarehouseList = () => {
   const [warehouses, setWarehouses] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedWarehouse, setSelectedWarehouse] = useState(null);
 
   useEffect(() => {
     const fetchWarehouses = async () => {
@@ -25,9 +28,36 @@ const WarehouseList = () => {
     fetchWarehouses();
   }, []);
 
+  const handleDeleteClick = (warehouse) => {
+    setSelectedWarehouse(warehouse);
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setSelectedWarehouse(null);
+  };
+
+  const handleConfirmDelete = async () => {
+    try {
+      const response = await fetch(`${API_URL}/${selectedWarehouse.id}`, {
+        method: "DELETE",
+      });
+      if (response.ok) {
+        setWarehouses(warehouses.filter(w => w.id !== selectedWarehouse.id));
+        handleCloseModal();
+      } else {
+        console.error("Failed to delete warehouse");
+      }
+    } catch (error) {
+      console.error("Error deleting warehouse:", error);
+    }
+  };
+
   return (
     <div className="warehouse-card">
-      <WarehouseHeader />
+       <DeleteModal show={showModal} onClose={handleCloseModal} onConfirm={handleConfirmDelete} />
+       <WarehouseHeader />
 
       <table className="warehouse__list">
         <thead className="warehouse__list-header">
@@ -53,6 +83,7 @@ const WarehouseList = () => {
         </thead>
         <tbody className="warehouse__body">
           {warehouses.map((warehouse) => (
+       
             <tr key={warehouse.id} className="warehouse__body-row">
              
                   <td className="warehouse__body-cell">
@@ -95,7 +126,7 @@ const WarehouseList = () => {
                   </td>
              
               <td className="warehouse__body-cell warehouse__actions">
-                <button className="warehouse__delete">
+                <button className="warehouse__delete" onClick={() => handleDeleteClick(warehouse)}>
                   <img
                     src={deleteIcon}
                     alt="Delete Icon"
@@ -103,12 +134,12 @@ const WarehouseList = () => {
                 </button>
                 <Link
                   to={`/warehouse/${warehouse.id}`}
-                  className="warehouse__edit"
-                >
+                  className="warehouse__edit" >
                   <img src={editIcon} alt="Edit Icon" className="edit__icon" />
                 </Link>
               </td>
             </tr>
+           
           ))}
         </tbody>
       </table>

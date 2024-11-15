@@ -3,18 +3,21 @@
 
 .warehouse-form {
   background-color: $White;
-  padding: 0rem 2rem 2rem 2rem;
+
   border-radius: 20px;
 
   &__section {
-    padding-bottom: $padding-32;
-    margin-bottom: $padding-32;
+    padding: 0rem 2rem 2rem 2rem;
+
+    &--details {
+        border-bottom: .0625rem solid $Cloud;
+    }
 
   }
 
   &__title {
-    @include mobile-page-header;
-    margin-bottom: $padding-16;
+    @include mobile-subheader;
+    margin-bottom: 1.5rem;
   }
 
   &__label {
@@ -55,6 +58,7 @@
   &__cancel {
     width: 48%;
     text-align: center;
+    text-decoration: none;
     @include secondary-button;
   }
 
@@ -77,13 +81,13 @@
 
   .warehouse-form__section {
     padding-bottom: $padding-24;
-    margin-bottom: $padding-24;
   }
 
   .warehouse-form__actions {
     flex-direction: row;
     gap: $padding-16;  
     justify-content: space-between; 
+    padding: 0rem 2rem 2rem 2rem;
   }
 
 @include tablet {
@@ -109,5 +113,6 @@
     flex-direction: row;
     gap: $padding-32;
     justify-content: flex-start;
+    padding: 0rem 2rem 2rem 2rem;
   }
 }

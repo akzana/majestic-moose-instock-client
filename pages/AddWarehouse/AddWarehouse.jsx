@@ -9,7 +9,7 @@ function AddWarehouse() {
     <section className='card'>
         <div className='WarehouseAdd__header'>
             <div className="WarehouseAdd__header--layout">
-                <Link to="/warehouse">
+                <Link to="/warehouses">
                     <img className="arrow_back" src={Arrow_back} alt="Arrow pointing left" />
                 </Link>
                 <h1 className="WarehouseAdd__title">

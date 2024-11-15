@@ -37,6 +37,7 @@ function AddWarehouseForm() {
         });
 
         if (response.status === 201) {
+          alert("Warehouse added successfully! Redirecting to the home page...");
           setWarehouseName("");
           setWarehouseAddress("");
           setWarehouseCity("");
@@ -50,7 +51,7 @@ function AddWarehouseForm() {
         }
       } catch (err) {
         console.error("Error adding warehouse:", err);
-        setErrorMessage(err.response.data.message);
+        alert("Failed to add the warehouse. Please try again.");
       }
     }
   };
@@ -110,9 +111,9 @@ function AddWarehouseForm() {
         }
     }
     return digitCount === 10;
-};
+  };
 
-const isValidEmail = (email) => {
+  const isValidEmail = (email) => {
     const atSymbolIndex = email.indexOf("@");
     const dotIndex = email.lastIndexOf(".");
 
@@ -121,7 +122,7 @@ const isValidEmail = (email) => {
         dotIndex > atSymbolIndex + 1 &&
         dotIndex < email.length - 1
     );
-};
+  };
 
   return (
     <form className="warehouse-form" onSubmit={handleSubmit}>
@@ -237,7 +238,6 @@ const isValidEmail = (email) => {
         />
       </section>
 
-
       {errorMessage && (
         <div className="warehouse-form__error">
           <p>{errorMessage}</p>
@@ -253,7 +253,6 @@ const isValidEmail = (email) => {
           + Add Warehouse
         </button>
       </div>
-
     </form>
   );
 }

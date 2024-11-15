@@ -22,6 +22,9 @@
     margin-left: auto;
     @include tablet {
       @include primary-button;
+      &:hover {
+        @include primary-hover-state;
+      }
     }
   }
   &__edit {
@@ -56,20 +59,20 @@
     }
   }
 
-  &__container {
+  &__content {
     padding: 0 $padding-16 $padding-24 $padding-16;
     @include tablet {
       display: flex;
     }
   }
-  &__tablet-container-desc-cat {
+  &__description-group {
     @include tablet {
       width: 50%;
       margin: $padding-24;
       border-right: 1px solid $Cloud;
     }
   }
-  &__tablet-container-status {
+  &__status-group {
     @include tablet {
       width: 50%;
       margin: $padding-24;

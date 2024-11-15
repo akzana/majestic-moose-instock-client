@@ -25,7 +25,7 @@ function InventoryItemDetails() {
   }, []);
 
   return (
-    <div className="item-details">
+    <section className="item-details">
       <div className="item-details__header">
         <Link to="/inventory">
           <img
@@ -39,18 +39,22 @@ function InventoryItemDetails() {
           to="/inventory/edit/{id}"
           className="item-details__icon-container"
         >
-          <img className="item-details__edit-icon" src={editIcon} alt="edit icon" />{" "}
+          <img
+            className="item-details__edit-icon"
+            src={editIcon}
+            alt="edit icon"
+          />{" "}
           <span className="item-details__edit">Edit</span>
         </Link>
       </div>
-      <div className="item-details__container">
-        <div className="item-details__tablet-container-desc-cat">
+      <article className="item-details__content">
+        <div className="item-details__description-group">
           <h4 className="item-details__label">Item Description:</h4>
           <p className="item-details__description">{itemData.description}</p>
           <h4 className="item-details__label">Category:</h4>
           <p className="item-details__category">{itemData.category}</p>
         </div>
-        <div className="item-details__tablet-container-status">
+        <div className="item-details__status-group">
           <div className="item-details__status-quantity-container">
             <div className="item-details__status-container">
               <h4 className="item-details__label">Status:</h4>
@@ -72,8 +76,8 @@ function InventoryItemDetails() {
           <h4 className="item-details__label">Warehouse:</h4>
           <p className="item-details__warehouse">{itemData.warehouse_name}</p>
         </div>
-      </div>
-    </div>
+      </article>
+    </section>
   );
 }
 

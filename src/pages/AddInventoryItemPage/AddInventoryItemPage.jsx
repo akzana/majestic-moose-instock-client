@@ -1,6 +1,6 @@
 import React from "react";
-import AddInvItem from "../../components/AddInvItem/AddInvItem";
-function AddInventoryItem() {
+import AddInvItem from "../../components/AddInventoryItem/AddInventoryItem";
+function AddInventoryItemPage() {
   return (
     <div>
       <AddInvItem />
@@ -8,4 +8,4 @@ function AddInventoryItem() {
   );
 }
 
-export default AddInventoryItem;
+export default AddInventoryItemPage;

@@ -1,5 +1,5 @@
 import arrowBack from "../../assets/Icons/arrow_back-24px.svg";
-import "./AddInvItem.scss";
+import "./AddInventoryItem.scss";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -103,4 +103,4 @@ function AddInvItem() {
   );
 }
 
-export default AddInvItem;
+export default AddInventoryItem;

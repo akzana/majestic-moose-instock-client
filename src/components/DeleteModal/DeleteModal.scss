@@ -19,20 +19,33 @@
   .modal {
     background: $White;
     padding: 1.25rem;
-    border-radius: .5rem;
-    width: 90%;
-    max-width: 400px;
-    text-align: center;
+    height: 90%;
+    max-width: 39.1875rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include tablet
+    {
+       width: 90%;
+       height: auto;
+    }
+    @include desktop
+    {
+      width: 90%;
+      height: auto;
+    }
   }
   
   .modal-actions {
     display: flex;
-    justify-content: space-around;
+    justify-content: end;
     margin-top: 1.5rem;
   }
   
   .modal-button {
-    padding: .625rem 1.25rem;
+    padding: 0.5rem 2rem;
+    margin: 0.5rem;
     border: none;
     cursor: pointer;
   }
@@ -49,4 +62,13 @@
     color: $White;
     border-radius: 2rem;
   }
+
+
+  .modal-button--close {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0;
+    margin: 0rem;
+  }
+  
   

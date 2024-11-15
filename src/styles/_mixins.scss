@@ -169,8 +169,10 @@
   padding: 0 $padding-8;
   border-radius: 1.25rem;
   height: 1.5rem;
+  line-height: 1.5rem;
   @include tablet {
     height: 1.625rem;
+    line-height: 1.625rem;
   }
 }
 

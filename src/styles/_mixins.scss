@@ -162,9 +162,9 @@
   line-height: 1.5rem;
   display: inline-block;
   @include tablet {
+    @include tablet-table-header();
     height: 1.625rem;
     line-height: 1.625rem;
-    @include tablet-table-header();
   }
 }
 

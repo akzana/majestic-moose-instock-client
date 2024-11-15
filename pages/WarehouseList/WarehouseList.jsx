@@ -10,6 +10,7 @@ import editIcon from "../../src/assets/Icons/edit-24px.svg";
 
 const API_URL = "http://localhost:8080/api/warehouses";
 
+
 const WarehouseList = () => {
   const [warehouses, setWarehouses] = useState([]);
   const [showModal, setShowModal] = useState(false);
@@ -44,7 +45,7 @@ const WarehouseList = () => {
         method: "DELETE",
       });
       if (response.ok) {
-        setWarehouses(warehouses.filter(w => w.id !== selectedWarehouse.id));
+        setWarehouses(warehouses.filter((w) => w.id !== selectedWarehouse.id));
         handleCloseModal();
       } else {
         console.error("Failed to delete warehouse");
@@ -56,8 +57,12 @@ const WarehouseList = () => {
 
   return (
     <div className="warehouse-card">
-       <DeleteModal show={showModal} onClose={handleCloseModal} onConfirm={handleConfirmDelete} />
-       <WarehouseHeader />
+      <DeleteModal
+        show={showModal}
+        onClose={handleCloseModal}
+        onConfirm={handleConfirmDelete}
+      />
+      <WarehouseHeader />
 
       <table className="warehouse__list">
         <thead className="warehouse__list-header">
@@ -78,37 +83,37 @@ const WarehouseList = () => {
               Contact Information
               <img src={sortIcon} alt="Sort Icon" className="sort__icon" />
             </th>
-            <th className="warehouse__list-heading">Actions</th>
+            <th className="warehouse__list-heading warehouse__list-heading-actions">Actions</th>
           </tr>
         </thead>
         <tbody className="warehouse__body">
           {warehouses.map((warehouse) => (
-       
             <tr key={warehouse.id} className="warehouse__body-row">
-             
-                  <td className="warehouse__body-cell">
-                    <span className="warehouse__cell-header">Warehouse</span>
-                    <Link
-                      to={`/warehouses/${warehouse.id}`}
-                      className="warehouse__link" >
-                      {warehouse.warehouse_name}
-                      <img
-                        src={rightAarrowIcon}
-                        alt="Right arrow Icon"
-                        className="rightarrow__icon"/>
-                    </Link>
-                  </td>
-
+          
+              <td className="warehouse__body-cell">
+                <span className="warehouse__cell-header">Warehouse</span>
+                <Link
+                  to={`/warehouses/${warehouse.id}`}
+                  className="warehouse__link" >
+                  {warehouse.warehouse_name}
+                  <img
+                    src={rightAarrowIcon}
+                    alt="Right arrow Icon"
+                    className="rightarrow__icon"/>
+                </Link>
+                </td>
+        
                   <td className="warehouse__body-cell">
                     <span className="warehouse__cell-header">Address</span>
                     {`${warehouse.address}, ${warehouse.city}, ${warehouse.country}`}
                   </td>
+                  
                 
                   <td className="warehouse__body-cell">
                     <span className="warehouse__cell-header">Contact Name</span>
                     {warehouse.contact_name}
                   </td>
-                
+
                   <td className="warehouse__body-cell">
                     <span className="warehouse__cell-header">
                       Contact Information
@@ -124,22 +129,24 @@ const WarehouseList = () => {
                       </a>
                     </p>
                   </td>
-             
+                  
               <td className="warehouse__body-cell warehouse__actions">
-                <button className="warehouse__delete" onClick={() => handleDeleteClick(warehouse)}>
+                <button
+                  className="warehouse__delete"
+                  onClick={() => handleDeleteClick(warehouse)}>
                   <img
                     src={deleteIcon}
                     alt="Delete Icon"
-                    className="delete__icon"/>
+                    className="delete__icon"
+                  />
                 </button>
                 <Link
                   to={`/warehouse/${warehouse.id}`}
-                  className="warehouse__edit" >
+                  className="warehouse__edit">
                   <img src={editIcon} alt="Edit Icon" className="edit__icon" />
                 </Link>
               </td>
             </tr>
-           
           ))}
         </tbody>
       </table>

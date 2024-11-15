@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./WarehouseList.scss";
-import searchIcon from '../../src/assets/Icons/search-24px.svg';
+import WarehouseHeader from "../../src/components/WarehouseHeader/WarehouseHeader";
 
 const API_URL = "http://localhost:8080/api/warehouses";
 
@@ -22,23 +22,9 @@ const WarehouseList = () => {
   }, []);
 
   return (
-    <div className="warehouse">
-     <div className="warehouse">
-      <h2 className="warehouse__title">Warehouses</h2>
-      <div className="warehouse__search">
-        <input
-          type="text"
-          className="warehouse__input"
-          placeholder="Search..."
-          disabled
-        />
-        <img src={searchIcon} alt="Search Icon" className="warehouse__icon" />
-      </div>
-      
-      <Link to="/warehouses/add" className="warehouse__add-button primary-button">
-        + Add New Warehouse
-      </Link>
-    </div>
+    <div className="warehouse-card">
+     
+     <WarehouseHeader />
 
       <table className="warehouse__list">
         <thead className="warehouse__list-header">

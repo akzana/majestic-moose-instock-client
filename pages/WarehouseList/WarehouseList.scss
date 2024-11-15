@@ -71,7 +71,7 @@
 
   &-row {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     border-bottom: 1px solid $Cloud;
     padding: $padding-8;
 
@@ -84,12 +84,14 @@
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
+      width: auto;
     }
 
     @include desktop {
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
+      width: auto;
     }
   }
 
@@ -103,18 +105,18 @@
     align-items: flex-start; 
     text-align: left; 
     color: $Instock-Black;
-
+     width: 45%;
 
     @include tablet {
       font-size: 0.875rem; 
       line-height: 1.25rem;
-      width: 45%;
+      width: 200px;
     }
 
     @include desktop {
       font-size: 1rem;
       line-height: 1.5rem;
-      width: 45%;
+      width: 200px;
     }
   }
 }
@@ -176,12 +178,15 @@
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
+    width: 100%;
 
     @include tablet {
       justify-content: center;
+      width: auto;
     }
     @include desktop {
       justify-content: center;  
+      width: auto;
     }
 
     .warehouse__edit {

@@ -6,7 +6,7 @@
     display: flex;
     align-items: flex-end;
     justify-content: flex-start;
-    border-bottom: 1px solid $Cloud;
+    border-bottom: 0.0625rem solid $Cloud;
     padding: $padding-32 $padding-16 $padding-24 $padding-16;
     margin: 0;
   }
@@ -69,7 +69,7 @@
     @include tablet {
       width: 50%;
       margin: $padding-24;
-      border-right: 1px solid $Cloud;
+      border-right: 0.0625rem solid $Cloud;
     }
   }
   &__status-group {

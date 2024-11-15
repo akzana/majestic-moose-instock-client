@@ -1,5 +1,5 @@
 import React from "react";
-import AddInvItem from "../../src/components/AddInvItem/AddInvItem";
+import AddInvItem from "../../components/AddInvItem/AddInvItem";
 function AddInventoryItem() {
   return (
     <div>

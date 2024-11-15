@@ -1,9 +1,11 @@
-import React from 'react'
-
+import React from "react";
+import AddInvItem from "../../src/components/AddInvItem/AddInvItem";
 function AddInventoryItem() {
   return (
-    <div>AddInventoryItem</div>
-  )
+    <div>
+      <AddInvItem />
+    </div>
+  );
 }
 
-export default AddInventoryItem
+export default AddInventoryItem;

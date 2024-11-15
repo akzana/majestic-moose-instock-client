@@ -29,8 +29,8 @@ function InventoryItemDetails() {
       <div className="item-details__header">
         <Link to="/inventory">
           <img
-            className="item-details__icon"
-            alt="back arrow"
+            className="item-details__back-icon"
+            alt="go back arrow icon"
             src={backArrow}
           />
         </Link>
@@ -39,24 +39,39 @@ function InventoryItemDetails() {
           to="/inventory/edit/{id}"
           className="item-details__icon-container"
         >
-          <img
-            className="item-details__icon"
-            src={editIcon}
-            alt="go to edit warehouse page"
-          />
+          <img className="item-details__edit-icon" src={editIcon} alt="edit icon" />{" "}
+          <span className="item-details__edit">Edit</span>
         </Link>
       </div>
       <div className="item-details__container">
-        <p className="item-details__title">Item Description</p>
-        <p className="item-details__description">{itemData.description}</p>
-        <p className="item-details__title">Category</p>
-        <p className="item-details__category">{itemData.category}</p>
-        <p className="item-details__title">Status:</p>
-        <p className="item-details__tag">{itemData.status}</p>
-        <p className="item-details__title">Quantity</p>
-        <p className="item-details__quantity">{itemData.quantity}</p>
-        <p className="item-details__title">Warehouse</p>
-        <p className="item-details__warehouse">{itemData.warehouse_name}</p>
+        <div className="item-details__tablet-container-desc-cat">
+          <h4 className="item-details__label">Item Description:</h4>
+          <p className="item-details__description">{itemData.description}</p>
+          <h4 className="item-details__label">Category:</h4>
+          <p className="item-details__category">{itemData.category}</p>
+        </div>
+        <div className="item-details__tablet-container-status">
+          <div className="item-details__status-quantity-container">
+            <div className="item-details__status-container">
+              <h4 className="item-details__label">Status:</h4>
+              <p
+                className={
+                  itemData.status === "In Stock"
+                    ? "item-details__tag--in-stock"
+                    : "item-details__tag--out-of-stock"
+                }
+              >
+                {itemData.status}
+              </p>
+            </div>
+            <div className="item-details__quantity-container">
+              <h4 className="item-details__label">Quantity:</h4>
+              <p className="item-details__quantity">{itemData.quantity}</p>
+            </div>
+          </div>
+          <h4 className="item-details__label">Warehouse:</h4>
+          <p className="item-details__warehouse">{itemData.warehouse_name}</p>
+        </div>
       </div>
     </div>
   );

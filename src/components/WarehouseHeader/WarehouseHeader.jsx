@@ -20,8 +20,7 @@ function WarehouseHeader() {
 
         <Link
           to="/warehouses/add"
-          className="warehouse__add-button primary-button"
-        >
+          className="warehouse__add-button primary-button" >
           + Add New Warehouse
         </Link>
       </div>

@@ -12,8 +12,7 @@ function AddWarehouseForm() {
   const [contactPosition, setContactPosition] = useState(""); 
   const [contactPhone, setContactPhone] = useState("");
   const [contactEmail, setContactEmail] = useState("");
-  const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
 
@@ -23,20 +22,18 @@ function AddWarehouseForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(null);
-    setSuccess(false);
 
     if (validateForm()) {
       try {
-        const response = await axios.post('/api/warehouses', {
-          warehouseName,
-          warehouseAddress,
-          warehouseCity,
-          warehouseCountry,
-          contactName,
-          contactPosition, 
-          contactPhone,
-          contactEmail,
+        const response = await axios.post(`${import.meta.env.VITE_APP_API_URL}/api/warehouses`, {
+          warehouse_name: warehouseName,
+          address: warehouseAddress,
+          city: warehouseCity,
+          country: warehouseCountry,
+          contact_name: contactName,
+          contact_position: contactPosition, 
+          contact_phone: contactPhone,
+          contact_email: contactEmail,
         });
 
         if (response.status === 201) {
@@ -48,43 +45,83 @@ function AddWarehouseForm() {
           setContactPosition(""); 
           setContactPhone("");
           setContactEmail("");
-          setSuccess(true);
-
-          setTimeout(() => navigate("/warehouses"), 2000);
+          setErrorMessage("");
+          navigate("/warehouses");
         }
       } catch (err) {
-        setError("Failed to add warehouse. Please try again.");
+        console.error("Error adding warehouse:", err);
+        setErrorMessage(err.response.data.message);
       }
     }
   };
 
   const validateForm = () => {
-    return (
-      warehouseName.trim() !== "" &&
-      warehouseAddress.trim() !== "" &&
-      warehouseCity.trim() !== "" &&
-      warehouseCountry.trim() !== "" &&
-      contactName.trim() !== "" &&
-      contactPosition.trim() !== "" && 
-      isValidPhone(contactPhone) &&
-      isValidEmail(contactEmail)
-    );
+    let isValid = true;
+
+    if (warehouseName.trim() === "") {
+      setErrorMessage("Warehouse Name is required");
+      isValid = false;
+    } else if (warehouseAddress.trim() === "") {
+      setErrorMessage("Warehouse Address is required");
+      isValid = false;
+    } else if (warehouseCity.trim() === "") {
+      setErrorMessage("Warehouse City is required");
+      isValid = false;
+    } else if (warehouseCountry.trim() === "") {
+      setErrorMessage("Warehouse Country is required");
+      isValid = false;
+    } else if (contactName.trim() === "") {
+      setErrorMessage("Contact Name is required");
+      isValid = false;
+    } else if (contactPosition.trim() === "") {
+      setErrorMessage("Contact Position is required");
+      isValid = false;
+    } else if (!isValidPhoneNumber(contactPhone)) {
+      setErrorMessage("Invalid phone number. Please use format: +1 (XXX) XXX-XXXX or (XXX) XXX-XXXX");
+      isValid = false;
+    } else if (!isValidEmail(contactEmail)) {
+      setErrorMessage("Invalid Email format");
+      isValid = false;
+    } else {
+      setErrorMessage("");
+    }
+
+    return isValid;
   };
 
-  const isValidPhone = (phone) => {
-    const cleanedPhone = phone.split(" ").join("");
-    return cleanedPhone.length === 10 && !isNaN(cleanedPhone);
-  };
+  const isValidPhoneNumber = (phone) => {
+    let startIndex = 0;
+    if (phone.startsWith('+1')) {
+        startIndex = 2;
+    }
 
-  const isValidEmail = (email) => {
+    let digitCount = 0;
+
+    for (let i = startIndex; i < phone.length; i++) {
+        const char = phone[i];
+        if (!isNaN(char) && char !== ' ') {
+            digitCount++;
+        }
+        else if (char === '(' || char === ')' || char === '-' || char === ' ') {
+            continue;
+        }
+        else {
+            return false;
+        }
+    }
+    return digitCount === 10;
+};
+
+const isValidEmail = (email) => {
     const atSymbolIndex = email.indexOf("@");
     const dotIndex = email.lastIndexOf(".");
+
     return (
-      atSymbolIndex > 0 &&
-      dotIndex > atSymbolIndex + 1 &&
-      dotIndex < email.length - 1
+        atSymbolIndex > 0 &&
+        dotIndex > atSymbolIndex + 1 &&
+        dotIndex < email.length - 1
     );
-  };
+};
 
   return (
     <form className="warehouse-form" onSubmit={handleSubmit}>
@@ -200,6 +237,13 @@ function AddWarehouseForm() {
         />
       </section>
 
+
+      {errorMessage && (
+        <div className="warehouse-form__error">
+          <p>{errorMessage}</p>
+        </div>
+      )}
+
       <div className="warehouse-form__actions">
         <Link to="/warehouses" className="warehouse-form__cancel">
           Cancel
@@ -210,8 +254,6 @@ function AddWarehouseForm() {
         </button>
       </div>
 
-      {success && <p className="warehouse-form__success">Warehouse added successfully!</p>}
-      {error && <p className="warehouse-form__error">{error}</p>}
     </form>
   );
 }

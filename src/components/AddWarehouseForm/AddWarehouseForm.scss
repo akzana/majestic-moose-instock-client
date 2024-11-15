@@ -3,21 +3,13 @@
 
 .warehouse-form {
   background-color: $White;
-  padding: $padding-32;
+  padding: 0rem 2rem 2rem 2rem;
   border-radius: 20px;
 
   &__section {
     padding-bottom: $padding-32;
-    border-top: 2px solid $Cloud; 
     margin-bottom: $padding-32;
 
-    &--details {
-      padding-top: $padding-32;
-    }
-
-    &--contact {
-      padding-top: $padding-32;
-    }
   }
 
   &__title {
@@ -32,7 +24,7 @@
   }
 
   &__input {
-    width: 100%;
+    width: 95%;
     padding-left: $padding-8;
     padding-right: $padding-8;
     margin-bottom: $padding-24;

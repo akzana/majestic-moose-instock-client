@@ -1,0 +1,121 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.warehouse-form {
+  background-color: $White;
+  padding: $padding-32;
+  border-radius: 20px;
+
+  &__section {
+    padding-bottom: $padding-32;
+    border-top: 2px solid $Cloud; 
+    margin-bottom: $padding-32;
+
+    &--details {
+      padding-top: $padding-32;
+    }
+
+    &--contact {
+      padding-top: $padding-32;
+    }
+  }
+
+  &__title {
+    @include mobile-page-header;
+    margin-bottom: $padding-16;
+  }
+
+  &__label {
+    display: block;
+    @include mobile-labels-links-buttons;
+    margin-bottom: $padding-4;
+  }
+
+  &__input {
+    width: 100%;
+    padding-left: $padding-8;
+    padding-right: $padding-8;
+    margin-bottom: $padding-24;
+    font-size: 1rem;
+    @include form-field;
+
+    @include tablet {
+      padding-left: $padding-16;
+      padding-right: $padding-16;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    gap: $padding-16;
+
+    @include tablet {
+      gap: $padding-32;
+    }
+  }
+
+  &__submit {
+    width: 48%;
+    @include primary-button;
+  }
+
+  &__cancel {
+    width: 48%;
+    text-align: center;
+    @include secondary-button;
+  }
+
+  &__error,
+  &__success {
+    margin-top: $padding-16;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  &__error {
+    color: $Red;
+  }
+
+  &__success {
+    color: $Green;
+  }
+}
+
+  .warehouse-form__section {
+    padding-bottom: $padding-24;
+    margin-bottom: $padding-24;
+  }
+
+  .warehouse-form__actions {
+    flex-direction: row;
+    gap: $padding-16;  
+    justify-content: space-between; 
+  }
+
+@include tablet {
+  .warehouse-form__section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-bottom: $padding-40;
+  }
+
+  .warehouse-form__section--details,
+  .warehouse-form__section--contact {
+    flex: 1;
+    margin-right: $padding-24;
+    max-width: 48%;
+  }
+
+  .warehouse-form__input {
+    width: 100%;
+  }
+
+  .warehouse-form__actions {
+    flex-direction: row;
+    gap: $padding-32;
+    justify-content: flex-start;
+  }
+}

@@ -6,7 +6,7 @@ import editIcon from "../../assets/Icons/edit-white-24px.svg";
 import axios from "axios";
 const baseURL = import.meta.env.VITE_URL;
 
-function InventoryItemDetails() {
+function InventoryItem() {
   const { id } = useParams();
   const [itemData, setItemData] = useState([]);
 
@@ -81,4 +81,4 @@ function InventoryItemDetails() {
   );
 }
 
-export default InventoryItemDetails;
+export default InventoryItem;

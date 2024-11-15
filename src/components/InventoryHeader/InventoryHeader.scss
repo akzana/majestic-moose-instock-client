@@ -1,0 +1,28 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.inventory {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    &__heading {
+        @include page-title;
+    }
+    &__search-bar {
+        background: url("../../assets/Icons/search-24px.svg") no-repeat scroll right;
+        @include form-field;
+        &::placeholder {
+            padding-left: 0.625rem;
+        }
+    }
+    @include tablet {
+        flex-direction: row;
+    }
+    &__button{
+        margin-top: 1rem;
+        @include primary-button;
+        &:hover{
+            @include primary-hover-state;
+        }
+    }
+}

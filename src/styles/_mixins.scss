@@ -170,6 +170,7 @@
 }
 
 @mixin in-stock-tag {
+  @include mobile-table-header;
   background-color: $Green-Tag;
   color: $Green;
   padding: 0 $padding-8;
@@ -177,11 +178,10 @@
   height: 1.5rem;
   line-height: 1.5rem;
   display: inline-block;
-  @include mobile-table-header;
   @include tablet {
+    @include tablet-table-header;
     height: 1.625rem;
     line-height: 1.625rem;
-    @include tablet-table-header;
   }
 }
 

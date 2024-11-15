@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "./WarehouseList.scss";
+import "./WarehouseListPage.scss";
 import WarehouseHeader from "../../components/WarehouseHeader/WarehouseHeader";
 import DeleteModal from "../../components/DeleteModal/DeleteModal";
 import rightAarrowIcon from "../../assets/Icons/chevron_right-24px.svg";

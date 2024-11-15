@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "./WarehouseList.scss";
-import WarehouseHeader from "../../src/components/WarehouseHeader/WarehouseHeader";
-import DeleteModal from "../../src/components/DeleteModal/DeleteModal";
-import rightAarrowIcon from "../../src/assets/Icons/chevron_right-24px.svg";
-import sortIcon from "../../src/assets/Icons/sort-24px.svg";
-import deleteIcon from "../../src/assets/Icons/delete_outline-24px.svg";
-import editIcon from "../../src/assets/Icons/edit-24px.svg";
+import "./WarehouseListPage.scss";
+import WarehouseHeader from "../../components/WarehouseHeader/WarehouseHeader";
+import DeleteModal from "../../components/DeleteModal/DeleteModal";
+import rightAarrowIcon from "../../assets/Icons/chevron_right-24px.svg";
+import sortIcon from "../../assets/Icons/sort-24px.svg";
+import deleteIcon from "../../assets/Icons/delete_outline-24px.svg";
+import editIcon from "../../assets/Icons/edit-24px.svg";
 
 const API_URL = "http://localhost:8080/api/warehouses";
 

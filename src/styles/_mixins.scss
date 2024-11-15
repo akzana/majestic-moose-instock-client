@@ -153,24 +153,32 @@
 
 // --------- Tags ---------
 @mixin out-of-stock-tag {
+  @include mobile-table-header;
   background-color: $Red-Tag;
   color: $Red;
   padding: 0 $padding-8;
   border-radius: 1.25rem;
   height: 1.5rem;
+  line-height: 1.5rem;
+  display: inline-block;
   @include tablet {
     height: 1.625rem;
+    line-height: 1.625rem;
+    @include tablet-table-header();
   }
 }
 
 @mixin in-stock-tag {
+  @include mobile-table-header;
   background-color: $Green-Tag;
   color: $Green;
   padding: 0 $padding-8;
   border-radius: 1.25rem;
   height: 1.5rem;
   line-height: 1.5rem;
+  display: inline-block;
   @include tablet {
+    @include tablet-table-header;
     height: 1.625rem;
     line-height: 1.625rem;
   }

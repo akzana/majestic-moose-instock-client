@@ -1,7 +1,7 @@
 import React from "react";
 import InventoryItem from "../../components/InventoryItem/InventoryItem.jsx";
 import "./InventoryItemDetailsPage.scss";
-function InventoryItemDetails() {
+function InventoryItemDetailsPage() {
   return (
     <div className="inventory-item-card">
       <InventoryItem />
@@ -9,4 +9,4 @@ function InventoryItemDetails() {
   );
 }
 
-export default InventoryItemDetails;
+export default InventoryItemDetailsPage;

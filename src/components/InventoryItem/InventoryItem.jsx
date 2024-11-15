@@ -36,7 +36,7 @@ function InventoryItem() {
         </Link>
         <h1 className="item-details__title">{itemData.item_name}</h1>
         <Link
-          to="/inventory/edit/{id}"
+          to={`/inventory/edit/${id}`}
           className="item-details__icon-container"
         >
           <img

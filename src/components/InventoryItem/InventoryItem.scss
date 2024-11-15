@@ -105,13 +105,13 @@
 
   &__tag {
     &--in-stock {
-      @include in-stock-tag;
       margin: 0;
+      @include in-stock-tag;
     }
 
     &--out-of-stock {
-      @include out-of-stock-tag;
       margin: 0;
+      @include out-of-stock-tag;
     }
   }
 

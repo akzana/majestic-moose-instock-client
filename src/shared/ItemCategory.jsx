@@ -1,4 +1,4 @@
-export const ITEM_CATEGORIES = [
+export const ITEM_CATEGORY = [
     "Accessories",
     "Apparel",
     "Electronics",

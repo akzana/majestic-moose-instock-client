@@ -3,14 +3,22 @@
 
 // header
 .EditInventoryItem__header{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    justify-content: space-between;
+
     border-bottom: 1px solid $Cloud;
-    
-    &--layout{
+
         display: flex;
         justify-content: flex-start;
         align-items: center; 
         padding-left: 24px;
-    }
+}
+
+.EditInventoryItem__title{
+    @include mobile-page-header;
+    margin: 24px 0px;
 }
 
 // padding: 0 24px;

@@ -39,7 +39,7 @@
   &-row {
     display: none;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     visibility: hidden;
 
     @include tablet {
@@ -85,12 +85,13 @@
     font-size: 1rem;
     color: $Slate;
     line-height: 1.5rem;
-    align-items: flex-start; // Align items to the left
-    text-align: left; // Ensure text alignment is left
+    align-items: flex-start; 
+    text-align: left; 
 
     @include tablet {
       font-size: 0.875rem; 
       line-height: 1.25rem;
+      width: 35%;
     }
 
     @include desktop {

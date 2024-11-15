@@ -4,8 +4,8 @@ import "./WarehouseList.scss";
 import WarehouseHeader from "../../src/components/WarehouseHeader/WarehouseHeader";
 import rightAarrowIcon from "../../src/assets/Icons/chevron_right-24px.svg";
 import sortIcon from "../../src/assets/Icons/sort-24px.svg";
-
-
+import deleteIcon from "../../src/assets/Icons/delete_outline-24px.svg";
+import editIcon from "../../src/assets/Icons/edit-24px.svg";
 
 const API_URL = "http://localhost:8080/api/warehouses";
 
@@ -32,17 +32,21 @@ const WarehouseList = () => {
       <table className="warehouse__list">
         <thead className="warehouse__list-header">
           <tr className="warehouse__list-row">
-            <th className="warehouse__list-heading">Warehouse 
-            <img src={sortIcon} alt="Sort Icon" className="sort__icon" /> 
+            <th className="warehouse__list-heading">
+              Warehouse
+              <img src={sortIcon} alt="Sort Icon" className="sort__icon" />
             </th>
-            <th className="warehouse__list-heading">Address
-            <img src={sortIcon} alt="Sort Icon" className="sort__icon" /> 
+            <th className="warehouse__list-heading">
+              Address
+              <img src={sortIcon} alt="Sort Icon" className="sort__icon" />
             </th>
-            <th className="warehouse__list-heading">Contact Name
-            <img src={sortIcon} alt="Sort Icon" className="sort__icon" /> 
+            <th className="warehouse__list-heading">
+              Contact Name
+              <img src={sortIcon} alt="Sort Icon" className="sort__icon" />
             </th>
-            <th className="warehouse__list-heading">Contact Information
-            <img src={sortIcon} alt="Sort Icon" className="sort__icon" /> 
+            <th className="warehouse__list-heading">
+              Contact Information
+              <img src={sortIcon} alt="Sort Icon" className="sort__icon" />
             </th>
             <th className="warehouse__list-heading">Actions</th>
           </tr>
@@ -51,51 +55,58 @@ const WarehouseList = () => {
           {warehouses.map((warehouse) => (
             <tr key={warehouse.id} className="warehouse__body-row">
              
-              <td className="warehouse__body-cell">
-                <span className="warehouse__cell-header">Warehouse</span>
-                <Link
-                  to={`/warehouses/${warehouse.id}`}
-                  className="warehouse__link" >
-                  {warehouse.warehouse_name}  
-                  <img src={rightAarrowIcon} alt="Right arrow Icon" className="rightarrow__icon" /> 
-                </Link>
-              </td>
-              
-              <td className="warehouse__body-cell">
-                <span className="warehouse__cell-header">Address</span>
-                {`${warehouse.address}, ${warehouse.city}, ${warehouse.country}`}
-              </td>
+                  <td className="warehouse__body-cell">
+                    <span className="warehouse__cell-header">Warehouse</span>
+                    <Link
+                      to={`/warehouses/${warehouse.id}`}
+                      className="warehouse__link" >
+                      {warehouse.warehouse_name}
+                      <img
+                        src={rightAarrowIcon}
+                        alt="Right arrow Icon"
+                        className="rightarrow__icon"/>
+                    </Link>
+                  </td>
 
-              
-   
-              <td className="warehouse__body-cell">
-                <span className="warehouse__cell-header">Contact Name</span>
-                {warehouse.contact_name}
-              </td>
+                  <td className="warehouse__body-cell">
+                    <span className="warehouse__cell-header">Address</span>
+                    {`${warehouse.address}, ${warehouse.city}, ${warehouse.country}`}
+                  </td>
+                
+                  <td className="warehouse__body-cell">
+                    <span className="warehouse__cell-header">Contact Name</span>
+                    {warehouse.contact_name}
+                  </td>
+                
+                  <td className="warehouse__body-cell">
+                    <span className="warehouse__cell-header">
+                      Contact Information
+                    </span>
+                    <p className="warehouse__contact">
+                      {warehouse.contact_phone}
+                    </p>
+                    <p className="warehouse__contact-info">
+                      <a
+                        href={`mailto:${warehouse.contact_email}`}
+                        className="warehouse__contact-email">
+                        {warehouse.contact_email}
+                      </a>
+                    </p>
+                  </td>
              
-
-             
-              <td className="warehouse__body-cell">
-                <span className="warehouse__cell-header">
-                  Contact Information
-                </span>
-                <p className="warehouse__contact">{warehouse.contact_phone}</p>
-                <p className="warehouse__contact-info">
-                  <a
-                    href={`mailto:${warehouse.contact_email}`}
-                    className="warehouse__contact-email" >
-                    {warehouse.contact_email}
-                  </a>
-                </p>
-                </td>
-              
               <td className="warehouse__body-cell warehouse__actions">
+                <button className="warehouse__delete">
+                  <img
+                    src={deleteIcon}
+                    alt="Delete Icon"
+                    className="delete__icon"/>
+                </button>
                 <Link
                   to={`/warehouse/${warehouse.id}`}
-                  className="warehouse__edit" >
-                  Edit
+                  className="warehouse__edit"
+                >
+                  <img src={editIcon} alt="Edit Icon" className="edit__icon" />
                 </Link>
-                <button className="warehouse__delete">Delete</button>
               </td>
             </tr>
           ))}

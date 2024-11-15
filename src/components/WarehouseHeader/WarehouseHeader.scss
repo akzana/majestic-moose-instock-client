@@ -2,12 +2,12 @@
 @use "../../styles/variables" as *;
 
 .primary-button {
-  @include primary-button;
   text-align: center;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
+  @include primary-button;
 
   &:hover {
     @include primary-hover-state;
@@ -31,8 +31,8 @@
   }
 
   &__title {
-    @include tablet-page-header;
     color: $Instock-Black;
+    @include tablet-page-header;
   }
 
   &__controls {
@@ -86,7 +86,6 @@
   }
 
   &__add-button {
-    @include primary-button;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -95,6 +94,7 @@
     font-size: 1rem;
     line-height: 2rem;
     font-weight: 600;
+    @include primary-button;
 
     &:hover {
       @include primary-hover-state;

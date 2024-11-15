@@ -9,11 +9,11 @@
         @include page-title;
     }
     &__search-bar {
+        background: url("../../assets/Icons/search-24px.svg") no-repeat scroll right;
         @include form-field;
         &::placeholder {
             padding-left: 0.625rem;
         }
-        background:  url("../../assets/Icons/search-24px.svg") no-repeat scroll right;
     }
     @include tablet {
         flex-direction: row;

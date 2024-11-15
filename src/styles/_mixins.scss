@@ -104,8 +104,8 @@
 }
 
 @mixin primary-hover-state {
-  @include primary-button;
   background-color: $Graphite;
+  @include primary-button;
 }
 
 @mixin secondary-button {

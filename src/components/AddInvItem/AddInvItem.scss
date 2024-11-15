@@ -1,3 +1,6 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
 form {
   display: flex;
   flex-direction: column;
@@ -10,4 +13,13 @@ form {
 .item-availability {
   display: flex;
   flex-direction: column;
+}
+
+input,
+textarea,
+select {
+  @include form-field;
+}
+textarea {
+  height: 7.5rem;
 }

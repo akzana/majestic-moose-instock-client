@@ -49,53 +49,51 @@ function AddInvItem() {
       <form>
         <div className="item-details">
           <h2 className="item-details__title">Item Details</h2>
-          <label htmlFor="itemName">
-            Item Name
-            <input type="text" placeholder="Item Name" id="itemName" />
-          </label>
-          <label htmlFor="itemDescription">
-            Item Description
-            <textarea
-              name="itemDescription"
-              id="itemDescription"
-              placeholder="Please enter a brief item description..."
-            ></textarea>
-          </label>
-          <label htmlFor="category">
-            Category
-            <select name="category" id="category">
-              {[...uniqueCategories].map((category) => (
-                <option key={category}>{category}</option>
-              ))}
-            </select>
-          </label>
+          <label htmlFor="itemName">Item Name </label>
+          <input type="text" placeholder="Item Name" id="itemName" />
+
+          <label htmlFor="itemDescription">Item Description </label>
+          <textarea
+            name="itemDescription"
+            id="itemDescription"
+            placeholder="Please enter a brief item description..."
+          ></textarea>
+
+          <label htmlFor="category">Category </label>
+          <select name="category" id="category">
+            {[...uniqueCategories].map((category) => (
+              <option key={category}>{category}</option>
+            ))}
+          </select>
         </div>
         <div className="item-availability">
           <h2 className="item-availability__title">Item Availability</h2>
-          <h3>Status </h3>
-          <input type="radio" name="status" id="status" />
-          <label>In Stock</label>
-          <input type="radio" name="status" id="status" />
-          <label>Out of Stock</label>
+          <label>Status </label>
           <label>
-            Quantity
-            <input type="number" name="quantity" id="quantity" />
+            <input type="radio" name="status" id="status" />
+            In Stock{" "}
+          </label>{" "}
+          <label>
+            <input type="radio" name="status" id="status" />
+            Out of Stock
           </label>
-          <label htmlFor="">
-            Warehouse
-            <select name="warehouse" id="warehouse">
-              {warehouses.map((warehouse) => (
-                <option key={warehouse.id} value={warehouse.id}>
-                  {warehouse.warehouse_name}
-                </option>
-              ))}
-            </select>
-          </label>
+          <label htmlFor="quantity">Quantity</label>
+          <input type="number" name="quantity" id="quantity" />
+          <label htmlFor="warehouse">Warehouse </label>
+          <select name="warehouse" id="warehouse">
+            {warehouses.map((warehouse) => (
+              <option key={warehouse.id} value={warehouse.id}>
+                {warehouse.warehouse_name}
+              </option>
+            ))}
+          </select>
         </div>
         <div className="buttons">
-          <button className="cancel-button" type="button">
-            Cancel
-          </button>
+          <Link>
+            <button className="cancel-button" type="button">
+              Cancel
+            </button>
+          </Link>
           <button className="add-item-button" type="button">
             + Add Item
           </button>

@@ -2,10 +2,9 @@
 @use "../../src/styles/variables" as *;
 @use "../../src/styles/mixins" as *;
 
-.warehouse-card
-{
-    display: flex;
-    flex-direction: column;
+.warehouse-card {
+  display: flex;
+  flex-direction: column;
 }
 
 .warehouse__list {
@@ -14,20 +13,27 @@
 
     @include tablet {
       visibility: visible;
-      font-weight: 600;
-      color: $Graphite;
+      font-weight: 400;
+      text-transform: uppercase;
+      color: $Slate;
       padding: $padding-8;
       background-color: $Light-Grey;
     }
 
     @include desktop {
       visibility: visible;
+      font-weight: 200;
+      text-transform: uppercase;
+      color: $Slate;
+      padding: $padding-8;
+      background-color: $Light-Grey;
     }
   }
 
   &-heading {
     display: flex;
     align-self: start;
+    font-weight: 200;
   }
 
   &-row {
@@ -39,7 +45,6 @@
     @include tablet {
       visibility: visible;
       display: flex;
-      border-bottom: 1px solid $Cloud;
       padding: $padding-8;
     }
 
@@ -59,26 +64,17 @@
     flex-direction: column;
     border-bottom: 1px solid $Cloud;
     padding: $padding-8;
-  }
-
-  &-cols {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  &-col1,
-  &-col2 {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 
     @include tablet {
       flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
     }
 
     @include desktop {
       flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
     }
   }
 
@@ -89,7 +85,21 @@
     font-size: 1rem;
     color: $Slate;
     line-height: 1.5rem;
+    align-items: flex-start; // Align items to the left
+    text-align: left; // Ensure text alignment is left
+
+    @include tablet {
+      font-size: 0.875rem; 
+      line-height: 1.25rem;
+    }
+
+    @include desktop {
+      font-size: 1rem;
+      line-height: 1.5rem;
+    }
   }
+}
+
 
   .warehouse__cell-header {
     font-weight: 500;
@@ -112,11 +122,16 @@
     font-weight: 600;
     display: inline-flex;
     align-items: center;
+    font-size: 1rem;
+    text-decoration: none;
 
     &::after {
-      content: ">";
       margin-left: $padding-4;
-      font-size: 0.75rem;
+      font-size: 1rem;
+    }
+
+    &:hover {
+      text-decoration: underline;
     }
   }
 
@@ -165,4 +180,6 @@
       cursor: pointer;
     }
   }
-}
+
+
+

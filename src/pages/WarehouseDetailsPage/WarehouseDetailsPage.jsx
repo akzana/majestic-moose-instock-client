@@ -1,5 +1,5 @@
 import React from 'react'
-import "./WarehouseDetails.scss"
+import "./WarehouseDetailsPage.scss"
 import WarehouseDetailsHeader from '../../components/WarehouseDetailsHeader/WarehouseDetailsHeader'
 import WarehouseDetailsGeneralInfo from '../../components/WarehouseDetailsGeneralInfo/WarehouseDetailsGeneralInfo'
 

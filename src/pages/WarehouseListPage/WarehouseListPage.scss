@@ -13,55 +13,19 @@
   padding: $padding-24;
 
   &-header {
-    visibility: hidden;
-
-    @include tablet {
-      visibility: visible;
-      font-weight: 400;
-      text-transform: uppercase;
-      color: $Slate;
-      padding: $padding-8;
-      background-color: $Light-Grey;
-    }
-
-    @include desktop {
-      visibility: visible;
-      font-weight: 200;
-      text-transform: uppercase;
-      color: $Slate;
-      padding: $padding-8;
-      background-color: $Light-Grey;
-    }
+    @include header;
   }
 
   &-heading {
-    display: flex;
-    align-self: center;
-    justify-content: start;
-    font-weight: 200;
-    width: 45%;
-
-    &-actions{
+    @include heading;
+    
+    &-actions {
       justify-content: center;
     }
   }
 
   &-row {
-    display: none;
-    flex-direction: row;
-    justify-content: space-between;
-    visibility: hidden;
-
-    @include tablet {
-      visibility: visible;
-      display: flex;
-      padding: $padding-8;
-    }
-
-    @include desktop {
-      visibility: visible;
-      display: flex;
-    }
+    @include row;
   }
 }
 
@@ -70,140 +34,81 @@
   flex-direction: column;
 
   &-row {
-    display: flex;
-    flex-wrap: wrap;
-    border-bottom: 1px solid $Cloud;
-    padding: $padding-8;
-
-    &:hover{
-      background-color: rgba($Instock-Indigo, 0.1); 
-     
-    }
-
-    @include tablet {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      width: auto;
-    }
-
-    @include desktop {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      width: auto;
-    }
+    @include body-row;
   }
 
   &-cell {
-    display: flex;
-    flex-direction: column;
-    padding: $padding-8;
-    font-size: 1rem;
-    color: $Slate;
-    line-height: 1.5rem;
-    align-items: flex-start; 
-    text-align: left; 
-    color: $Instock-Black;
-     width: 45%;
-
-    @include tablet {
-      font-size: 0.875rem; 
-      line-height: 1.25rem;
-      width: 200px;
-    }
-
-    @include desktop {
-      font-size: 1rem;
-      line-height: 1.5rem;
-      width: 200px;
-    }
+    @include body-cell;
   }
 }
 
+.warehouse__cell-header {
+  @include cell-header;
+}
 
-  .warehouse__cell-header {
-    font-weight: 500;
+.warehouse__link {
+  color: $Instock-Indigo;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  font-size: 1rem;
+  text-decoration: none;
+
+  &::after {
+    margin-left: $padding-4;
     font-size: 1rem;
-    text-transform: uppercase;
-    color: $Graphite;
-    margin-bottom: $padding-4;
-
-    @include tablet {
-      display: none;
-    }
-
-    @include desktop {
-      display: none;
-    }
   }
 
-  .warehouse__link {
-    color: $Instock-Indigo;
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    font-size: 1rem;
-    text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
 
-    &::after {
-      margin-left: $padding-4;
-      font-size: 1rem;
-    }
+.warehouse__contact,
+.warehouse__contact-info {
+  margin: 0;
+  font-size: 1rem;
+  color: $Slate;
+
+  .warehouse__contact-email {
+    color: $Instock-Black;
+    text-decoration: none;
 
     &:hover {
       text-decoration: underline;
     }
   }
+}
 
-  .warehouse__contact,
-  .warehouse__contact-info {
-    margin: 0;
+.warehouse__actions {
+  display: flex;
+  gap: $padding-8;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+
+  @include tablet {
+    justify-content: center;
+    width: auto;
+  }
+  @include desktop {
+    justify-content: center;
+    width: auto;
+  }
+
+  .warehouse__edit {
+    color: $Instock-Indigo;
     font-size: 1rem;
-    color: $Slate;
-
-    .warehouse__contact-email {
-      color: $Instock-Black;
-      text-decoration: none;
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
-
-  .warehouse__actions {
-    display: flex;
-    gap: $padding-8;
+    display: inline-flex;
     align-items: center;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-
-    @include tablet {
-      justify-content: center;
-      width: auto;
-    }
-    @include desktop {
-      justify-content: center;  
-      width: auto;
-    }
-
-    .warehouse__edit {
-      color: $Instock-Indigo;
-      font-size: 1rem;
-      display: inline-flex;
-      align-items: center;
-    }
-
-    .warehouse__delete {
-      color: $Red;
-      background: none;
-      border: none;
-      font-size: 1rem;
-      cursor: pointer;
-    }
   }
 
-
-
+  .warehouse__delete {
+    color: $Red;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+}

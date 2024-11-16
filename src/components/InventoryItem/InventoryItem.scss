@@ -1,0 +1,131 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.item-details {
+  &__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    border-bottom: 0.0625rem solid $Cloud;
+    padding: $padding-32 $padding-16 $padding-24 $padding-16;
+    margin: 0;
+  }
+
+  &__icon-container {
+    background-color: $Instock-Indigo;
+    height: 2.25rem;
+    width: 2.25rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    @include tablet {
+      @include primary-button;
+      &:hover {
+        @include primary-hover-state;
+      }
+    }
+  }
+  &__edit {
+    display: none;
+    @include tablet {
+      display: inline-block;
+      @include tablet-labels-links-buttons;
+      padding-left: $padding-4;
+    }
+  }
+
+  &__back-icon {
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+
+  &__edit-icon {
+    @extend .item-details__back-icon;
+    @include tablet {
+      height: 1.25rem;
+      width: 1.25rem;
+    }
+  }
+
+  &__title {
+    @include mobile-page-header;
+    padding-left: $padding-4;
+    margin: 0;
+    @include tablet {
+      @include tablet-page-header;
+      padding-left: $padding-8;
+    }
+  }
+
+  &__content {
+    padding: 0 $padding-16 $padding-24 $padding-16;
+    @include tablet {
+      display: flex;
+    }
+  }
+  &__description-group {
+    @include tablet {
+      width: 50%;
+      margin: $padding-24;
+      border-right: 0.0625rem solid $Cloud;
+    }
+  }
+  &__status-group {
+    @include tablet {
+      width: 50%;
+      margin: $padding-24;
+    }
+  }
+  &__label {
+    @include mobile-table-header;
+    color: $Slate;
+    margin-top: $padding-16;
+    margin-bottom: $padding-4;
+    @include tablet {
+      @include tablet-table-header;
+    }
+  }
+
+  &__description,
+  &__category,
+  &__quantity,
+  &__warehouse {
+    @include mobile-p2-body-medium;
+    color: $Instock-Black;
+    padding: 0;
+    margin: 0;
+
+    @include tablet {
+      @include tablet-p2-body-medium;
+      width: 80%;
+    }
+  }
+
+  &__tag {
+    &--in-stock {
+      margin: 0;
+      @include in-stock-tag;
+    }
+
+    &--out-of-stock {
+      margin: 0;
+      @include out-of-stock-tag;
+    }
+  }
+
+  &__status-quantity-container {
+    display: flex;
+  }
+  &__status-container,
+  &__quantity-container {
+    width: 50%;
+  }
+}
+
+a {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}

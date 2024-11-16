@@ -8,7 +8,6 @@
 
 .text-field-group__label {
     @include mobile-labels-links-buttons;
-    font-weight: bold;
     color: $Instock-Black;
     margin-bottom: 4px; 
 }
@@ -18,21 +17,18 @@
     padding: 0px 16px; 
     border: 1px solid $Cloud;
     border-radius: 20px; 
-    font-size: 14px;
     color: $Slate;
-    outline: none;
     height: 36px;
     width: 100%; 
     box-sizing: border-box;
 }
 
-// Active State
 .text-field-group__input:focus {
     border-color: $Instock-Indigo; 
     color: $Instock-Black;
 }
 
-// Error State - When input is empty
+// When input is empty
 .text-field-group__input.error {
     border-color: $Red; 
     color: $Red;
@@ -48,7 +44,6 @@
 
 .error-message::before {
     content: '';
-    display: inline-block;
     width: 16px; 
     height: 16px;
     background-image: url('../../assets/Icons/error-24px.svg'); 
@@ -59,5 +54,11 @@
 
 
 @media (min-width: $tablet-breakpoint) {
+    .text-field-group__label {
+        @include tablet-labels-links-buttons;
+    }
 
+    .text-field-group__input {
+        @include tablet-p1-body-large;
+    }
 }

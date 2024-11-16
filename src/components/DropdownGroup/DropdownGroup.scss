@@ -2,53 +2,38 @@
 @use '../../styles/mixins' as *;
 
 .label {
-    font-weight: bold;
+    @include mobile-labels-links-buttons;
     color: $Instock-Black;
     margin-bottom: 4px;
-    display: block; // Ensure the label is on its own line
+    display: block; 
 }
 
 .drop-down__options {
+    @include mobile-p1-body-large;
+    height: 36px;
     width: 100%;
-    padding: 8px 16px;
-    font-size: 14px;
+    padding: 0px 16px;
     color: $Slate;
     border: 1px solid $Cloud;
     border-radius: 20px;
-    outline: none;
-    transition: border-color 0.3s ease;
-    appearance: none; // Remove default dropdown styling
-    background-image: url('../../assets/Icons/arrow_drop_down-24px.svg'); // Path to the arrow icon
+    appearance: none; 
+    background-image: url('../../assets/Icons/arrow_drop_down-24px.svg'); 
     background-repeat: no-repeat;
-    background-position: right 16px center; // Position the arrow on the right side
-    background-size: 16px; // Size of the arrow icon
+    background-position: right 16px center; 
+    background-size: 26px; 
 
     &:focus {
-        border-color: $Instock-Indigo; // Blue border for active state
+        border-color: $Instock-Indigo; 
         color: $Instock-Black;
     }
+}
 
-    &.error {
-        border-color: $Red; // Red border for error state
-        color: $Red;
+@media (min-width: $tablet-breakpoint) {
+    .label {
+        @include tablet-labels-links-buttons;
     }
-}
 
-.error-message {
-    color: $Red;
-    font-size: 12px;
-    margin-top: 4px;
-    display: flex;
-    align-items: center;
-}
-
-.error-message::before {
-    content: '';
-    display: inline-block;
-    width: 16px; 
-    height: 16px;
-    background-image: url('../../assets/Icons/error-24px.svg'); 
-    background-size: contain;
-    background-repeat: no-repeat;
-    margin-right: 4px;
+    .drop-down__options {
+        @include tablet-p1-body-large;
+    }
 }

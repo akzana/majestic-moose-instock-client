@@ -59,6 +59,10 @@
     width: 100%;
     @include mobile-p2-body-medium;
     @include primary-button;
+
+    &:hover {
+        background-color: $Graphite ;
+      }
   }
 
   &__cancel {
@@ -71,6 +75,11 @@
     @include mobile-p2-body-medium;
     @include secondary-button;
     color: $Slate;
+
+    &:hover {
+        color: $Instock-Indigo; 
+        border-color: $Instock-Indigo; 
+      }
   }
 
   &__error-message {

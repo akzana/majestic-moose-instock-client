@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 const baseURL = import.meta.env.VITE_URL;
 
-function AddInvItem() {
+function AddInventoryItem() {
   const [warehouses, setWarehouses] = useState([]);
   const [inventoryItems, setInventoryItems] = useState([]);
 

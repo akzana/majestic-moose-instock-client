@@ -1,8 +1,8 @@
 import React from 'react'
-import AddWarehouseForm from '../../src/components/AddWarehouseForm/AddWarehouseForm'
-import Arrow_back from '../../src/assets/Icons/arrow_back-24px.svg'
+import AddWarehouseForm from '../../components/AddWarehouseForm/AddWarehouseForm'
+import Arrow_back from '../../assets/Icons/arrow_back-24px.svg'
 import { Link } from 'react-router-dom';
-import './AddWarehouse.scss'
+import './AddWarehousePage.scss'
 
 function AddWarehouse() {
   return (

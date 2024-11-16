@@ -3,8 +3,7 @@
 
 .warehouse-form {
   background-color: $White;
-
-  border-radius: 20px;
+  border-radius: 1.25rem;
 
   &__section {
     padding: 0rem 2rem 2rem 2rem;
@@ -17,26 +16,27 @@
 
   &__title {
     @include mobile-subheader;
-    margin-bottom: 1.5rem;
   }
 
   &__label {
     display: block;
-    @include mobile-labels-links-buttons;
     margin-bottom: $padding-4;
+    padding-top: 1rem;
+    @include mobile-labels-links-buttons;
   }
 
   &__input {
-    width: 95%;
-    padding-left: $padding-8;
-    padding-right: $padding-8;
-    margin-bottom: $padding-24;
-    font-size: 1rem;
+    width: 90%;
+    padding: 0rem $padding-16;
+    color: $Instock-Black;
+    @include mobile-p2-body-medium;
     @include form-field;
-
-    @include tablet {
-      padding-left: $padding-16;
-      padding-right: $padding-16;
+  
+    &::placeholder {
+      font-weight: 400;
+      font-size: .875rem;
+      line-height: 1.375rem;
+      color: $Slate; 
     }
   }
 
@@ -44,6 +44,11 @@
     display: flex;
     justify-content: space-between;
     gap: $padding-16;
+    flex-direction: row;
+    gap: $padding-16;  
+    justify-content: space-between; 
+    padding: 1rem 2rem;
+    background-color: $Light-Grey;
 
     @include tablet {
       gap: $padding-32;
@@ -51,46 +56,47 @@
   }
 
   &__submit {
-    width: 48%;
+    width: 100%;
+    @include mobile-p2-body-medium;
     @include primary-button;
   }
 
   &__cancel {
-    width: 48%;
+    width: 100%;
     text-align: center;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include mobile-p2-body-medium;
     @include secondary-button;
+    color: $Slate;
   }
 
-  &__error,
-  &__success {
-    margin-top: $padding-16;
-    text-align: center;
-    font-size: 1rem;
-    font-weight: 600;
+  &__error-message {
+    display: flex;
+    align-items: center;
+    color: red;
+    font-size: .75rem;
+    line-height: 1.125rem;
+    font-weight: 400;
+    margin: 0;
+    padding-top: .25rem;
   }
 
-  &__error {
-    color: $Red;
+  &__error-icon {
+    width: 1rem;
+    height: 1rem;
+    margin-right: .3125rem;
   }
 
-  &__success {
-    color: $Green;
+  &__input--error {
+    border: 2px solid red;
   }
+
 }
 
-  .warehouse-form__section {
-    padding-bottom: $padding-24;
-  }
-
-  .warehouse-form__actions {
-    flex-direction: row;
-    gap: $padding-16;  
-    justify-content: space-between; 
-    padding: 0rem 2rem 2rem 2rem;
-  }
-
-@include tablet {
+ @include tablet {
   .warehouse-form__section {
     display: flex;
     flex-wrap: wrap;

@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate, Link } from 'react-router-dom';
-import './AddWarehouseForm.scss';
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate, Link } from "react-router-dom";
+import "./AddWarehouseForm.scss";
+import errorIcon from "../../assets/Icons/error-24px.svg";
 
 function AddWarehouseForm() {
   const [warehouseName, setWarehouseName] = useState("");
@@ -9,10 +10,19 @@ function AddWarehouseForm() {
   const [warehouseCity, setWarehouseCity] = useState("");
   const [warehouseCountry, setWarehouseCountry] = useState("");
   const [contactName, setContactName] = useState("");
-  const [contactPosition, setContactPosition] = useState(""); 
+  const [contactPosition, setContactPosition] = useState("");
   const [contactPhone, setContactPhone] = useState("");
   const [contactEmail, setContactEmail] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessages, setErrorMessages] = useState({
+    warehouseName: "",
+    warehouseAddress: "",
+    warehouseCity: "",
+    warehouseCountry: "",
+    contactName: "",
+    contactPosition: "",
+    contactPhone: "",
+    contactEmail: "",
+  });
 
   const navigate = useNavigate();
 
@@ -25,28 +35,42 @@ function AddWarehouseForm() {
 
     if (validateForm()) {
       try {
-        const response = await axios.post(`${import.meta.env.VITE_APP_API_URL}/api/warehouses`, {
-          warehouse_name: warehouseName,
-          address: warehouseAddress,
-          city: warehouseCity,
-          country: warehouseCountry,
-          contact_name: contactName,
-          contact_position: contactPosition, 
-          contact_phone: contactPhone,
-          contact_email: contactEmail,
-        });
+        const response = await axios.post(
+          `${import.meta.env.VITE_APP_API_URL}/api/warehouses`,
+          {
+            warehouse_name: warehouseName,
+            address: warehouseAddress,
+            city: warehouseCity,
+            country: warehouseCountry,
+            contact_name: contactName,
+            contact_position: contactPosition,
+            contact_phone: contactPhone,
+            contact_email: contactEmail,
+          }
+        );
 
         if (response.status === 201) {
-          alert("Warehouse added successfully! Redirecting to the home page...");
+          alert(
+            "Warehouse added successfully! Redirecting to the home page..."
+          );
           setWarehouseName("");
           setWarehouseAddress("");
           setWarehouseCity("");
           setWarehouseCountry("");
           setContactName("");
-          setContactPosition(""); 
+          setContactPosition("");
           setContactPhone("");
           setContactEmail("");
-          setErrorMessage("");
+          setErrorMessages({
+            warehouseName: "",
+            warehouseAddress: "",
+            warehouseCity: "",
+            warehouseCountry: "",
+            contactName: "",
+            contactPosition: "",
+            contactPhone: "",
+            contactEmail: "",
+          });
           navigate("/warehouses");
         }
       } catch (err) {
@@ -57,58 +81,62 @@ function AddWarehouseForm() {
   };
 
   const validateForm = () => {
-    let isValid = true;
+    let valid = true;
+    const errors = {};
 
     if (warehouseName.trim() === "") {
-      setErrorMessage("Warehouse Name is required");
-      isValid = false;
-    } else if (warehouseAddress.trim() === "") {
-      setErrorMessage("Warehouse Address is required");
-      isValid = false;
-    } else if (warehouseCity.trim() === "") {
-      setErrorMessage("Warehouse City is required");
-      isValid = false;
-    } else if (warehouseCountry.trim() === "") {
-      setErrorMessage("Warehouse Country is required");
-      isValid = false;
-    } else if (contactName.trim() === "") {
-      setErrorMessage("Contact Name is required");
-      isValid = false;
-    } else if (contactPosition.trim() === "") {
-      setErrorMessage("Contact Position is required");
-      isValid = false;
-    } else if (!isValidPhoneNumber(contactPhone)) {
-      setErrorMessage("Invalid phone number. Please use format: +1 (XXX) XXX-XXXX or (XXX) XXX-XXXX");
-      isValid = false;
-    } else if (!isValidEmail(contactEmail)) {
-      setErrorMessage("Invalid Email format");
-      isValid = false;
-    } else {
-      setErrorMessage("");
+      errors.warehouseName = "This field is required";
+      valid = false;
+    }
+    if (warehouseAddress.trim() === "") {
+      errors.warehouseAddress = "This field is required";
+      valid = false;
+    }
+    if (warehouseCity.trim() === "") {
+      errors.warehouseCity = "This field is required";
+      valid = false;
+    }
+    if (warehouseCountry.trim() === "") {
+      errors.warehouseCountry = "This field is required";
+      valid = false;
+    }
+    if (contactName.trim() === "") {
+      errors.contactName = "This field is required";
+      valid = false;
+    }
+    if (contactPosition.trim() === "") {
+      errors.contactPosition = "This field is required";
+      valid = false;
+    }
+    if (!isValidPhoneNumber(contactPhone)) {
+      errors.contactPhone = "This field is required";
+      valid = false;
+    }
+    if (!isValidEmail(contactEmail)) {
+      errors.contactEmail = "This field is required";
+      valid = false;
     }
 
-    return isValid;
+    setErrorMessages(errors);
+    return valid;
   };
 
   const isValidPhoneNumber = (phone) => {
     let startIndex = 0;
-    if (phone.startsWith('+1')) {
-        startIndex = 2;
+    if (phone.startsWith("+1")) {
+      startIndex = 2;
     }
 
     let digitCount = 0;
-
     for (let i = startIndex; i < phone.length; i++) {
-        const char = phone[i];
-        if (!isNaN(char) && char !== ' ') {
-            digitCount++;
-        }
-        else if (char === '(' || char === ')' || char === '-' || char === ' ') {
-            continue;
-        }
-        else {
-            return false;
-        }
+      const char = phone[i];
+      if (!isNaN(char) && char !== " ") {
+        digitCount++;
+      } else if (char === "(" || char === ")" || char === "-" || char === " ") {
+        continue;
+      } else {
+        return false;
+      }
     }
     return digitCount === 10;
   };
@@ -116,11 +144,10 @@ function AddWarehouseForm() {
   const isValidEmail = (email) => {
     const atSymbolIndex = email.indexOf("@");
     const dotIndex = email.lastIndexOf(".");
-
     return (
-        atSymbolIndex > 0 &&
-        dotIndex > atSymbolIndex + 1 &&
-        dotIndex < email.length - 1
+      atSymbolIndex > 0 &&
+      dotIndex > atSymbolIndex + 1 &&
+      dotIndex < email.length - 1
     );
   };
 
@@ -128,19 +155,30 @@ function AddWarehouseForm() {
     <form className="warehouse-form" onSubmit={handleSubmit}>
       <section className="warehouse-form__section warehouse-form__section--details">
         <h2 className="warehouse-form__title">Warehouse Details</h2>
-        
+
         <label htmlFor="warehouse-name" className="warehouse-form__label">
           Warehouse Name
         </label>
         <input
           type="text"
           id="warehouse-name"
-          className="warehouse-form__input"
+          className={`warehouse-form__input ${
+            errorMessages.warehouseName ? "warehouse-form__input--error" : ""
+          }`}
           placeholder="Warehouse Name"
           value={warehouseName}
           onChange={(e) => handleChange(e, setWarehouseName)}
-          required
         />
+        {errorMessages.warehouseName && (
+          <p className="warehouse-form__error-message">
+            <img
+              src={errorIcon}
+              alt="Error Icon"
+              className="warehouse-form__error-icon"
+            />
+            {errorMessages.warehouseName}
+          </p>
+        )}
 
         <label htmlFor="warehouse-address" className="warehouse-form__label">
           Street Address
@@ -148,12 +186,23 @@ function AddWarehouseForm() {
         <input
           type="text"
           id="warehouse-address"
-          className="warehouse-form__input"
+          className={`warehouse-form__input ${
+            errorMessages.warehouseAddress ? "warehouse-form__input--error" : ""
+          }`}
           placeholder="Street Address"
           value={warehouseAddress}
           onChange={(e) => handleChange(e, setWarehouseAddress)}
-          required
         />
+        {errorMessages.warehouseAddress && (
+          <p className="warehouse-form__error-message">
+              <img
+              src={errorIcon}
+              alt="Error Icon"
+              className="warehouse-form__error-icon"
+            />
+            {errorMessages.warehouseAddress}
+          </p>
+        )}
 
         <label htmlFor="warehouse-city" className="warehouse-form__label">
           City
@@ -161,12 +210,23 @@ function AddWarehouseForm() {
         <input
           type="text"
           id="warehouse-city"
-          className="warehouse-form__input"
+          className={`warehouse-form__input ${
+            errorMessages.warehouseCity ? "warehouse-form__input--error" : ""
+          }`}
           placeholder="City"
           value={warehouseCity}
           onChange={(e) => handleChange(e, setWarehouseCity)}
-          required
         />
+        {errorMessages.warehouseCity && (
+          <p className="warehouse-form__error-message">
+              <img
+              src={errorIcon}
+              alt="Error Icon"
+              className="warehouse-form__error-icon"
+            />
+            {errorMessages.warehouseCity}
+          </p>
+        )}
 
         <label htmlFor="warehouse-country" className="warehouse-form__label">
           Country
@@ -174,12 +234,23 @@ function AddWarehouseForm() {
         <input
           type="text"
           id="warehouse-country"
-          className="warehouse-form__input"
+          className={`warehouse-form__input ${
+            errorMessages.warehouseCountry ? "warehouse-form__input--error" : ""
+          }`}
           placeholder="Country"
           value={warehouseCountry}
           onChange={(e) => handleChange(e, setWarehouseCountry)}
-          required
         />
+        {errorMessages.warehouseCountry && (
+          <p className="warehouse-form__error-message">
+              <img
+              src={errorIcon}
+              alt="Error Icon"
+              className="warehouse-form__error-icon"
+            />
+            {errorMessages.warehouseCountry}
+          </p>
+        )}
       </section>
 
       <section className="warehouse-form__section warehouse-form__section--contact">
@@ -191,12 +262,23 @@ function AddWarehouseForm() {
         <input
           type="text"
           id="contact-name"
-          className="warehouse-form__input"
+          className={`warehouse-form__input ${
+            errorMessages.contactName ? "warehouse-form__input--error" : ""
+          }`}
           placeholder="Contact Name"
           value={contactName}
           onChange={(e) => handleChange(e, setContactName)}
-          required
         />
+        {errorMessages.contactName && (
+          <p className="warehouse-form__error-message">
+              <img
+              src={errorIcon}
+              alt="Error Icon"
+              className="warehouse-form__error-icon"
+            />
+            {errorMessages.contactName}
+          </p>
+        )}
 
         <label htmlFor="contact-position" className="warehouse-form__label">
           Position
@@ -204,12 +286,23 @@ function AddWarehouseForm() {
         <input
           type="text"
           id="contact-position"
-          className="warehouse-form__input"
+          className={`warehouse-form__input ${
+            errorMessages.contactPosition ? "warehouse-form__input--error" : ""
+          }`}
           placeholder="Position"
           value={contactPosition}
           onChange={(e) => handleChange(e, setContactPosition)}
-          required
         />
+        {errorMessages.contactPosition && (
+          <p className="warehouse-form__error-message">
+              <img
+              src={errorIcon}
+              alt="Error Icon"
+              className="warehouse-form__error-icon"
+            />
+            {errorMessages.contactPosition}
+          </p>
+        )}
 
         <label htmlFor="contact-phone" className="warehouse-form__label">
           Phone Number
@@ -217,12 +310,23 @@ function AddWarehouseForm() {
         <input
           type="tel"
           id="contact-phone"
-          className="warehouse-form__input"
+          className={`warehouse-form__input ${
+            errorMessages.contactPhone ? "warehouse-form__input--error" : ""
+          }`}
           placeholder="Phone Number"
           value={contactPhone}
           onChange={(e) => handleChange(e, setContactPhone)}
-          required
         />
+        {errorMessages.contactPhone && (
+          <p className="warehouse-form__error-message">
+              <img
+              src={errorIcon}
+              alt="Error Icon"
+              className="warehouse-form__error-icon"
+            />
+            {errorMessages.contactPhone}
+          </p>
+        )}
 
         <label htmlFor="contact-email" className="warehouse-form__label">
           Email
@@ -230,25 +334,29 @@ function AddWarehouseForm() {
         <input
           type="email"
           id="contact-email"
-          className="warehouse-form__input"
+          className={`warehouse-form__input ${
+            errorMessages.contactEmail ? "warehouse-form__input--error" : ""
+          }`}
           placeholder="Email"
           value={contactEmail}
           onChange={(e) => handleChange(e, setContactEmail)}
-          required
         />
+        {errorMessages.contactEmail && (
+          <p className="warehouse-form__error-message">
+              <img
+              src={errorIcon}
+              alt="Error Icon"
+              className="warehouse-form__error-icon"
+            />
+            {errorMessages.contactEmail}
+          </p>
+        )}
       </section>
-
-      {errorMessage && (
-        <div className="warehouse-form__error">
-          <p>{errorMessage}</p>
-        </div>
-      )}
 
       <div className="warehouse-form__actions">
         <Link to="/warehouses" className="warehouse-form__cancel">
           Cancel
         </Link>
-
         <button type="submit" className="warehouse-form__submit">
           + Add Warehouse
         </button>

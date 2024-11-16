@@ -32,8 +32,7 @@ function AddInventoryItem() {
     getInventoryItems();
   }, []);
 
-  const categories = inventoryItems.map((item) => item.category);
-  const uniqueCategories = new Set(categories);
+  const uniqueCategories = new Set(inventoryItems.map((item) => item.category));
 
   const [formData, setFormData] = useState({
     warehouse_id: "",
@@ -43,6 +42,20 @@ function AddInventoryItem() {
     status: "",
     quantity: 0,
   });
+
+  const [errorState, setErrorState] = useState({
+    warehouse_id: false,
+    item_name: false,
+    description: false,
+    category: false,
+    status: false,
+    quantity: false,
+  });
+
+  const validateForm = () =>{
+    let isFormValid = true; 
+    
+  }
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -105,6 +118,7 @@ function AddInventoryItem() {
             value={formData.category}
             onChange={handleChange}
           >
+            <option>--- Select a Category ---</option>
             {[...uniqueCategories].map((category) => (
               <option key={category} value={category}>
                 {category}
@@ -142,7 +156,8 @@ function AddInventoryItem() {
                 : "item-availability__quantity-visible"
             }
           >
-            <label htmlFor="quantity">Quantity</label>
+            <label htmlFor="quantity"></label>
+            Quantity
             <input
               type="number"
               name="quantity"
@@ -159,6 +174,7 @@ function AddInventoryItem() {
             value={formData.warehouse_id}
             onChange={handleChange}
           >
+            <option>--- Select A Warehouse ---</option>
             {warehouses.map((warehouse) => (
               <option key={warehouse.id} value={warehouse.id}>
                 {warehouse.warehouse_name}

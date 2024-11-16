@@ -120,7 +120,7 @@ function AddWarehouseForm() {
     if (validateForm()) {
       try {
         const response = await axios.post(
-          `${import.meta.env.VITE_APP_API_URL}/api/warehouses`,
+          `${import.meta.env.VITE_URL}/api/warehouses`,
           {
             warehouse_name: formData.warehouseName,
             address: formData.warehouseAddress,

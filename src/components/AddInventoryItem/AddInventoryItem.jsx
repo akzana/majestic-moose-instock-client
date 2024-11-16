@@ -1,4 +1,5 @@
 import arrowBack from "../../assets/Icons/arrow_back-24px.svg";
+import errorIcon from "../../assets/Icons/error-24px.svg";
 import "./AddInventoryItem.scss";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -9,6 +10,7 @@ function AddInventoryItem() {
   const [warehouses, setWarehouses] = useState([]);
   const [inventoryItems, setInventoryItems] = useState([]);
 
+  // Api calls to get correct data for dropdown selects
   const getWarehouses = async () => {
     try {
       const response = await axios.get(`${baseURL}/api/warehouses`);
@@ -34,6 +36,7 @@ function AddInventoryItem() {
 
   const uniqueCategories = new Set(inventoryItems.map((item) => item.category));
 
+  // FORM FUNCTIONS
   const [formData, setFormData] = useState({
     warehouse_id: "",
     item_name: "",
@@ -112,19 +115,15 @@ function AddInventoryItem() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const finalData = {
-      ...formData,
-      warehouse_id: parseInt(formData.warehouse_id),
-      quantity: isNaN(formData.quantity) ? 0 : formData.quantity,
-    };
     const valid = validateForm();
     if (!valid) {
       console.log("Please fix errors");
       console.log(errorState);
     } else {
-      console.log(finalData);
+      console.log(formData);
     }
   };
+
   return (
     <section>
       <div className="add-new-item__header">
@@ -143,13 +142,18 @@ function AddInventoryItem() {
           <label htmlFor="itemName">Item Name </label>
           <input
             type="text"
-            placeholder="Item Name"
             id="itemName"
             name="item_name"
+            placeholder="Item Name"
             value={formData.item_name}
             onChange={handleChange}
           />
-
+          {errorState.item_name && (
+            <p className="error-message">
+              <img src={errorIcon} alt="error icon" className="error-icon" />{" "}
+              This field is required
+            </p>
+          )}
           <label htmlFor="itemDescription">Item Description </label>
           <textarea
             name="description"
@@ -158,7 +162,12 @@ function AddInventoryItem() {
             value={formData.description}
             onChange={handleChange}
           ></textarea>
-
+          {errorState.description && (
+            <p className="error-message">
+              <img src={errorIcon} alt="error icon" className="error-icon" />{" "}
+              This field is required
+            </p>
+          )}
           <label htmlFor="category">Category </label>
           <select
             name="category"
@@ -172,7 +181,13 @@ function AddInventoryItem() {
                 {category}
               </option>
             ))}
-          </select>
+          </select>{" "}
+          {errorState.category && (
+            <p className="error-message">
+              <img src={errorIcon} alt="error icon" className="error-icon" />{" "}
+              This field is required
+            </p>
+          )}
         </div>
         <div className="item-availability">
           <h2 className="item-availability__title">Item Availability</h2>
@@ -210,11 +225,17 @@ function AddInventoryItem() {
               type="number"
               name="quantity"
               id="quantity"
-              min="1"
+              min="0"
               value={formData.quantity}
               onChange={handleChange}
               disabled={formData.status === "Out of Stock"}
             />
+            {errorState.quantity && (
+              <p className="error-message">
+                <img src={errorIcon} alt="error icon" className="error-icon" />{" "}
+                This field is required
+              </p>
+            )}
           </div>
           <label htmlFor="warehouse">Warehouse </label>
           <select
@@ -229,7 +250,13 @@ function AddInventoryItem() {
                 {warehouse.warehouse_name}
               </option>
             ))}
-          </select>
+          </select>{" "}
+          {errorState.warehouse_id && (
+            <p className="error-message">
+              <img src={errorIcon} alt="error icon" className="error-icon" />{" "}
+              This field is required
+            </p>
+          )}
         </div>
         <div className="buttons">
           <Link to="/inventory">

@@ -52,19 +52,61 @@ function AddInventoryItem() {
     quantity: false,
   });
 
-  const validateForm = () =>{
-    let isFormValid = true; 
-    
-  }
+  const validateForm = () => {
+    let isValid = true;
+    for (const [name, value] of Object.entries(formData)) {
+      if (typeof value === "string" && value.trim() === "") {
+        setErrorState((prevState) => ({ ...prevState, [name]: true }));
+        isValid = false;
+      }
+      if (isNaN(formData.warehouse_id)) {
+        setErrorState((prevState) => ({ ...prevState, warehouse_id: true }));
+        isValid = false;
+      }
+      if (formData.category === "--- Select a Category ---") {
+        setErrorState((prevState) => ({ ...prevState, category: false }));
+        isValid = false;
+      }
+    }
+    return isValid;
+  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+
+    setErrorState({ ...errorState, [name]: false });
+
+    if (name === "status") {
+      // If status is Out of Stock, we need to set quantity to zero.
+      if (value === "Out of Stock") {
+        setFormData((prevData) => ({
+          ...prevData,
+          status: value,
+          quantity: 0,
+        }));
+      } else {
+        // if item is in stock, use what the user enters.
+        setFormData((prevData) => ({
+          ...prevData,
+          status: value,
+        }));
+      }
+      return;
+    }
+
+    // if status isn't changed, make sure quantity and warehouse_id are being parsed as integers.
+    if (name === "quantity" || name === "warehouse_id") {
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value === "" ? "" : parseInt(value) || "",
+      }));
+      return;
+    }
+
+    // for all other fields, update normally.
     setFormData((prevData) => ({
       ...prevData,
-      [name]:
-        name === "quantity" || name === "warehouse_id"
-          ? parseInt(value)
-          : value,
+      [name]: value,
     }));
   };
 
@@ -75,7 +117,13 @@ function AddInventoryItem() {
       warehouse_id: parseInt(formData.warehouse_id),
       quantity: isNaN(formData.quantity) ? 0 : formData.quantity,
     };
-    console.log(finalData);
+    const valid = validateForm();
+    if (!valid) {
+      console.log("Please fix errors");
+      console.log(errorState);
+    } else {
+      console.log(finalData);
+    }
   };
   return (
     <section>
@@ -165,6 +213,7 @@ function AddInventoryItem() {
               min="1"
               value={formData.quantity}
               onChange={handleChange}
+              disabled={formData.status === "Out of Stock"}
             />
           </div>
           <label htmlFor="warehouse">Warehouse </label>

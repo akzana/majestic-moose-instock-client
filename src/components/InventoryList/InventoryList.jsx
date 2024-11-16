@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import DeleteButton from "../../assets/Icons/delete_outline-24px.svg";
 import EditButton from "../../assets/Icons/edit-24px.svg"
 import axios from 'axios';
@@ -11,12 +11,19 @@ const baseURL = import.meta.env.VITE_URL;
 export default function InventoryList() {
     // conditional for warehouse.id
     const [inventory, setInventory] = useState([]);
+    const { id } = useParams();
+
 
     const getInventory = async () => {
         try {
             const response = await axios.get(`${baseURL}/api/inventories`);
-            setInventory(response.data);
 
+            if (id) {
+                const filteredInventory = response.data?.filter((inventoryItem) => (id == inventoryItem.warehouseId))
+                setInventory(filteredInventory);
+            } else {
+                setInventory(response.data);
+            }
         } catch (err) {
             console.error("Error retrieving inventory items", err);
         }

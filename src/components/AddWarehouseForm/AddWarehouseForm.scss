@@ -1,5 +1,5 @@
-@use '../../styles/variables' as *;
-@use '../../styles/mixins' as *;
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
 
 .warehouse-form {
   background-color: $White;
@@ -9,9 +9,8 @@
     padding: 0rem 2rem 2rem 2rem;
 
     &--details {
-        border-bottom: .0625rem solid $Cloud;
+      border-bottom: 0.0625rem solid $Cloud;
     }
-
   }
 
   &__title {
@@ -31,12 +30,12 @@
     color: $Instock-Black;
     @include mobile-p2-body-medium;
     @include form-field;
-  
+
     &::placeholder {
       font-weight: 400;
-      font-size: .875rem;
+      font-size: 0.875rem;
       line-height: 1.375rem;
-      color: $Slate; 
+      color: $Slate;
     }
   }
 
@@ -45,8 +44,8 @@
     justify-content: space-between;
     gap: $padding-16;
     flex-direction: row;
-    gap: $padding-16;  
-    justify-content: space-between; 
+    gap: $padding-16;
+    justify-content: space-between;
     padding: 1rem 2rem;
     background-color: $Light-Grey;
 
@@ -61,8 +60,8 @@
     @include primary-button;
 
     &:hover {
-        background-color: $Graphite ;
-      }
+      background-color: $Graphite;
+    }
   }
 
   &__cancel {
@@ -77,57 +76,78 @@
     color: $Slate;
 
     &:hover {
-        color: $Instock-Indigo; 
-        border-color: $Instock-Indigo; 
-      }
+      color: $Instock-Indigo;
+      border-color: $Instock-Indigo;
+    }
   }
 
   &__error-message {
     display: flex;
     align-items: center;
     color: red;
-    font-size: .75rem;
+    font-size: 0.75rem;
     line-height: 1.125rem;
     font-weight: 400;
     margin: 0;
-    padding-top: .25rem;
+    padding-top: 0.25rem;
   }
 
   &__error-icon {
     width: 1rem;
     height: 1rem;
-    margin-right: .3125rem;
+    margin-right: 0.3125rem;
   }
 
   &__input--error {
     border: 2px solid red;
   }
-
 }
 
- @include tablet {
-  .warehouse-form__section {
+@include tablet {
+  .warehouse-form {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding-bottom: $padding-40;
-  }
+    flex-direction: column;
 
-  .warehouse-form__section--details,
-  .warehouse-form__section--contact {
-    flex: 1;
-    margin-right: $padding-24;
-    max-width: 48%;
-  }
+    &__section-wrapper {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      padding: 0rem;
+      margin: 1.5rem 0rem;
+    }
 
-  .warehouse-form__input {
-    width: 100%;
-  }
+    &__section--details {
+      border-right: 0.0625rem solid $Cloud;
+    }
 
-  .warehouse-form__actions {
-    flex-direction: row;
-    gap: $padding-32;
-    justify-content: flex-start;
-    padding: 0rem 2rem 2rem 2rem;
+    &__section--details,
+    &__section--contact {
+      flex: 1;
+      max-width: 48%;
+      border-bottom: none;
+    }
+
+    &__actions {
+      display: flex;
+      justify-content: flex-end;
+      padding: $padding-32;
+    }
+
+    &__actions-wrapper {
+      display: flex;
+      gap: 1rem;
+    }
+
+    &__submit {
+      min-width: 8.625rem;
+    }
+  }
+}
+
+@include desktop {
+  .warehouse-form {
+    &__input {
+      width: 93%;
+    }
   }
 }

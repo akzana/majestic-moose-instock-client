@@ -159,93 +159,97 @@ function AddWarehouseForm() {
 
   return (
     <form className="warehouse-form" onSubmit={handleSubmit}>
-      <section className="warehouse-form__section warehouse-form__section--details">
-        <h2 className="warehouse-form__title">Warehouse Details</h2>
-        <FormInput
-          id="warehouseName"
-          label="Warehouse Name"
-          type="text"
-          value={formData.warehouseName}
-          error={errorMessages.warehouseName}
-          onChange={handleChange}
-          placeholder="Warehouse Name"
-        />
-        <FormInput
-          id="warehouseAddress"
-          label="Street Address"
-          type="text"
-          value={formData.warehouseAddress}
-          error={errorMessages.warehouseAddress}
-          onChange={handleChange}
-          placeholder="Street Address"
-        />
-        <FormInput
-          id="warehouseCity"
-          label="City"
-          type="text"
-          value={formData.warehouseCity}
-          error={errorMessages.warehouseCity}
-          onChange={handleChange}
-          placeholder="City"
-        />
-        <FormInput
-          id="warehouseCountry"
-          label="Country"
-          type="text"
-          value={formData.warehouseCountry}
-          error={errorMessages.warehouseCountry}
-          onChange={handleChange}
-          placeholder="Country"
-        />
-      </section>
+      <div className="warehouse-form__section-wrapper">
+        <section className="warehouse-form__section warehouse-form__section--details">
+          <h2 className="warehouse-form__title">Warehouse Details</h2>
+          <FormInput
+            id="warehouseName"
+            label="Warehouse Name"
+            type="text"
+            value={formData.warehouseName}
+            error={errorMessages.warehouseName}
+            onChange={handleChange}
+            placeholder="Warehouse Name"
+          />
+          <FormInput
+            id="warehouseAddress"
+            label="Street Address"
+            type="text"
+            value={formData.warehouseAddress}
+            error={errorMessages.warehouseAddress}
+            onChange={handleChange}
+            placeholder="Street Address"
+          />
+          <FormInput
+            id="warehouseCity"
+            label="City"
+            type="text"
+            value={formData.warehouseCity}
+            error={errorMessages.warehouseCity}
+            onChange={handleChange}
+            placeholder="City"
+          />
+          <FormInput
+            id="warehouseCountry"
+            label="Country"
+            type="text"
+            value={formData.warehouseCountry}
+            error={errorMessages.warehouseCountry}
+            onChange={handleChange}
+            placeholder="Country"
+          />
+        </section>
 
-      <section className="warehouse-form__section warehouse-form__section--contact">
-        <h2 className="warehouse-form__title">Contact Details</h2>
-        <FormInput
-          id="contactName"
-          label="Contact Name"
-          type="text"
-          value={formData.contactName}
-          error={errorMessages.contactName}
-          onChange={handleChange}
-          placeholder="Contact Name"
-        />
-        <FormInput
-          id="contactPosition"
-          label="Position"
-          type="text"
-          value={formData.contactPosition}
-          error={errorMessages.contactPosition}
-          onChange={handleChange}
-          placeholder="Position"
-        />
-        <FormInput
-          id="contactPhone"
-          label="Phone Number"
-          type="tel"
-          value={formData.contactPhone}
-          error={errorMessages.contactPhone}
-          onChange={handleChange}
-          placeholder="Phone Number"
-        />
-        <FormInput
-          id="contactEmail"
-          label="Email"
-          type="email"
-          value={formData.contactEmail}
-          error={errorMessages.contactEmail}
-          onChange={handleChange}
-          placeholder="Email"
-        />
-      </section>
+        <section className="warehouse-form__section warehouse-form__section--contact">
+          <h2 className="warehouse-form__title">Contact Details</h2>
+          <FormInput
+            id="contactName"
+            label="Contact Name"
+            type="text"
+            value={formData.contactName}
+            error={errorMessages.contactName}
+            onChange={handleChange}
+            placeholder="Contact Name"
+          />
+          <FormInput
+            id="contactPosition"
+            label="Position"
+            type="text"
+            value={formData.contactPosition}
+            error={errorMessages.contactPosition}
+            onChange={handleChange}
+            placeholder="Position"
+          />
+          <FormInput
+            id="contactPhone"
+            label="Phone Number"
+            type="tel"
+            value={formData.contactPhone}
+            error={errorMessages.contactPhone}
+            onChange={handleChange}
+            placeholder="Phone Number"
+          />
+          <FormInput
+            id="contactEmail"
+            label="Email"
+            type="email"
+            value={formData.contactEmail}
+            error={errorMessages.contactEmail}
+            onChange={handleChange}
+            placeholder="Email"
+          />
+        </section>
+      </div>
 
       <div className="warehouse-form__actions">
-        <Link to="/warehouses" className="warehouse-form__cancel">
-          Cancel
-        </Link>
-        <button type="submit" className="warehouse-form__submit">
-          + Add Warehouse
-        </button>
+        <div className="warehouse-form__actions-wrapper">
+          <Link to="/warehouses" className="warehouse-form__cancel">
+            Cancel
+          </Link>
+          <button type="submit" className="warehouse-form__submit">
+            + Add Warehouse
+          </button>
+        </div>
       </div>
     </form>
   );

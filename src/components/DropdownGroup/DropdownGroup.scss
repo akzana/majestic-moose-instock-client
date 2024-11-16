@@ -1,6 +1,10 @@
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
+.dropdown-group{
+    margin-bottom: 16px;
+}
+
 .label {
     @include mobile-labels-links-buttons;
     color: $Instock-Black;
@@ -21,7 +25,7 @@
     background-repeat: no-repeat;
     background-position: right 16px center; 
     background-size: 26px; 
-
+    
     &:focus {
         border-color: $Instock-Indigo; 
         color: $Instock-Black;

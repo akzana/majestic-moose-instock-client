@@ -2,64 +2,49 @@
 @use '../../styles/mixins' as *;
 
 .form-page {
-    display: flex;
-    flex-direction: column;
-    padding: 0px 24px;
+  display: flex;
+  flex-direction: column;
+  padding: 0 24px;
 }
 
 .section-title {
-    color: $Instock-Black;
-    margin: 16px 0px;
+  @include mobile-subheader;
+  color: $Instock-Black;
+  padding: 16px 0;
 }
 
 .text-field-group {
-    margin-bottom: 16px;
-
-    &__label {
-        font-weight: bold;
-        color: $Slate;
-        margin-bottom: 8px;
-    }
-
-    &__input, .drop-down__options {
-        color: $Slate;
-        border: 1px solid $Cloud;
-    }
-
-    &__input:focus, .drop-down__options:focus {
-        border-color: $Instock-Indigo;
-    }
+  margin-bottom: 16px;
 }
 
-.button-group {
+
+@media (min-width: $tablet-breakpoint) {
+  .form-page {
     display: flex;
-    justify-content: flex-end;
-    gap: 16px;
-    margin-top: 32px;
+    flex-direction: column;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
 
-    button {
-        min-width: 100px;
-        padding: 10px 20px;
-        font-size: 14px;
-        font-weight: bold;
-        border-radius: 20px;
-        border: none;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
+  .tablet-layout {
+    display: flex;
+  }
 
-    .cancel-button {
-        background-color: transparent;
-        color: $Slate;
-        border: 1px solid $Cloud;
-    }
+  .tablet-layout article {
+    flex: 1;
+    box-sizing: border-box;
+  }
 
-    .save-button {
-        background-color: $Instock-Indigo;
-        color: #ffffff;
-    }
+  .item-details {
+    border-right: 1px solid $Cloud;
+    padding-right: 20px;
+  }
 
-    .cancel-button:hover, .save-button:hover {
-        opacity: 0.9;
-    }
+  .item-availability {
+    padding-left: 20px;
+  }
+
+  .section-title {
+    @include tablet-subheader;
+  }
 }

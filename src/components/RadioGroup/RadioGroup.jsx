@@ -15,7 +15,7 @@ export default function RadioGroup({ label, options, selected, onChange }) {
                             checked={selected === key}
                             onChange={(e) => onChange(e.target.value)}
                         />
-                        {value}
+                        <span>{value}</span>
                     </label>
                 ))}
             </div>

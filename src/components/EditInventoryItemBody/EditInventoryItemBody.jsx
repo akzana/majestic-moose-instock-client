@@ -67,22 +67,19 @@ export default function EditInventoryItemBody() {
     return (
         <>
         <form className="form-page">
-            <article className="item-details">
-                <h1 className="section-title">Item Details</h1>
-                <TextFieldGroup label="Item Name" input={itemName} onChange={setItemName} />
-                <TextFieldGroup label="Description" input={description} onChange={setDescription} />
-                <DropdownGroup label="Category" options={categoriesOptions} selected={category} onChange={setCategory} />
-            </article>
+            <div className="tablet-layout">
+                <article className="item-details">
+                    <div className="section-title">Item Details</div>
+                    <TextFieldGroup label="Item Name" input={itemName} onChange={setItemName} />
+                    <TextFieldGroup label="Description" input={description} onChange={setDescription} />
+                    <DropdownGroup label="Category" options={categoriesOptions} selected={category} onChange={setCategory} />
+                </article>
 
-            <article className="item-availability">
-                <h1 className="section-title">Item Availability</h1>
-                <RadioGroup label="Status" options={availabilityOptions} selected={status} onChange={setStatus} />
-                <DropdownGroup label="Warehouse" options={warehouseOptions} selected={warehouseId} onChange={setWarehouseId} />
-            </article>
-
-            <div className="button-group">
-                <button type="button" className="cancel-button">Cancel</button>
-                <button type="submit" className="save-button">Save</button>
+                <article className="item-availability">
+                    <div className="section-title">Item Availability</div>
+                    <RadioGroup label="Status" options={availabilityOptions} selected={status} onChange={setStatus} />
+                    <DropdownGroup label="Warehouse" options={warehouseOptions} selected={warehouseId} onChange={setWarehouseId} />
+                </article>
             </div>
         </form>
         </>

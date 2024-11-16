@@ -1,9 +1,10 @@
 import React from "react";
-import AddInvItem from "../../components/AddInventoryItem/AddInventoryItem";
+import AddInventoryItem from "../../components/AddInventoryItem/AddInventoryItem";
+import "./AddInventoryItemPage.scss";
 function AddInventoryItemPage() {
   return (
-    <div>
-      <AddInvItem />
+    <div className="add-inventory-item__card">
+      <AddInventoryItem />
     </div>
   );
 }

@@ -34,6 +34,10 @@ function AddInventoryItem() {
 
   const categories = inventoryItems.map((item) => item.category);
   const uniqueCategories = new Set(categories);
+
+  const handleSubmit = (event) => {
+    
+  }
   return (
     <section>
       <div className="add-new-item__header">
@@ -46,7 +50,7 @@ function AddInventoryItem() {
         </Link>
         <h1 className="add-new-item__title">Add New Inventory Item</h1>
       </div>
-      <form>
+      <form onSubmit="handleSubmit">
         <div className="item-details">
           <h2 className="item-details__title">Item Details</h2>
           <label htmlFor="itemName">Item Name </label>

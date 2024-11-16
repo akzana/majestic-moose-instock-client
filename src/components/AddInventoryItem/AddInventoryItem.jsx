@@ -125,7 +125,7 @@ function AddInventoryItem() {
   };
 
   return (
-    <section>
+    <section className="add-new-item">
       <div className="add-new-item__header">
         <Link to="/inventory">
           <img

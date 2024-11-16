@@ -13,6 +13,13 @@ form {
 .item-availability {
   display: flex;
   flex-direction: column;
+
+  &__quantity-visible {
+    display: inline-block;
+  }
+  &__quantity-hidden {
+    display: none;
+  }
 }
 
 input,

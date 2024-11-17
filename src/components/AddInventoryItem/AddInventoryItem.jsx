@@ -119,16 +119,19 @@ function AddInventoryItem() {
     }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const valid = validateForm();
     if (!valid) {
       console.log("Please fix errors");
-      console.log(errorState);
     } else {
-      console.log(formData);
-      alert("Inventory Item added. Taking you back to Inventory...");
-      navigate("/inventory");
+      try {
+        await axios.post(`${baseURL}/api/inventories`, formData);
+        alert("Inventory Item added. Taking you back to Inventory...");
+        navigate("/inventory");
+      } catch (err) {
+        console.log("Error posting item", err);
+      }
     }
   };
 

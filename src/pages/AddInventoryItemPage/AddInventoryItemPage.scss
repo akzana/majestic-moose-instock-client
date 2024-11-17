@@ -3,4 +3,7 @@
 
 .add-inventory-item__card {
   @include card-style;
+  @include desktop {
+    width: 80%;
+  }
 }

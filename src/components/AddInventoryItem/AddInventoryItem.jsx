@@ -184,7 +184,7 @@ function AddInventoryItem() {
               name="description"
               className={
                 errorState.description
-                  ? "add-item-details__text-area error-state"
+                  ? "add-item-details__textarea error-state"
                   : "add-item-details__textarea"
               }
               id="itemDescription"
@@ -234,11 +234,11 @@ function AddInventoryItem() {
               </p>
             )}
           </div>
-          <div className="item-availability">
-            <h2 className="item-availability__title">Item Availability</h2>
-            <label className="item-availability__form-label">Status </label>
-            <div className="item-availability__radio-container">
-              <label className="item-availability__radio-label">
+          <div className="add-item-availability">
+            <h2 className="add-item-availability__title">Item Availability</h2>
+            <label className="add-item-availability__form-label">Status </label>
+            <div className="add-item-availability__radio-container">
+              <label className="add-item-availability__radio-label">
                 <input
                   type="radio"
                   value="In Stock"
@@ -248,7 +248,7 @@ function AddInventoryItem() {
                 />
                 In Stock
               </label>
-              <label className="item-availability__radio-label">
+              <label className="add-item-availability__radio-label">
                 <input
                   type="radio"
                   value="Out of Stock"
@@ -272,13 +272,13 @@ function AddInventoryItem() {
             <div
               className={
                 formData.status === "Out of Stock"
-                  ? "item-availability__quantity-hidden"
-                  : "item-availability__quantity-visible"
+                  ? "add-item-availability__quantity-hidden"
+                  : "add-item-availability__quantity-visible"
               }
             >
               <label
                 htmlFor="quantity"
-                className="item-availability__form-label"
+                className="add-item-availability__form-label"
               >
                 Quantity
               </label>
@@ -293,8 +293,8 @@ function AddInventoryItem() {
                 disabled={formData.status === "Out of Stock"}
                 className={
                   errorState.quantity
-                    ? "item-availability__input error-state"
-                    : "item-availability__input"
+                    ? "add-item-availability__input error-state"
+                    : "add-item-availability__input"
                 }
               />
               {errorState.quantity && (
@@ -310,7 +310,7 @@ function AddInventoryItem() {
             </div>
             <label
               htmlFor="warehouse"
-              className="item-availability__form-label"
+              className="add-item-availability__form-label"
             >
               Warehouse
             </label>
@@ -318,8 +318,8 @@ function AddInventoryItem() {
               name="warehouse_id"
               className={
                 errorState.warehouse_id
-                  ? "item-availability__drop-down error-state"
-                  : "item-availability__drop-down"
+                  ? "add-item-availability__drop-down error-state"
+                  : "add-item-availability__drop-down"
               }
               id="warehouse"
               value={formData.warehouse_id}

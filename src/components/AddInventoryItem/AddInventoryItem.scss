@@ -16,7 +16,10 @@
     border-bottom: 1px solid $Cloud;
     padding: $padding-24 $padding-16 $padding-16 $padding-16;
     @include tablet {
-      padding: $padding-32 $padding-24 $padding-24 $padding-24;
+      padding: $padding-32 $padding-32 $padding-24 $padding-32;
+    }
+    @include desktop {
+      padding-left: $padding-40;
     }
   }
   &__title {
@@ -34,12 +37,15 @@
   &__error-message {
     display: flex;
     align-items: center;
+    @include mobile-table-header;
     color: $Red;
-    font-size: 0.75rem;
-    line-height: 1.125rem;
-    font-weight: 400;
+    text-transform: none;
     margin: 0;
     padding-top: 0.25rem;
+    @include tablet {
+      @include tablet-table-header;
+      text-transform: none;
+    }
   }
 
   &__error-icon {
@@ -57,11 +63,19 @@
   @include tablet {
     width: 50%;
     border: none;
+    padding: 0 $padding-32 $padding-32 $padding-32;
+  }
+  @include desktop {
+    padding: 0 $padding-40 $padding-32 $padding-40;
   }
   &__title {
     @include mobile-subheader;
     color: $Instock-Black;
     margin: $padding-16 0;
+    @include tablet {
+      @include tablet-subheader;
+      margin-top: $padding-32;
+    }
   }
 
   &__form-label {
@@ -87,11 +101,12 @@
     appearance: none;
     background-image: url("../../assets/Icons/arrow_drop_down-24px.svg");
     background-repeat: no-repeat;
-    background-position: right 16px center;
-    background-size: 26px;
+    background-position: right 1rem center;
+    background-size: 1.625rem;
 
     @include tablet {
       height: 2.375rem;
+      @include tablet-p2-body-medium;
     }
 
     &:focus {
@@ -103,6 +118,11 @@
   &__input {
     @include form-field;
     padding-left: $padding-16;
+    @include mobile-p2-body-medium;
+
+    @include tablet {
+      @include tablet-p2-body-medium;
+    }
     &:focus {
       border-color: $Instock-Indigo;
       color: $Instock-Black;
@@ -111,18 +131,22 @@
 
   &__textarea {
     @extend .add-item-details__input;
-    height: 7.5rem;
     padding-top: $padding-8;
+    height: 7.5rem;
     resize: none;
   }
 }
 
-.item-availability {
+.add-item-availability {
   padding: $padding-16;
   box-sizing: border-box;
   @include tablet {
     width: 50%;
     border-left: 1px solid $Cloud;
+    padding: $padding-32;
+  }
+  @include desktop {
+    padding: $padding-32 $padding-40;
   }
 
   &__title {
@@ -184,14 +208,25 @@
 }
 
 .buttons {
+  box-sizing: border-box;
   background-color: rgba($Light-Grey, 0.7);
   display: flex;
   justify-content: space-between;
   padding: $padding-16;
-  box-sizing: border-box;
+  @include tablet {
+    justify-content: flex-end;
+    gap: $padding-16;
+    padding-right: $padding-32;
+  }
+  @include desktop {
+    padding-right: $padding-40;
+  }
 
   &__link {
     width: 47%;
+    @include tablet {
+      width: auto;
+    }
   }
   &__cancel {
     @include secondary-button;
@@ -201,6 +236,9 @@
   &__add-item {
     @include primary-button;
     width: 47%;
+    @include tablet {
+      width: auto;
+    }
   }
 }
 

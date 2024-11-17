@@ -90,6 +90,10 @@
     background-position: right 16px center;
     background-size: 26px;
 
+    @include tablet {
+      height: 2.375rem;
+    }
+
     &:focus {
       border-color: $Instock-Indigo;
       color: $Instock-Black;
@@ -129,13 +133,15 @@
   &__form-label {
     @extend .add-item-details__form-label;
     display: block;
+    &:first-of-type {
+      margin-top: $padding-16;
+    }
   }
 
   &__radio-container {
     display: flex;
     gap: $padding-24;
     align-items: baseline;
-    padding-bottom: $padding-16;
     > input[type="radio"] {
       margin: 0;
       margin-bottom: 0;
@@ -163,6 +169,10 @@
 
   &__drop-down {
     @extend .add-item-details__drop-down;
+    margin: 0;
+    @include tablet {
+      height: 2.375rem;
+    }
   }
   &__quantity-visible {
     display: flex;
@@ -192,4 +202,8 @@
     @include primary-button;
     width: 47%;
   }
+}
+
+.error-state {
+  border: 1px solid $Red;
 }

@@ -1,7 +1,5 @@
 import arrowBack from "../../assets/Icons/arrow_back-24px.svg";
 import errorIcon from "../../assets/Icons/error-24px.svg";
-import DropdownGroup from "../DropdownGroup/DropdownGroup";
-import RadioGroup from "../RadioGroup/RadioGroup";
 import "./AddInventoryItem.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -38,10 +36,6 @@ function AddInventoryItem() {
   }, []);
 
   const uniqueCategories = new Set(inventoryItems.map((item) => item.category));
-  const availabilityOptions = {
-    "In Stock": "In Stock",
-    "Out of Stock": "Out of Stock",
-  };
 
   // FORM FUNCTIONS
   const [formData, setFormData] = useState({
@@ -74,7 +68,12 @@ function AddInventoryItem() {
         isValid = false;
       }
       if (formData.category === "Please Select") {
-        setErrorState((prevState) => ({ ...prevState, category: false }));
+        setErrorState((prevState) => ({ ...prevState, category: true }));
+        isValid = false;
+      }
+
+      if (formData.status === "In Stock" && formData.quantity == 0) {
+        setErrorState((prevState) => ({ ...prevState, quantity: true }));
         isValid = false;
       }
     }
@@ -159,7 +158,11 @@ function AddInventoryItem() {
               placeholder="Item Name"
               value={formData.item_name}
               onChange={handleChange}
-              className="add-item-details__input"
+              className={
+                errorState.item_name
+                  ? "add-item-details__input error-state"
+                  : "add-item-details__input"
+              }
             />
             {errorState.item_name && (
               <p className="add-new-item__error-message">
@@ -167,7 +170,7 @@ function AddInventoryItem() {
                   src={errorIcon}
                   alt="error icon"
                   className="add-new-item__error-icon"
-                />{" "}
+                />
                 This field is required
               </p>
             )}
@@ -175,11 +178,15 @@ function AddInventoryItem() {
               htmlFor="itemDescription"
               className="add-item-details__form-label"
             >
-              Item Description{" "}
+              Item Description
             </label>
             <textarea
               name="description"
-              className="add-item-details__textarea"
+              className={
+                errorState.description
+                  ? "add-item-details__text-area error-state"
+                  : "add-item-details__textarea"
+              }
               id="itemDescription"
               placeholder="Please enter a brief item description..."
               value={formData.description}
@@ -191,7 +198,7 @@ function AddInventoryItem() {
                   src={errorIcon}
                   alt="error icon"
                   className="add-new-item__error-icon"
-                />{" "}
+                />
                 This field is required
               </p>
             )}
@@ -199,7 +206,11 @@ function AddInventoryItem() {
               Category
             </label>
             <select
-              className="add-item-details__drop-down"
+              className={
+                errorState.category
+                  ? "add-item-details__drop-down error-state"
+                  : "add-item-details__drop-down"
+              }
               name="category"
               id="category"
               value={formData.category}
@@ -218,7 +229,7 @@ function AddInventoryItem() {
                   src={errorIcon}
                   alt="error icon"
                   className="add-new-item__error-icon"
-                />{" "}
+                />
                 This field is required
               </p>
             )}
@@ -248,6 +259,16 @@ function AddInventoryItem() {
                 Out of Stock
               </label>
             </div>
+            {errorState.status && (
+              <p className="add-new-item__error-message">
+                <img
+                  src={errorIcon}
+                  alt="error icon"
+                  className="add-new-item__error-icon"
+                />
+                This field is required
+              </p>
+            )}
             <div
               className={
                 formData.status === "Out of Stock"
@@ -266,11 +287,15 @@ function AddInventoryItem() {
                 type="number"
                 name="quantity"
                 id="quantity"
-                min="1"
+                min="0"
                 value={formData.quantity}
                 onChange={handleChange}
                 disabled={formData.status === "Out of Stock"}
-                className="item-availability__input"
+                className={
+                  errorState.quantity
+                    ? "item-availability__input error-state"
+                    : "item-availability__input"
+                }
               />
               {errorState.quantity && (
                 <p className="add-new-item__error-message">
@@ -278,8 +303,8 @@ function AddInventoryItem() {
                     src={errorIcon}
                     alt="error icon"
                     className="add-new-item__error-icon"
-                  />{" "}
-                  This field is required
+                  />
+                  If item is in stock, quantity must be greater than 0.
                 </p>
               )}
             </div>
@@ -291,7 +316,11 @@ function AddInventoryItem() {
             </label>
             <select
               name="warehouse_id"
-              className="item-availability__drop-down"
+              className={
+                errorState.warehouse_id
+                  ? "item-availability__drop-down error-state"
+                  : "item-availability__drop-down"
+              }
               id="warehouse"
               value={formData.warehouse_id}
               onChange={handleChange}
@@ -309,7 +338,7 @@ function AddInventoryItem() {
                   src={errorIcon}
                   alt="error icon"
                   className="add-new-item__error-icon"
-                />{" "}
+                />
                 This field is required
               </p>
             )}

@@ -1,2 +1,9 @@
 @use "../../styles/variables" as *;
 @use "../../styles/mixins" as *;
+
+.add-inventory-item__card {
+  @include card-style;
+  @include desktop {
+    width: 80%;
+  }
+}

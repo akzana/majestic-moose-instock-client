@@ -1,34 +1,35 @@
-@use '../../styles/variables' as *;
-@use '../../styles/mixins' as *;
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
 
 // header
-.EditInventoryItem__header{
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-    justify-content: space-between;
+.EditInventoryItem__header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  height: 5.9375rem;
 
-    border-bottom: 1px solid $Cloud;
+  border-bottom: 1px solid $Cloud;
 
-        display: flex;
-        justify-content: flex-start;
-        align-items: center; 
-        padding-left: 24px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 24px;
 }
 
-.EditInventoryItem__title{
-    @include mobile-page-header;
-    margin: 24px 0px;
+.EditInventoryItem__title {
+  @include mobile-page-header;
+  margin: 24px 0px;
 }
 
 // padding: 0 24px;
 
-.arrow_back{
-    padding-right: 16px;
-    vertical-align: middle;
+.arrow_back {
+  padding-right: 16px;
+  vertical-align: middle;
 }
 
-.WarehouseDetails__title{
-    @include mobile-page-header;
-    margin: 24px 0px;
+.WarehouseDetails__title {
+  @include mobile-page-header;
+  margin: 24px 0px;
 }

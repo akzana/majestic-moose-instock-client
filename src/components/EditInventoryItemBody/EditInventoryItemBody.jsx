@@ -72,7 +72,7 @@ export default function EditInventoryItemBody() {
 
         try {
             await axios.put(`http://localhost:8080/api/inventories/${id}`, updatedItem);
-            navigate(0); // refresh page
+            navigate("/inventory");
         } catch (error) {
             console.error("Error updating inventory item", error);
             alert("Failed to update item. Please try again.");
@@ -133,7 +133,7 @@ export default function EditInventoryItemBody() {
             </div>
             <div className="button-group">
                 <button type="button" className="cancel-button" onClick={() => navigate("/inventory")}>Cancel</button>
-                <button type="submit" className="save-button">Save</button>
+                <button type="submit" className="save-button" >Save</button>
             </div>
         </form>
         </>

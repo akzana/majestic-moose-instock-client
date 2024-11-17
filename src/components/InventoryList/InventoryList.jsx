@@ -11,61 +11,60 @@ import "./InventoryList.scss";
 const baseURL = import.meta.env.VITE_URL;
 
 export default function InventoryList() {
-  // conditional for warehouse.id
-  const [inventory, setInventory] = useState([]);
-  const [showModal, setShowModal] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(null);
+    const [inventory, setInventory] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+    const [selectedItem, setSelectedItem] = useState(null);
 
-  const { id } = useParams();
+    const { id } = useParams();
 
-  const getInventory = async () => {
-    try {
-      const response = await axios.get(`${baseURL}/api/inventories`);
+    const getInventory = async () => {
+        try {
+            const response = await axios.get(`${baseURL}/api/inventories`);
 
-      if (id) {
-        const filteredInventory = response.data?.filter(
-          (inventoryItem) => id == inventoryItem.warehouseId
-        );
-        setInventory(filteredInventory);
-      } else {
-        setInventory(response.data);
-      }
-    } catch (err) {
-      console.error("Error retrieving inventory items", err);
-    }
-  };
+            if (id) {
+                const filteredInventory = response.data?.filter(
+                    (inventoryItem) => id == inventoryItem.warehouseId
+                );
+                setInventory(filteredInventory);
+            } else {
+                setInventory(response.data);
+            }
+        } catch (err) {
+            console.error("Error retrieving inventory items", err);
+        }
+    };
 
-  useEffect(() => {
-    getInventory();
-  }, []);
+    useEffect(() => {
+        getInventory();
+    }, []);
 
-  const handleDeleteClick = (item) => {
-    setSelectedItem(item);
-    console.log(item);
-    setShowModal(true);
-  };
+    const handleDeleteClick = (item) => {
+        setSelectedItem(item);
+        console.log(item);
+        setShowModal(true);
+    };
 
-  const handleCloseModal = () => {
-    setShowModal(false);
-    setSelectedItem(null);
-  };
+    const handleCloseModal = () => {
+        setShowModal(false);
+        setSelectedItem(null);
+    };
 
-  const handleConfirmDelete = async () => {
-    try {
-      console.log("Selected Item:", selectedItem);
-      const response = await axios.delete(`${baseURL}/api/inventories/${selectedItem.id}`);
-      if (response.ok) {
-        useEffect (()=>{
-          setInventory(inventory.filter((item) => item.id !== selectedItem.id));
-          handleCloseModal();
-        }, [])
-      }
-      
-      console.log(`Deleting item with ID: ${selectedItem.id}`);
-    } catch (err) {
-      console.error("Error deleting inventory item:", err);
-    }
-  };
+    const handleConfirmDelete = async () => {
+        try {
+            console.log("Selected Item:", selectedItem);
+            const response = await axios.delete(`${baseURL}/api/inventories/${selectedItem.id}`);
+            if (response.ok) {
+                useEffect(() => {
+                    setInventory(inventory.filter((item) => item.id !== selectedItem.id));
+                    handleCloseModal();
+                }, [])
+            }
+
+            console.log(`Deleting item with ID: ${selectedItem.id}`);
+        } catch (err) {
+            console.error("Error deleting inventory item:", err);
+        }
+    };
 
     return (
         <div>
@@ -97,11 +96,11 @@ export default function InventoryList() {
                 </thead>
                 <tbody className="inventory__body">
                     {inventory.map((inventory) => (
-                        <tr key={inventory.inventoryItemId} className="inventory__body-row">
+                        <tr key={inventory.id} className="inventory__body-row">
                             <td className="inventory__body-cell">
                                 <span className="inventory__cell-header">inventory item</span>
                                 <Link
-                                    to={`/inventory/${inventory.inventoryItemId}`}
+                                    to={`/inventory/${inventory.id}`}
                                     className="inventory__link" >
                                     {inventory.item_name}
                                     <img
@@ -131,15 +130,15 @@ export default function InventoryList() {
                                 </p>
                             </td>
 
-                                <td className="inventory__body-cell warehouse">
-                                    <span className="inventory__cell-header">
-                                        Warehouse
-                                    </span>
-                                    <p className="inventory__warehouse">
-                                        {inventory.warehouse_name}
-                                    </p>
+                            <td className="inventory__body-cell warehouse">
+                                <span className="inventory__cell-header">
+                                    Warehouse
+                                </span>
+                                <p className="inventory__warehouse">
+                                    {inventory.warehouse_name}
+                                </p>
 
-                                </td>
+                            </td>
 
                             <td className="inventory__body-cell inventory__actions">
                                 <button
@@ -152,8 +151,8 @@ export default function InventoryList() {
                                     />
                                 </button>
                                 <Link
-                                    to={`/warehouse/${inventory.warehouse_id}`}
-                                    className="warehouse__edit">
+                                    to={`/inventory/edit/${inventory.id}`}
+                                    className="inventory_edit">
                                     <img
                                         src={editIcon}
                                         alt="Edit Icon"
@@ -165,11 +164,11 @@ export default function InventoryList() {
                 </tbody>
             </table>
             <DeleteModalInventoryItem
-          itemName={selectedItem?.item_name}
-          show={showModal}
-          onClose={handleCloseModal}
-          onConfirm={handleConfirmDelete}
-        />
+                itemName={selectedItem?.item_name}
+                show={showModal}
+                onClose={handleCloseModal}
+                onConfirm={handleConfirmDelete}
+            />
         </div>
     )
 }

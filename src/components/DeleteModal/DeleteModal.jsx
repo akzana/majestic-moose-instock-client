@@ -2,7 +2,7 @@ import React from "react";
 import "./DeleteModal.scss";
 import closeIcon from "../../assets/Icons/close-24px.svg";
 
-const DeleteModal = ({ show, onClose, onConfirm }) => {
+const DeleteModal = ({ show, onClose, onConfirm, selectedWarehouse }) => {
   if (!show) return null;
 
   return (
@@ -13,8 +13,8 @@ const DeleteModal = ({ show, onClose, onConfirm }) => {
       <div className="modal-button modal-button--close" onClick={onClose}> 
         <img src={closeIcon} alt="Close Icon" className="close__icon" />
       </div>
-        <h2>Delete Washington warehouse?</h2>
-        <p>Please confirm that you’d like to delete the Washington from the list of warehouses. You won’t be able to undo this action.</p>
+        <h2>Delete {selectedWarehouse.warehouse_name} warehouse?</h2>
+        <p>Please confirm that you’d like to delete the {selectedWarehouse.warehouse_name} from the list of warehouses. You won’t be able to undo this action.</p>
         </div>
         <div className="modal-actions">
           <button className="modal-button modal-button--cancel" onClick={onClose}>

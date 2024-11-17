@@ -63,11 +63,11 @@ export default function InventoryList() {
                 </thead>
                 <tbody className="inventory__body">
                     {inventory.map((inventory) => (
-                        <tr key={inventory.id} className="inventory__body-row">
+                        <tr key={inventory.inventoryItemId} className="inventory__body-row">
                             <td className="inventory__body-cell">
                                 <span className="inventory__cell-header">inventory item</span>
                                 <Link
-                                    to={`/inventory/${inventory.id}`}
+                                    to={`/inventory/${inventory.inventoryItemId}`}
                                     className="inventory__link" >
                                     {inventory.item_name}
                                     <img

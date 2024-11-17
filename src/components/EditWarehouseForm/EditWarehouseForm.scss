@@ -2,152 +2,77 @@
 @use "../../styles/mixins" as *;
 
 .warehouse-form {
-  background-color: $White;
-  border-radius: 1.25rem;
+    @include warehouse-form-styles;
+}
 
-  &__section {
-    padding: 0rem 2rem 2rem 2rem;
+.warehouse-form {
+    background-color: $White;
 
-    &--details {
-      border-bottom: 0.0625rem solid $Cloud;
-    }
-  }
+    &__actions {
+        display: flex;
+        justify-content: space-between;
+        gap: $padding-16;
+        flex-direction: row;
+        padding: 1rem 2rem;
+        background-color: $Light-Grey;
+    
+        @include tablet {
+          gap: $padding-32;
+        }
+      }
 
-  &__title {
-    @include mobile-subheader;
-  }
-
-  &__label {
-    display: block;
-    margin-bottom: $padding-4;
-    padding-top: 1rem;
-    @include mobile-labels-links-buttons;
-  }
-
-  &__input {
-    width: 90%;
-    padding: 0rem $padding-16;
-    color: $Instock-Black;
-    @include mobile-p2-body-medium;
-    @include form-field;
-
-    &::placeholder {
-      font-weight: 400;
-      font-size: 0.875rem;
-      line-height: 1.375rem;
-      color: $Slate;
-    }
-  }
-
-  &__actions {
-    display: flex;
-    justify-content: space-between;
-    gap: $padding-16;
-    flex-direction: row;
-    gap: $padding-16;
-    justify-content: space-between;
-    padding: 1rem 2rem;
-    background-color: $Light-Grey;
-
-    @include tablet {
-      gap: $padding-32;
-    }
-  }
-
-  &__submit {
-    width: 100%;
-    @include mobile-p2-body-medium;
-    @include primary-button;
-
-    &:hover {
-      background-color: $Graphite;
-    }
-  }
-
-  &__cancel {
-    width: 100%;
-    text-align: center;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    @include mobile-p2-body-medium;
-    @include secondary-button;
-    color: $Slate;
-
-    &:hover {
-      color: $Instock-Indigo;
-      border-color: $Instock-Indigo;
-    }
-  }
-
-  &__error-message {
-    display: flex;
-    align-items: center;
-    color: red;
-    font-size: 0.75rem;
-    line-height: 1.125rem;
-    font-weight: 400;
-    margin: 0;
-    padding-top: 0.25rem;
-  }
-
-  &__error-icon {
-    width: 1rem;
-    height: 1rem;
-    margin-right: 0.3125rem;
-  }
-
-  &__input--error {
-    border: 2px solid red;
-  }
+      &__actions-wrapper {
+        display: flex;
+        width: 100%;
+        gap: $padding-16;
+      }
+    
+      &__submit {
+        width: 100%;
+        @include mobile-p2-body-medium;
+        @include primary-button;
+    
+        &:hover {
+          background-color: $Graphite;
+        }
+      }
+    
+      &__cancel {
+        width: 100%;
+        text-align: center;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include mobile-p2-body-medium;
+        @include secondary-button;
+        color: $Slate;
+    
+        &:hover {
+          color: $Instock-Indigo;
+          border-color: $Instock-Indigo;
+        }
+      }
 }
 
 @include tablet {
-  .warehouse-form {
-    display: flex;
-    flex-direction: column;
+    .warehouse-form {
+        &__actions {
+            display: flex;
+            justify-content: flex-end;
+            padding: $padding-32;
+          }
+      
+          &__actions-wrapper {
+            display: flex;
+            width: 30%;
+            gap: 1rem;
+          }
+      
+          &__submit {
+            min-width: 3.8125rem;
+          }
 
-    &__section-wrapper {
-      display: flex;
-      flex-wrap: nowrap;
-      justify-content: space-between;
-      padding: 0rem;
-      margin: 1.5rem 0rem;
     }
 
-    &__section--details {
-      border-right: 0.0625rem solid $Cloud;
-    }
-
-    &__section--details,
-    &__section--contact {
-      flex: 1;
-      max-width: 48%;
-      border-bottom: none;
-    }
-
-    &__actions {
-      display: flex;
-      justify-content: flex-end;
-      padding: $padding-32;
-    }
-
-    &__actions-wrapper {
-      display: flex;
-      gap: 1rem;
-    }
-
-    &__submit {
-      min-width: 8.625rem;
-    }
-  }
-}
-
-@include desktop {
-  .warehouse-form {
-    &__input {
-      width: 93%;
-    }
-  }
 }

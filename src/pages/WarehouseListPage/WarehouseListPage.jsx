@@ -20,7 +20,7 @@ const WarehouseList = () => {
     const fetchWarehouses = async () => {
       try {
         const response = await fetch(API_URL);
-        const data = await response.json();
+        const data = await response.json();        
         setWarehouses(data);
       } catch (error) {
         console.error("Error fetching warehouses:", error);
@@ -56,11 +56,12 @@ const WarehouseList = () => {
   };
 
   return (
-    <div className="warehouse-card">
+    <div className="warehouse-card card">
       <DeleteModal
         show={showModal}
         onClose={handleCloseModal}
         onConfirm={handleConfirmDelete}
+        selectedWarehouse = {selectedWarehouse}
       />
       <WarehouseHeader />
 
@@ -141,7 +142,7 @@ const WarehouseList = () => {
                   />
                 </button>
                 <Link
-                  to={`/warehouse/${warehouse.id}`}
+                  to={`/warehouses/edit/${warehouse.id}`}
                   className="warehouse__edit">
                   <img src={editIcon} alt="Edit Icon" className="edit__icon" />
                 </Link>

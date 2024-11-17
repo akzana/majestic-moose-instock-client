@@ -26,7 +26,7 @@ const DeleteModalInventoryItem = ({ itemName, show, onClose, onConfirm }) => {
           </button>
           <button
             className="modal-button modal-button--confirm"
-            onClick={onConfirm} >
+            onClick={onConfirm && onClose} >
             Delete
           </button>
         </div>

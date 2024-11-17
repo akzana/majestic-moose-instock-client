@@ -7,10 +7,6 @@ function EditInventoryItem() {
     <div className="card">
       <EditInventoryItemHeader />
       <EditInventoryItemBody />
-      <div className="button-group">
-          <button type="button" className="cancel-button">Cancel</button>
-          <button type="submit" className="save-button">Save</button>
-      </div>
     </div>
     </>
   )

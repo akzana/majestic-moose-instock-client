@@ -5,16 +5,16 @@ import Edit_white from '../../assets/Icons/edit-white-24px.svg'
 import '../WarehouseDetailsHeader/WarehouseDetailsHeader.scss'
 import { Link } from 'react-router-dom'
 
-export default function WarehouseDetailsHeader(){
+export default function WarehouseDetailsHeader({warehouseName}){
     return (
         <>
         <div className='WarehouseDetails__header'>
             <div className="WarehouseDetails__header--layout">
-            <Link to="/warehouse">
+            <Link to="/warehouses">
                 <img className="arrow_back" src={Arrow_back} alt="back to warehouse page" />
             </Link>
             <h1 className="WarehouseDetails__title">
-                Washington
+                {warehouseName || "Loading..."}
             </h1>
             </div>
             <Link to="/warehouse/edit" className="edit_white-container">

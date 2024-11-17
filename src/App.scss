@@ -14,6 +14,11 @@ li {
   list-style-type: none;
 }
 
-ul{
+ul {
   padding-inline-start: 0;
+}
+
+body {
+  background: linear-gradient(rgba($Graphite, 1) 200px, rgba($White, 1) 200px);
+  min-height: 100vh;
 }

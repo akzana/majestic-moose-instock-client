@@ -105,7 +105,9 @@
 
 @mixin primary-hover-state {
   @include primary-button;
-  &{background-color: $Graphite;}
+  & {
+    background-color: $Graphite;
+  }
 }
 
 @mixin secondary-button {
@@ -122,8 +124,10 @@
 
 @mixin secondary-hover-state {
   @include secondary-button;
-  &{color: $Instock-Indigo;
-  border-color: $Instock-Indigo};
+  & {
+    color: $Instock-Indigo;
+    border-color: $Instock-Indigo;
+  }
 }
 
 @mixin delete-button {
@@ -210,7 +214,7 @@
     width: 93%;
   }
   @include desktop {
-    width: 96%;
+    width: 80%;
   }
 }
 
@@ -221,8 +225,7 @@
   margin: 24px 0px;
 }
 
-
-// --------- table mixins --------- 
+// --------- table mixins ---------
 
 @mixin header {
   visibility: hidden;
@@ -246,7 +249,7 @@
   }
 }
 
-//  --------- Mixin for heading styling  --------- 
+//  --------- Mixin for heading styling  ---------
 @mixin heading {
   display: flex;
   align-self: center;
@@ -255,7 +258,7 @@
   width: 45%;
 }
 
-//  --------- Mixin for row styling  --------- 
+//  --------- Mixin for row styling  ---------
 @mixin row {
   display: none;
   flex-direction: row;
@@ -274,7 +277,7 @@
   }
 }
 
-//  --------- Mixin for cell header --------- 
+//  --------- Mixin for cell header ---------
 
 @mixin cell-header {
   font-weight: 500;
@@ -292,7 +295,7 @@
   }
 }
 
-//  --------- Mixin for body-row styling --------- 
+//  --------- Mixin for body-row styling ---------
 @mixin body-row {
   display: flex;
   flex-wrap: wrap;
@@ -318,7 +321,7 @@
   }
 }
 
-//  --------- Mixin for body-cell styling --------- 
+//  --------- Mixin for body-cell styling ---------
 @mixin body-cell {
   display: flex;
   flex-direction: column;
@@ -346,7 +349,7 @@
   }
 }
 
-//  --------- Mixin for forms (based off warehouse forms) --------- 
+//  --------- Mixin for forms (based off warehouse forms) ---------
 
 @mixin form-base {
   background-color: $White;
@@ -397,7 +400,7 @@
   margin-right: 0.3125rem;
 }
 
-//  --------- Mixin for form buttons --------- 
+//  --------- Mixin for form buttons ---------
 
 @mixin form-button-section {
   display: flex;
@@ -434,7 +437,7 @@
   @include primary-button;
 
   &:hover {
-  background-color: $Graphite;
+    background-color: $Graphite;
   }
 
   @include tablet {
@@ -455,8 +458,8 @@
   @include secondary-button;
 
   &:hover {
-  color: $Instock-Indigo;
-  border-color: $Instock-Indigo;
+    color: $Instock-Indigo;
+    border-color: $Instock-Indigo;
   }
 
   @include tablet {
@@ -464,4 +467,3 @@
     min-width: min-content;
   }
 }
-

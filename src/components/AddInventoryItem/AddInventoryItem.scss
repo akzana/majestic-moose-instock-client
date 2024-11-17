@@ -1,28 +1,15 @@
 @use "../../styles/variables" as *;
 @use "../../styles/mixins" as *;
 
-form {
-  display: flex;
-  flex-direction: column;
-}
-.item-details {
-  display: flex;
-  flex-direction: column;
-}
-
-.item-availability {
-  display: flex;
-  flex-direction: column;
-
-  &__quantity-visible {
-    display: inline-block;
-  }
-  &__quantity-hidden {
-    display: none;
-  }
-}
-
 .add-new-item {
+  &__form-container {
+    display: flex;
+    flex-direction: column;
+    @include tablet {
+      flex-direction: row;
+    }
+  }
+
   &__header {
     display: flex;
     align-items: baseline;
@@ -43,39 +30,166 @@ form {
     padding: 0;
     margin: 0;
   }
+
+  &__error-message {
+    display: flex;
+    align-items: center;
+    color: $Red;
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+    font-weight: 400;
+    margin: 0;
+    padding-top: 0.25rem;
+  }
+
+  &__error-icon {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.3125rem;
+  }
 }
 
-.item-details {
-  padding: 0 $padding-16;
+.add-item-details {
+  display: flex;
+  flex-direction: column;
+  padding: 0 $padding-16 $padding-24 $padding-16;
+  border-bottom: 1px solid $Cloud;
+  @include tablet {
+    width: 50%;
+    border: none;
+  }
   &__title {
     @include mobile-subheader;
     color: $Instock-Black;
-    padding: $padding-16 0;
+    margin: $padding-16 0;
   }
 
   &__form-label {
     @include mobile-labels-links-buttons;
     padding-bottom: $padding-8;
-
+    margin-top: $padding-16;
+    &:first-of-type {
+      margin: 0;
+    }
     @include tablet {
       @include tablet-labels-links-buttons;
     }
   }
+
+  &__drop-down {
+    @include mobile-p2-body-medium;
+    height: 2.25rem;
+    width: 100%;
+    padding: 0 $padding-16;
+    color: $Slate;
+    border: 1px solid $Cloud;
+    border-radius: 1.25rem;
+    appearance: none;
+    background-image: url("../../assets/Icons/arrow_drop_down-24px.svg");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 26px;
+
+    &:focus {
+      border-color: $Instock-Indigo;
+      color: $Instock-Black;
+    }
+  }
+
+  &__input {
+    @include form-field;
+    padding-left: $padding-16;
+    &:focus {
+      border-color: $Instock-Indigo;
+      color: $Instock-Black;
+    }
+  }
+
+  &__textarea {
+    @extend .add-item-details__input;
+    height: 7.5rem;
+    padding-top: $padding-8;
+    resize: none;
+  }
 }
 
-input,
-textarea,
-select {
-  @include form-field;
-  padding-left: $padding-16;
-  margin-bottom: $padding-16;
-}
-textarea {
-  height: 7.5rem;
-  padding-top: $padding-8;
-  resize: none;
+.item-availability {
+  padding: $padding-16;
+  box-sizing: border-box;
+  @include tablet {
+    width: 50%;
+    border-left: 1px solid $Cloud;
+  }
+
+  &__title {
+    @extend .add-item-details__title;
+    margin: 0;
+  }
+
+  &__form-label {
+    @extend .add-item-details__form-label;
+    display: block;
+  }
+
+  &__radio-container {
+    display: flex;
+    gap: $padding-24;
+    align-items: baseline;
+    padding-bottom: $padding-16;
+    > input[type="radio"] {
+      margin: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  &__radio-label {
+    @include mobile-p1-body-large;
+    color: $Slate;
+    // when selected change color
+    input[type="radio"]:checked + span {
+      color: $Instock-Black;
+    }
+  }
+
+  &__input {
+    @include form-field;
+    padding-left: $padding-16;
+    margin-bottom: $padding-16;
+    &:focus {
+      border-color: $Instock-Indigo;
+      color: $Instock-Black;
+    }
+  }
+
+  &__drop-down {
+    @extend .add-item-details__drop-down;
+  }
+  &__quantity-visible {
+    display: flex;
+    flex-direction: column;
+  }
+  &__quantity-hidden {
+    display: none;
+  }
 }
 
-.error-message {
-  color: $Red;
+.buttons {
+  background-color: rgba($Light-Grey, 0.7);
+  display: flex;
+  justify-content: space-between;
+  padding: $padding-16;
+  box-sizing: border-box;
+
+  &__link {
+    width: 47%;
+  }
+  &__cancel {
+    @include secondary-button;
+    width: 100%;
+  }
+
+  &__add-item {
+    @include primary-button;
+    width: 47%;
+  }
 }

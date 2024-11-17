@@ -1,0 +1,47 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.label {
+    font-weight: bold;
+    color: $Instock-Black;
+    margin-bottom: 4px;
+    display: block; 
+    @include mobile-labels-links-buttons;
+}
+
+.radio-group {
+    display: flex;
+    width: 100%; 
+    justify-content: space-between;
+    align-items: center; 
+    margin-bottom: 16px;
+}
+
+.radio-group__label {
+    display: flex;
+    align-items: center;
+    @include mobile-p1-body-large;
+    color: $Slate;
+
+    // when selected change color
+    input[type="radio"]:checked + span {
+        color: $Instock-Black;
+    }
+}
+
+.radio-group__label input[type="radio"] {
+    margin-right: 8px;
+    width: 16px;
+    height: 16px; 
+}
+
+
+@media (min-width: $tablet-breakpoint) {
+    .label {
+        @include tablet-labels-links-buttons;
+    }
+
+    .radio-group__label {
+        @include tablet-p1-body-large;
+    }
+}

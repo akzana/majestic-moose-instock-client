@@ -1,0 +1,64 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.text-field-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.text-field-group__label {
+    @include mobile-labels-links-buttons;
+    color: $Instock-Black;
+    margin-bottom: 4px; 
+}
+
+.text-field-group__input {
+    @include mobile-p1-body-large;
+    padding: 0px 16px; 
+    border: 1px solid $Cloud;
+    border-radius: 20px; 
+    color: $Slate;
+    height: 36px;
+    width: 100%; 
+    box-sizing: border-box;
+}
+
+.text-field-group__input:focus {
+    border-color: $Instock-Indigo; 
+    color: $Instock-Black;
+}
+
+// When input is empty
+.text-field-group__input.error {
+    border-color: $Red; 
+    color: $Red;
+}
+
+.error-message {
+    color: $Red;
+    font-size: 12px;
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.error-message::before {
+    content: '';
+    width: 16px; 
+    height: 16px;
+    background-image: url('../../assets/Icons/error-24px.svg'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 4px;
+}
+
+
+@media (min-width: $tablet-breakpoint) {
+    .text-field-group__label {
+        @include tablet-labels-links-buttons;
+    }
+
+    .text-field-group__input {
+        @include tablet-p1-body-large;
+    }
+}

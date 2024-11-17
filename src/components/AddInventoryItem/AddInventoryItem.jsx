@@ -1,7 +1,9 @@
 import arrowBack from "../../assets/Icons/arrow_back-24px.svg";
 import errorIcon from "../../assets/Icons/error-24px.svg";
+import DropdownGroup from "../DropdownGroup/DropdownGroup";
+import RadioGroup from "../RadioGroup/RadioGroup";
 import "./AddInventoryItem.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 const baseURL = import.meta.env.VITE_URL;
@@ -9,6 +11,7 @@ const baseURL = import.meta.env.VITE_URL;
 function AddInventoryItem() {
   const [warehouses, setWarehouses] = useState([]);
   const [inventoryItems, setInventoryItems] = useState([]);
+  const navigate = useNavigate();
 
   // Api calls to get correct data for dropdown selects
   const getWarehouses = async () => {
@@ -35,6 +38,10 @@ function AddInventoryItem() {
   }, []);
 
   const uniqueCategories = new Set(inventoryItems.map((item) => item.category));
+  const availabilityOptions = {
+    "In Stock": "In Stock",
+    "Out of Stock": "Out of Stock",
+  };
 
   // FORM FUNCTIONS
   const [formData, setFormData] = useState({
@@ -121,6 +128,8 @@ function AddInventoryItem() {
       console.log(errorState);
     } else {
       console.log(formData);
+      alert("Inventory Item added. Taking you back to Inventory...");
+      navigate("/inventory");
     }
   };
 
@@ -137,140 +146,182 @@ function AddInventoryItem() {
         <h1 className="add-new-item__title">Add New Inventory Item</h1>
       </div>
       <form onSubmit={handleSubmit}>
-        <div className="item-details">
-          <h2 className="item-details__title">Item Details</h2>
-          <label htmlFor="itemName" className="item-details__form-label">
-            Item Name
-          </label>
-          <input
-            type="text"
-            id="itemName"
-            name="item_name"
-            placeholder="Item Name"
-            value={formData.item_name}
-            onChange={handleChange}
-          />
-          {errorState.item_name && (
-            <p className="error-message">
-              <img src={errorIcon} alt="error icon" className="error-icon" />{" "}
-              This field is required
-            </p>
-          )}
-          <label htmlFor="itemDescription" className="item-details__form-label">
-            Item Description{" "}
-          </label>
-          <textarea
-            name="description"
-            id="itemDescription"
-            placeholder="Please enter a brief item description..."
-            value={formData.description}
-            onChange={handleChange}
-          ></textarea>
-          {errorState.description && (
-            <p className="error-message">
-              <img src={errorIcon} alt="error icon" className="error-icon" />{" "}
-              This field is required
-            </p>
-          )}
-          <label htmlFor="category" className="item-details__form-label">
-            Category{" "}
-          </label>
-          <select
-            name="category"
-            id="category"
-            value={formData.category}
-            onChange={handleChange}
-          >
-            <option>Please Select</option>
-            {[...uniqueCategories].map((category) => (
-              <option key={category} value={category}>
-                {category}
-              </option>
-            ))}
-          </select>{" "}
-          {errorState.category && (
-            <p className="error-message">
-              <img src={errorIcon} alt="error icon" className="error-icon" />{" "}
-              This field is required
-            </p>
-          )}
-        </div>
-        <div className="item-availability">
-          <h2 className="item-availability__title">Item Availability</h2>
-          <label>Status </label>
-          <label>
+        <div className="add-new-item__form-container">
+          <div className="add-item-details">
+            <h2 className="add-item-details__title">Item Details</h2>
+            <label htmlFor="itemName" className="add-item-details__form-label">
+              Item Name
+            </label>
             <input
-              type="radio"
-              value="In Stock"
-              name="status"
-              checked={formData.status === "In Stock"}
+              type="text"
+              id="itemName"
+              name="item_name"
+              placeholder="Item Name"
+              value={formData.item_name}
               onChange={handleChange}
+              className="add-item-details__input"
             />
-            In Stock
-          </label>
-          <label>
-            <input
-              type="radio"
-              value="Out of Stock"
-              name="status"
-              checked={formData.status === "Out of Stock"}
+            {errorState.item_name && (
+              <p className="add-new-item__error-message">
+                <img
+                  src={errorIcon}
+                  alt="error icon"
+                  className="add-new-item__error-icon"
+                />{" "}
+                This field is required
+              </p>
+            )}
+            <label
+              htmlFor="itemDescription"
+              className="add-item-details__form-label"
+            >
+              Item Description{" "}
+            </label>
+            <textarea
+              name="description"
+              className="add-item-details__textarea"
+              id="itemDescription"
+              placeholder="Please enter a brief item description..."
+              value={formData.description}
               onChange={handleChange}
-            />
-            Out of Stock
-          </label>
-          <div
-            className={
-              formData.status === "Out of Stock"
-                ? "item-availability__quantity-hidden"
-                : "item-availability__quantity-visible"
-            }
-          >
-            <label htmlFor="quantity"></label>
-            Quantity
-            <input
-              type="number"
-              name="quantity"
-              id="quantity"
-              min="0"
-              value={formData.quantity}
+            ></textarea>
+            {errorState.description && (
+              <p className="add-new-item__error-message">
+                <img
+                  src={errorIcon}
+                  alt="error icon"
+                  className="add-new-item__error-icon"
+                />{" "}
+                This field is required
+              </p>
+            )}
+            <label htmlFor="category" className="add-item-details__form-label">
+              Category
+            </label>
+            <select
+              className="add-item-details__drop-down"
+              name="category"
+              id="category"
+              value={formData.category}
               onChange={handleChange}
-              disabled={formData.status === "Out of Stock"}
-            />
-            {errorState.quantity && (
-              <p className="error-message">
-                <img src={errorIcon} alt="error icon" className="error-icon" />{" "}
+            >
+              <option>Please Select</option>
+              {[...uniqueCategories].map((category) => (
+                <option key={category} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
+            {errorState.category && (
+              <p className="add-new-item__error-message">
+                <img
+                  src={errorIcon}
+                  alt="error icon"
+                  className="add-new-item__error-icon"
+                />{" "}
                 This field is required
               </p>
             )}
           </div>
-          <label htmlFor="warehouse">Warehouse </label>
-          <select
-            name="warehouse_id"
-            id="warehouse"
-            value={formData.warehouse_id}
-            onChange={handleChange}
-          >
-            <option>Please Select</option>
-            {warehouses.map((warehouse) => (
-              <option key={warehouse.id} value={warehouse.id}>
-                {warehouse.warehouse_name}
-              </option>
-            ))}
-          </select>{" "}
-          {errorState.warehouse_id && (
-            <p className="error-message">
-              <img src={errorIcon} alt="error icon" className="error-icon" />{" "}
-              This field is required
-            </p>
-          )}
+          <div className="item-availability">
+            <h2 className="item-availability__title">Item Availability</h2>
+            <label className="item-availability__form-label">Status </label>
+            <div className="item-availability__radio-container">
+              <label className="item-availability__radio-label">
+                <input
+                  type="radio"
+                  value="In Stock"
+                  name="status"
+                  checked={formData.status === "In Stock"}
+                  onChange={handleChange}
+                />
+                In Stock
+              </label>
+              <label className="item-availability__radio-label">
+                <input
+                  type="radio"
+                  value="Out of Stock"
+                  name="status"
+                  checked={formData.status === "Out of Stock"}
+                  onChange={handleChange}
+                />
+                Out of Stock
+              </label>
+            </div>
+            <div
+              className={
+                formData.status === "Out of Stock"
+                  ? "item-availability__quantity-hidden"
+                  : "item-availability__quantity-visible"
+              }
+            >
+              <label
+                htmlFor="quantity"
+                className="item-availability__form-label"
+              >
+                Quantity
+              </label>
+
+              <input
+                type="number"
+                name="quantity"
+                id="quantity"
+                min="1"
+                value={formData.quantity}
+                onChange={handleChange}
+                disabled={formData.status === "Out of Stock"}
+                className="item-availability__input"
+              />
+              {errorState.quantity && (
+                <p className="add-new-item__error-message">
+                  <img
+                    src={errorIcon}
+                    alt="error icon"
+                    className="add-new-item__error-icon"
+                  />{" "}
+                  This field is required
+                </p>
+              )}
+            </div>
+            <label
+              htmlFor="warehouse"
+              className="item-availability__form-label"
+            >
+              Warehouse
+            </label>
+            <select
+              name="warehouse_id"
+              className="item-availability__drop-down"
+              id="warehouse"
+              value={formData.warehouse_id}
+              onChange={handleChange}
+            >
+              <option>Please Select</option>
+              {warehouses.map((warehouse) => (
+                <option key={warehouse.id} value={warehouse.id}>
+                  {warehouse.warehouse_name}
+                </option>
+              ))}
+            </select>
+            {errorState.warehouse_id && (
+              <p className="add-new-item__error-message">
+                <img
+                  src={errorIcon}
+                  alt="error icon"
+                  className="add-new-item__error-icon"
+                />{" "}
+                This field is required
+              </p>
+            )}
+          </div>
         </div>
         <div className="buttons">
-          <Link to="/inventory">
-            <button className="cancel-button" type="button">
+          <Link to="/inventory" className="buttons__link">
+            <button className="buttons__cancel" type="button">
               Cancel
             </button>
           </Link>
-          <button className="add-item-button" type="submit">
+          <button className="buttons__add-item" type="submit">
             + Add Item
           </button>
         </div>

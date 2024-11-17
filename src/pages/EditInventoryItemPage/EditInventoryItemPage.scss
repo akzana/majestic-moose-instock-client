@@ -1,2 +1,63 @@
-@use "../../styles/variables" as *;
-@use "../../styles/mixins" as *;
+@use '../../../src/styles/variables' as *;
+@use '../../../src/styles/mixins' as *;
+// card
+.card{
+    width: 85%;    
+    margin: 0 auto;
+    background-color: $White; 
+    border-radius: 5px;     
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.button-group {
+    background-color: $Light-Grey;
+    padding: 16px 0;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 16px;
+
+    button {
+        flex: 0 0 40%;
+        height: 36px;
+        padding: 0 16px;
+        @include mobile-labels-links-buttons;
+        border-radius: 20px;
+        border: none;
+    }
+    
+    .cancel-button {
+        background-color: transparent;
+        color: $Slate;
+        border: 1px solid $Cloud;
+    }
+    
+    .save-button {
+        background-color: $Instock-Indigo;
+        color: $White;
+    }
+    }
+
+@media (min-width: $tablet-breakpoint) {
+    .card{
+        width: 93%;    
+    }
+
+    .button-group {
+        display: flex;
+        gap: 16px;
+        justify-content: flex-end;
+        padding-right: 24px;
+    
+        button {
+            flex: 0 0 10%;
+            height: 38px;
+            @include tablet-labels-links-buttons;
+        }
+    }
+}
+
+@media (min-width: $desktop-breakpoint) {
+    .card{
+        width: 96%;    
+    }
+}

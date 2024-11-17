@@ -1,0 +1,50 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.form-page {
+  display: flex;
+  flex-direction: column;
+  padding: 0 24px;
+}
+
+.section-title {
+  @include mobile-subheader;
+  color: $Instock-Black;
+  padding: 16px 0;
+}
+
+.text-field-group {
+  margin-bottom: 16px;
+}
+
+
+@media (min-width: $tablet-breakpoint) {
+  .form-page {
+    display: flex;
+    flex-direction: column;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+
+  .tablet-layout {
+    display: flex;
+  }
+
+  .tablet-layout article {
+    flex: 1;
+    box-sizing: border-box;
+  }
+
+  .item-details {
+    border-right: 1px solid $Cloud;
+    padding-right: 20px;
+  }
+
+  .item-availability {
+    padding-left: 20px;
+  }
+
+  .section-title {
+    @include tablet-subheader;
+  }
+}

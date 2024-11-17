@@ -6,32 +6,66 @@ import sortIcon from "../../assets/Icons/sort-24px.svg";
 import rightAarrowIcon from "../../assets/Icons/chevron_right-24px.svg";
 import deleteIcon from "../../assets/Icons/delete_outline-24px.svg";
 import editIcon from "../../assets/Icons/edit-24px.svg";
+import DeleteModalInventoryItem from "../DeleteModalInventoryItem/DeleteModalInventoryItem";
 import "./InventoryList.scss";
 const baseURL = import.meta.env.VITE_URL;
 
 export default function InventoryList() {
+  // conditional for warehouse.id
+  const [inventory, setInventory] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
 
-    const [inventory, setInventory] = useState([]);
-    const { id } = useParams();
+  const { id } = useParams();
 
-    const getInventory = async () => {
-        try {
-            const response = await axios.get(`${baseURL}/api/inventories`);
+  const getInventory = async () => {
+    try {
+      const response = await axios.get(`${baseURL}/api/inventories`);
 
-            if (id) {
-                const filteredInventory = response.data?.filter((inventoryItem) => (id == inventoryItem.warehouseId))
-                setInventory(filteredInventory);
-            } else {
-                setInventory(response.data);
-            }
-        } catch (err) {
-            console.error("Error retrieving inventory items", err);
-        }
+      if (id) {
+        const filteredInventory = response.data?.filter(
+          (inventoryItem) => id == inventoryItem.warehouseId
+        );
+        setInventory(filteredInventory);
+      } else {
+        setInventory(response.data);
+      }
+    } catch (err) {
+      console.error("Error retrieving inventory items", err);
     }
+  };
 
-    useEffect(() => {
-        getInventory();
-    }, [])
+  useEffect(() => {
+    getInventory();
+  }, []);
+
+  const handleDeleteClick = (item) => {
+    setSelectedItem(item);
+    console.log(item);
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setSelectedItem(null);
+  };
+
+  const handleConfirmDelete = async () => {
+    try {
+      console.log("Selected Item:", selectedItem);
+      const response = await axios.delete(`${baseURL}/api/inventories/${selectedItem.id}`);
+      if (response.ok) {
+        useEffect (()=>{
+          setInventory(inventory.filter((item) => item.id !== selectedItem.id));
+          handleCloseModal();
+        }, [])
+      }
+      
+      console.log(`Deleting item with ID: ${selectedItem.id}`);
+    } catch (err) {
+      console.error("Error deleting inventory item:", err);
+    }
+  };
 
     return (
         <div>
@@ -130,6 +164,12 @@ export default function InventoryList() {
                     ))}
                 </tbody>
             </table>
+            <DeleteModalInventoryItem
+          itemName={selectedItem?.item_name}
+          show={showModal}
+          onClose={handleCloseModal}
+          onConfirm={handleConfirmDelete}
+        />
         </div>
     )
 }

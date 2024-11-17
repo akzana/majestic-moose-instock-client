@@ -9,34 +9,6 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.button-group {
-    background-color: $Light-Grey;
-    padding: 16px 0;
-    display: flex;
-    justify-content: space-evenly;
-    gap: 16px;
-
-    button {
-        flex: 0 0 40%;
-        height: 36px;
-        padding: 0 16px;
-        @include mobile-labels-links-buttons;
-        border-radius: 20px;
-        border: none;
-    }
-    
-    .cancel-button {
-        background-color: transparent;
-        color: $Slate;
-        border: 1px solid $Cloud;
-    }
-    
-    .save-button {
-        background-color: $Instock-Indigo;
-        color: $White;
-    }
-    }
-
 @media (min-width: $tablet-breakpoint) {
     .card{
         width: 93%;    

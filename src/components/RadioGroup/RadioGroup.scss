@@ -11,9 +11,9 @@
 
 .radio-group {
     display: flex;
-    width: 100%; 
-    justify-content: space-between;
-    align-items: center; 
+    gap: 25px;
+    align-items: center;
+    flex-wrap: wrap;
     margin-bottom: 16px;
 }
 

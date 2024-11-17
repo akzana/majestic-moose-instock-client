@@ -4,7 +4,38 @@
 .form-page {
   display: flex;
   flex-direction: column;
+}
+
+article{
   padding: 0 24px;
+}
+
+.button-group {
+  background-color: $Light-Grey;
+  padding: 16px 0;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 16px;
+
+  button {
+      flex: 0 0 40%;
+      height: 36px;
+      padding: 0 16px;
+      @include mobile-labels-links-buttons;
+      border-radius: 20px;
+      border: none;
+  }
+  
+  .cancel-button {
+      background-color: transparent;
+      color: $Slate;
+      border: 1px solid $Cloud;
+  }
+  
+  .save-button {
+      background-color: $Instock-Indigo;
+      color: $White;
+  }
 }
 
 .section-title {
@@ -15,7 +46,7 @@
 
 .text-field-group {
   .quantity_field {
-    width: 25%;
+    width: 100px;
   }
 
   margin-bottom: 16px;
@@ -29,7 +60,6 @@
   .form-page {
     display: flex;
     flex-direction: column;
-    padding: 0 24px;
     box-sizing: border-box;
   }
 

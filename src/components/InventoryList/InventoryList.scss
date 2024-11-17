@@ -1,9 +1,120 @@
-@use '../../styles/variables' as *;
-@use '../../styles/mixins' as *;
+@use "../../App.scss" as *;
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
 
-.inventoryList {
-    &__item {
-        padding: 1.5rem;
-        border-top: 1px solid $Cloud;
+.inventoryList{
+    display:flex;
+    flex-direction: column;
+}
+
+.inventory-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.inventory__list {
+    display: flex;
+    flex-direction: column;
+    padding: $padding-24;
+
+    &-header {
+        @include header;
+    }
+
+    &-heading {
+        @include heading;
+
+        &-actions {
+            justify-content: center;
+        }
+    }
+
+    &-row {
+        @include row;
+    }
+}
+
+.inventory__body {
+    display: flex;
+    flex-direction: column;
+
+    &-row {
+        @include body-row;
+    }
+
+    &-cell {
+        @include body-cell;
+    }
+}
+
+.inventory__cell-header {
+    @include cell-header;
+}
+
+.inventory__link {
+    color: $Instock-Indigo;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    font-size: 1rem;
+    text-decoration: none;
+
+    &::after {
+        margin-left: $padding-4;
+        font-size: 1rem;
+    }
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.inventory__qty,
+.inventory__warehouse {
+    margin: 0;
+    font-size: 1rem;
+    color: $Slate;
+
+    .inventory__contact-email {
+        color: $Instock-Black;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.inventory__actions {
+    display: flex;
+    gap: $padding-8;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+
+    @include tablet {
+        justify-content: center;
+        width: auto;
+    }
+
+    @include desktop {
+        justify-content: center;
+        width: auto;
+    }
+
+    .inventory__edit {
+        color: $Instock-Indigo;
+        font-size: 1rem;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .inventory__delete {
+        color: $Red;
+        background: none;
+        border: none;
+        font-size: 1rem;
+        cursor: pointer;
     }
 }

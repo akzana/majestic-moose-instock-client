@@ -1,22 +1,30 @@
 @use "../../styles/variables" as *;
 @use "../../styles/mixins" as *;
 
-.card{
-    width: 85%;    
-    margin: 0 auto;
-    background-color: #fff; 
-    border-radius: 5px;     
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+.card {
+  width: 85%;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  @include tablet {
+    width: 93%;
+  }
+
+  @include desktop {
+    width: 80%;
+  }
 }
 
-@media (min-width: $tablet-breakpoint) {
-    .card{
-        width: 93%;    
-    }
-}
+// @include tablet {
+//   .card {
+//     width: 93%;
+//   }
+// }
 
-@media (min-width: $desktop-breakpoint) {
-    .card{
-        width: 96%;    
-    }
-}
+// @include desktop {
+//   .card {
+//     width: 96%;
+//   }
+// }

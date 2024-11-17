@@ -1,69 +1,67 @@
-@use '../../styles/variables' as *;
-@use '../../styles/mixins' as *;
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
 
-// header 
-.WarehouseDetails__header{
+// header
+.WarehouseDetails__header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  height: 5.9375rem;
+
+  border-bottom: 1px solid $Cloud;
+
+  &--layout {
     display: flex;
     justify-content: center;
-    align-items: center; 
-    justify-content: space-between;
-
-    border-bottom: 1px solid $Cloud;
-    
-    &--layout{
-        display: flex;
-        justify-content: center;
-        align-items: center; 
-        padding-left: 24px;
-    }
+    align-items: center;
+    padding-left: $padding-24;
+  }
 }
 
-// padding: 0 24px;
-
-.arrow_back{
-    padding-right: 16px;
-    vertical-align: middle;
+.arrow_back {
+  padding-right: $padding-16;
+  vertical-align: middle;
 }
 
-.WarehouseDetails__title{
-    @include mobile-page-header;
-    margin: 24px 0px;
+.WarehouseDetails__title {
+  @include mobile-page-header;
+  margin: 24px 0px;
 }
 
 .edit_white-container {
-    width: 40px;  
-    height: 40px;
-    background-color: $Instock-Indigo;  
-    border-radius: 50%;  
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 24px;
+  width: 40px;
+  height: 40px;
+  background-color: $Instock-Indigo;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 24px;
 }
 
 .edit_white {
-    width: 24px; 
-    height: 24px;
-    border-radius: 50%;  
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
 }
 
-
 .edit_button {
-    display: none;
+  display: none;
 }
 
 @media (min-width: $tablet-breakpoint) {
-    .edit_white-container{
-        display: none;
-    }
-    .edit_button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: $Instock-Indigo; 
-        border-radius: 20px;
-        padding: 0px 16px;
-        text-decoration: none;
-        color: white; 
-    }
+  .edit_white-container {
+    display: none;
+  }
+  .edit_button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $Instock-Indigo;
+    border-radius: 20px;
+    padding: 0px 16px;
+    text-decoration: none;
+    color: white;
+  }
 }

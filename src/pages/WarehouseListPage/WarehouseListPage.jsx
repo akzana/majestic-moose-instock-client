@@ -10,7 +10,6 @@ import editIcon from "../../assets/Icons/edit-24px.svg";
 
 const API_URL = "http://localhost:8080/api/warehouses";
 
-
 const WarehouseList = () => {
   const [warehouses, setWarehouses] = useState([]);
   const [showModal, setShowModal] = useState(false);
@@ -20,7 +19,7 @@ const WarehouseList = () => {
     const fetchWarehouses = async () => {
       try {
         const response = await fetch(API_URL);
-        const data = await response.json();        
+        const data = await response.json();
         setWarehouses(data);
       } catch (error) {
         console.error("Error fetching warehouses:", error);
@@ -61,7 +60,7 @@ const WarehouseList = () => {
         show={showModal}
         onClose={handleCloseModal}
         onConfirm={handleConfirmDelete}
-        selectedWarehouse = {selectedWarehouse}
+        selectedWarehouse={selectedWarehouse}
       />
       <WarehouseHeader />
 
@@ -84,57 +83,59 @@ const WarehouseList = () => {
               Contact Information
               <img src={sortIcon} alt="Sort Icon" className="sort__icon" />
             </th>
-            <th className="warehouse__list-heading warehouse__list-heading-actions">Actions</th>
+            <th className="warehouse__list-heading warehouse__list-heading-actions">
+              Actions
+            </th>
           </tr>
         </thead>
         <tbody className="warehouse__body">
           {warehouses.map((warehouse) => (
             <tr key={warehouse.id} className="warehouse__body-row">
-          
               <td className="warehouse__body-cell">
                 <span className="warehouse__cell-header">Warehouse</span>
                 <Link
                   to={`/warehouses/${warehouse.id}`}
-                  className="warehouse__link" >
+                  className="warehouse__link"
+                >
                   {warehouse.warehouse_name}
                   <img
                     src={rightAarrowIcon}
                     alt="Right arrow Icon"
-                    className="rightarrow__icon"/>
+                    className="rightarrow__icon"
+                  />
                 </Link>
-                </td>
-        
-                  <td className="warehouse__body-cell">
-                    <span className="warehouse__cell-header">Address</span>
-                    {`${warehouse.address}, ${warehouse.city}, ${warehouse.country}`}
-                  </td>
-                  
-                
-                  <td className="warehouse__body-cell">
-                    <span className="warehouse__cell-header">Contact Name</span>
-                    {warehouse.contact_name}
-                  </td>
+              </td>
 
-                  <td className="warehouse__body-cell">
-                    <span className="warehouse__cell-header">
-                      Contact Information
-                    </span>
-                    <p className="warehouse__contact">
-                      {warehouse.contact_phone}
-                    </p>
-                    <p className="warehouse__contact-info">
-                      <a
-                        href={`mailto:${warehouse.contact_email}`}
-                        className="warehouse__contact-email">
-                        {warehouse.contact_email}
-                      </a>
-                    </p>
-                  </td>
-                  
+              <td className="warehouse__body-cell">
+                <span className="warehouse__cell-header">Address</span>
+                {`${warehouse.address}, ${warehouse.city}, ${warehouse.country}`}
+              </td>
+
+              <td className="warehouse__body-cell">
+                <span className="warehouse__cell-header">Contact Name</span>
+                {warehouse.contact_name}
+              </td>
+
+              <td className="warehouse__body-cell">
+                <span className="warehouse__cell-header">
+                  Contact Information
+                </span>
+                <p className="warehouse__contact">{warehouse.contact_phone}</p>
+                <p className="warehouse__contact-info">
+                  <a
+                    href={`mailto:${warehouse.contact_email}`}
+                    className="warehouse__contact-email"
+                  >
+                    {warehouse.contact_email}
+                  </a>
+                </p>
+              </td>
+
               <td className="warehouse__body-cell warehouse__actions">
                 <button
                   className="warehouse__delete"
-                  onClick={() => handleDeleteClick(warehouse)}>
+                  onClick={() => handleDeleteClick(warehouse)}
+                >
                   <img
                     src={deleteIcon}
                     alt="Delete Icon"
@@ -143,7 +144,8 @@ const WarehouseList = () => {
                 </button>
                 <Link
                   to={`/warehouses/edit/${warehouse.id}`}
-                  className="warehouse__edit">
+                  className="warehouse__edit"
+                >
                   <img src={editIcon} alt="Edit Icon" className="edit__icon" />
                 </Link>
               </td>

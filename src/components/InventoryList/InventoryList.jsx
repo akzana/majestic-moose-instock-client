@@ -7,7 +7,6 @@ import rightAarrowIcon from "../../assets/Icons/chevron_right-24px.svg";
 import deleteIcon from "../../assets/Icons/delete_outline-24px.svg";
 import editIcon from "../../assets/Icons/edit-24px.svg";
 import "./InventoryList.scss";
-
 const baseURL = import.meta.env.VITE_URL;
 
 export default function InventoryList() {
@@ -80,7 +79,7 @@ export default function InventoryList() {
 
                             <td className="inventory__body-cell">
                                 <span className="inventory__cell-header">Category</span>
-                                {`${inventory.category}`}
+                                {inventory.category}
                             </td>
 
 
@@ -93,17 +92,20 @@ export default function InventoryList() {
                                 <span className="inventory__cell-header">
                                     qty
                                 </span>
-                                <p className="inventory__contact">
+                                <p className="inventory__qty">
                                     {inventory.quantity}
                                 </p>
-                                <p className="inventory__contact-info">
-                                    <a
-                                        href={`mailto:${inventory.contact_email}`}
-                                        className="inventory__contact-email">
-                                        {inventory.contact_email}
-                                    </a>
-                                </p>
                             </td>
+
+                                <td className="inventory__body-cell warehouse">
+                                    <span className="inventory__cell-header">
+                                        Warehouse
+                                    </span>
+                                    <p className="inventory__warehouse">
+                                        {inventory.warehouse_name}
+                                    </p>
+
+                                </td>
 
                             <td className="inventory__body-cell inventory__actions">
                                 <button
@@ -118,7 +120,10 @@ export default function InventoryList() {
                                 <Link
                                     to={`/warehouse/${inventory.warehouse_id}`}
                                     className="warehouse__edit">
-                                    <img src={editIcon} alt="Edit Icon" className="edit__icon" />
+                                    <img
+                                        src={editIcon}
+                                        alt="Edit Icon"
+                                        className="edit__icon" />
                                 </Link>
                             </td>
                         </tr>

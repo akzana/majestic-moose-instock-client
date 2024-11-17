@@ -1,0 +1,43 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.dropdown-group{
+    margin-bottom: 16px;
+}
+
+.label {
+    @include mobile-labels-links-buttons;
+    color: $Instock-Black;
+    margin-bottom: 4px;
+    display: block; 
+}
+
+.drop-down__options {
+    @include mobile-p1-body-large;
+    height: 36px;
+    width: 100%;
+    padding: 0px 16px;
+    color: $Slate;
+    border: 1px solid $Cloud;
+    border-radius: 20px;
+    appearance: none; 
+    background-image: url('../../assets/Icons/arrow_drop_down-24px.svg'); 
+    background-repeat: no-repeat;
+    background-position: right 16px center; 
+    background-size: 26px; 
+    
+    &:focus {
+        border-color: $Instock-Indigo; 
+        color: $Instock-Black;
+    }
+}
+
+@media (min-width: $tablet-breakpoint) {
+    .label {
+        @include tablet-labels-links-buttons;
+    }
+
+    .drop-down__options {
+        @include tablet-p1-body-large;
+    }
+}

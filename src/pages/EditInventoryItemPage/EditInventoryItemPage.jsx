@@ -1,8 +1,14 @@
-import React from 'react'
-
+import "./EditInventoryItemPage.scss"
+import EditInventoryItemHeader from '../../../src/components/EditInventoryItemHeader/EditInventoryItemHeader'
+import EditInventoryItemBody from '../../../src/components/EditInventoryItemBody/EditInventoryItemBody'
 function EditInventoryItem() {
   return (
-    <div>EditInventoryItem</div>
+    <>
+    <div className="card">
+      <EditInventoryItemHeader />
+      <EditInventoryItemBody />
+    </div>
+    </>
   )
 }
 

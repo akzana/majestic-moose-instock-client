@@ -71,9 +71,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    color: $Slate;
     @include mobile-p2-body-medium;
     @include secondary-button;
-    color: $Slate;
 
     &:hover {
       color: $Instock-Indigo;

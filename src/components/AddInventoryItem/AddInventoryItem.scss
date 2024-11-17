@@ -1,0 +1,254 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.add-new-item {
+  &__form-container {
+    display: flex;
+    flex-direction: column;
+    @include tablet {
+      flex-direction: row;
+    }
+  }
+
+  &__header {
+    display: flex;
+    align-items: baseline;
+    border-bottom: 1px solid $Cloud;
+    padding: $padding-24 $padding-16 $padding-16 $padding-16;
+    @include tablet {
+      padding: $padding-32 $padding-32 $padding-24 $padding-32;
+    }
+    @include desktop {
+      padding-left: $padding-40;
+    }
+  }
+  &__title {
+    margin: 0 0 0 $padding-8;
+    @include mobile-page-header;
+    @include tablet {
+      @include tablet-page-header;
+    }
+  }
+  &__back-icon {
+    padding: 0;
+    margin: 0;
+  }
+
+  &__error-message {
+    display: flex;
+    align-items: center;
+    @include mobile-table-header;
+    color: $Red;
+    text-transform: none;
+    margin: 0;
+    padding-top: 0.25rem;
+    @include tablet {
+      @include tablet-table-header;
+      text-transform: none;
+    }
+  }
+
+  &__error-icon {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.3125rem;
+  }
+}
+
+.add-item-details {
+  display: flex;
+  flex-direction: column;
+  padding: 0 $padding-16 $padding-24 $padding-16;
+  border-bottom: 1px solid $Cloud;
+  @include tablet {
+    width: 50%;
+    border: none;
+    padding: 0 $padding-32 $padding-32 $padding-32;
+  }
+  @include desktop {
+    padding: 0 $padding-40 $padding-32 $padding-40;
+  }
+  &__title {
+    @include mobile-subheader;
+    color: $Instock-Black;
+    margin: $padding-16 0;
+    @include tablet {
+      @include tablet-subheader;
+      margin-top: $padding-32;
+    }
+  }
+
+  &__form-label {
+    @include mobile-labels-links-buttons;
+    padding-bottom: $padding-8;
+    margin-top: $padding-16;
+    &:first-of-type {
+      margin: 0;
+    }
+    @include tablet {
+      @include tablet-labels-links-buttons;
+    }
+  }
+
+  &__drop-down {
+    @include mobile-p2-body-medium;
+    height: 2.25rem;
+    width: 100%;
+    padding: 0 $padding-16;
+    color: $Slate;
+    border: 1px solid $Cloud;
+    border-radius: 1.25rem;
+    appearance: none;
+    background-image: url("../../assets/Icons/arrow_drop_down-24px.svg");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1.625rem;
+
+    @include tablet {
+      height: 2.375rem;
+      @include tablet-p2-body-medium;
+    }
+
+    &:focus {
+      border-color: $Instock-Indigo;
+      color: $Instock-Black;
+    }
+  }
+
+  &__input {
+    padding-left: $padding-16;
+    @include mobile-p2-body-medium;
+    @include form-field;
+
+    @include tablet {
+      @include tablet-p2-body-medium;
+    }
+    &:focus {
+      border-color: $Instock-Indigo;
+      color: $Instock-Black;
+    }
+  }
+
+  &__textarea {
+    @extend .add-item-details__input;
+    padding-top: $padding-8;
+    height: 7.5rem;
+    resize: none;
+  }
+}
+
+.add-item-availability {
+  padding: $padding-16;
+  box-sizing: border-box;
+  @include tablet {
+    width: 50%;
+    border-left: 1px solid $Cloud;
+    padding: $padding-32;
+  }
+  @include desktop {
+    padding: $padding-32 $padding-40;
+  }
+
+  &__title {
+    @extend .add-item-details__title;
+    margin: 0;
+  }
+
+  &__form-label {
+    @extend .add-item-details__form-label;
+    display: block;
+    &:first-of-type {
+      margin-top: $padding-16;
+    }
+  }
+
+  &__radio-container {
+    display: flex;
+    gap: $padding-24;
+    align-items: baseline;
+    > input[type="radio"] {
+      margin: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  &__radio-label {
+    @include mobile-p1-body-large;
+    color: $Slate;
+    // when selected change color
+    input[type="radio"]:checked + span {
+      color: $Instock-Black;
+    }
+  }
+
+  &__input {
+    padding-left: $padding-16;
+    margin-bottom: $padding-16;
+    @include form-field;
+    &:focus {
+      border-color: $Instock-Indigo;
+      color: $Instock-Black;
+    }
+  }
+
+  &__drop-down {
+    @extend .add-item-details__drop-down;
+    margin: 0;
+    @include tablet {
+      height: 2.375rem;
+    }
+  }
+  &__quantity-visible {
+    display: flex;
+    flex-direction: column;
+  }
+  &__quantity-hidden {
+    display: none;
+  }
+}
+
+.buttons {
+  box-sizing: border-box;
+  background-color: rgba($Light-Grey, 0.7);
+  display: flex;
+  justify-content: space-between;
+  padding: $padding-16;
+  @include tablet {
+    justify-content: flex-end;
+    gap: $padding-16;
+    padding-right: $padding-32;
+  }
+  @include desktop {
+    padding-right: $padding-40;
+  }
+
+  &__link {
+    width: 47%;
+    @include tablet {
+      width: auto;
+    }
+  }
+  &__cancel {
+    width: 100%;
+    @include secondary-button;
+    &:hover {
+      @include secondary-hover-state;
+    }
+  }
+
+  &__add-item {
+    width: 47%;
+    @include primary-button;
+    &:hover {
+      @include primary-hover-state;
+    }
+
+    @include tablet {
+      width: auto;
+    }
+  }
+}
+
+.error-state {
+  border: 1px solid $Red;
+}

@@ -154,24 +154,34 @@
 
 // --------- Tags ---------
 @mixin out-of-stock-tag {
+  @include mobile-table-header;
   background-color: $Red-Tag;
   color: $Red;
   padding: 0 $padding-8;
   border-radius: 1.25rem;
   height: 1.5rem;
+  line-height: 1.5rem;
+  display: inline-block;
   @include tablet {
+    @include tablet-table-header();
     height: 1.625rem;
+    line-height: 1.625rem;
   }
 }
 
 @mixin in-stock-tag {
+  @include mobile-table-header;
   background-color: $Green-Tag;
   color: $Green;
   padding: 0 $padding-8;
   border-radius: 1.25rem;
   height: 1.5rem;
+  line-height: 1.5rem;
+  display: inline-block;
   @include tablet {
+    @include tablet-table-header;
     height: 1.625rem;
+    line-height: 1.625rem;
   }
 }
 
@@ -191,16 +201,16 @@
 // ----------- Ad Hoc -------------
 
 @mixin card-style {
-  width: 85%;    
+  width: 85%;
   margin: 0 auto;
-  background-color: #fff; 
-  border-radius: 5px;     
+  background-color: #fff;
+  border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  @include tablet{
+  @include tablet {
     width: 93%;
   }
-  @include desktop{
-    width: 96%;    
+  @include desktop {
+    width: 96%;
   }
 }
 
@@ -209,4 +219,129 @@
   line-height: 2.25rem;
   font-weight: 600;
   margin: 24px 0px;
+}
+
+
+// --------- table mixins --------- 
+
+@mixin header {
+  visibility: hidden;
+
+  @include tablet {
+    visibility: visible;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: $Slate;
+    padding: $padding-8;
+    background-color: $Light-Grey;
+  }
+
+  @include desktop {
+    visibility: visible;
+    font-weight: 200;
+    text-transform: uppercase;
+    color: $Slate;
+    padding: $padding-8;
+    background-color: $Light-Grey;
+  }
+}
+
+//  --------- Mixin for heading styling  --------- 
+@mixin heading {
+  display: flex;
+  align-self: center;
+  justify-content: start;
+  font-weight: 200;
+  width: 45%;
+}
+
+//  --------- Mixin for row styling  --------- 
+@mixin row {
+  display: none;
+  flex-direction: row;
+  justify-content: space-between;
+  visibility: hidden;
+
+  @include tablet {
+    visibility: visible;
+    display: flex;
+    padding: $padding-8;
+  }
+
+  @include desktop {
+    visibility: visible;
+    display: flex;
+  }
+}
+
+//  --------- Mixin for cell header --------- 
+
+@mixin cell-header {
+  font-weight: 500;
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: $Graphite;
+  margin-bottom: $padding-4;
+
+  @include tablet {
+    display: none;
+  }
+
+  @include desktop {
+    display: none;
+  }
+}
+
+//  --------- Mixin for body-row styling --------- 
+@mixin body-row {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px solid $Cloud;
+  padding: $padding-8;
+
+  &:hover {
+    background-color: rgba($Instock-Indigo, 0.1);
+  }
+
+  @include tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: auto;
+  }
+
+  @include desktop {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: auto;
+  }
+}
+
+//  --------- Mixin for body-cell styling --------- 
+@mixin body-cell {
+  display: flex;
+  flex-direction: column;
+  padding: $padding-8;
+  font-size: 1rem;
+  color: $Slate;
+  line-height: 1.5rem;
+  align-items: flex-start;
+  text-align: left;
+  color: $Instock-Black;
+  width: 45%;
+
+  @include tablet {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    width: auto;
+    flex: 1;
+  }
+
+  @include desktop {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    width: auto;
+    flex: 1;
+  }
 }

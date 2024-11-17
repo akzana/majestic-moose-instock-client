@@ -1,9 +1,12 @@
-import React from 'react'
-
-function InventoryItem() {
+import React from "react";
+import InventoryItem from "../../components/InventoryItem/InventoryItem.jsx";
+import "./InventoryItemDetailsPage.scss";
+function InventoryItemDetailsPage() {
   return (
-    <div>InventoryItem</div>
-  )
+    <div className="inventory-item-card">
+      <InventoryItem />
+    </div>
+  );
 }
 
-export default InventoryItem
+export default InventoryItemDetailsPage;

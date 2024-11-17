@@ -13,19 +13,6 @@
     .card{
         width: 93%;    
     }
-
-    .button-group {
-        display: flex;
-        gap: 16px;
-        justify-content: flex-end;
-        padding-right: 24px;
-    
-        button {
-            flex: 0 0 10%;
-            height: 38px;
-            @include tablet-labels-links-buttons;
-        }
-    }
 }
 
 @media (min-width: $desktop-breakpoint) {

@@ -46,12 +46,12 @@ article{
 
 .text-field-group {
   .quantity_field {
-    width: 100px;
+    width: 120px;
   }
 
   margin-bottom: 16px;
   .description_field {
-    height: 100px;
+    height: 140px;
   }
 }
 
@@ -84,4 +84,17 @@ article{
   .section-title {
     @include tablet-subheader;
   }
+
+  .button-group {
+    display: flex;
+    gap: 16px;
+    justify-content: flex-end;
+    padding-right: 24px;
+
+    button {
+        flex: 0 0 10%;
+        height: 38px;
+        @include tablet-labels-links-buttons;
+    }
+}
 }

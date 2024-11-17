@@ -10,6 +10,7 @@
     }
     &__search-bar {
         background: url("../../assets/Icons/search-24px.svg") no-repeat scroll right;
+        background-position: calc(100% - 0.625rem);
         @include form-field;
         &::placeholder {
             padding-left: 0.625rem;

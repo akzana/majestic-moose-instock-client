@@ -2,8 +2,7 @@
 @use "../../styles/mixins" as *;
 
 .warehouse-form {
-  background-color: $White;
-  border-radius: 1.25rem;
+  @include form-base;
 
   &__section {
     padding: 0rem 2rem 2rem 2rem;
@@ -18,84 +17,35 @@
   }
 
   &__label {
-    display: block;
-    margin-bottom: $padding-4;
-    padding-top: 1rem;
-    @include mobile-labels-links-buttons;
+    @include form-label;
   }
 
   &__input {
-    width: 90%;
-    padding: 0rem $padding-16;
-    color: $Instock-Black;
-    @include mobile-p2-body-medium;
-    @include form-field;
-
-    &::placeholder {
-      font-weight: 400;
-      font-size: 0.875rem;
-      line-height: 1.375rem;
-      color: $Slate;
-    }
+    @include form-input;
   }
 
   &__actions {
-    display: flex;
-    justify-content: space-between;
-    gap: $padding-16;
-    flex-direction: row;
-    gap: $padding-16;
-    justify-content: space-between;
-    padding: 1rem 2rem;
-    background-color: $Light-Grey;
+    @include form-button-section;
+  }
 
-    @include tablet {
-      gap: $padding-32;
-    }
+  &__actions-wrapper {
+    @include form-button-container;
   }
 
   &__submit {
-    width: 100%;
-    @include mobile-p2-body-medium;
-    @include primary-button;
-
-    &:hover {
-      background-color: $Graphite;
-    }
+    @include form-button-submit;
   }
 
   &__cancel {
-    width: 100%;
-    text-align: center;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: $Slate;
-    @include mobile-p2-body-medium;
-    @include secondary-button;
-
-    &:hover {
-      color: $Instock-Indigo;
-      border-color: $Instock-Indigo;
-    }
+    @include form-button-cancel;
   }
 
   &__error-message {
-    display: flex;
-    align-items: center;
-    color: red;
-    font-size: 0.75rem;
-    line-height: 1.125rem;
-    font-weight: 400;
-    margin: 0;
-    padding-top: 0.25rem;
+    @include form-error-message;
   }
 
   &__error-icon {
-    width: 1rem;
-    height: 1rem;
-    margin-right: 0.3125rem;
+    @include form-error-icon;
   }
 
   &__input--error {
@@ -105,9 +55,6 @@
 
 @include tablet {
   .warehouse-form {
-    display: flex;
-    flex-direction: column;
-
     &__section-wrapper {
       display: flex;
       flex-wrap: nowrap;
@@ -125,21 +72,6 @@
       flex: 1;
       max-width: 48%;
       border-bottom: none;
-    }
-
-    &__actions {
-      display: flex;
-      justify-content: flex-end;
-      padding: $padding-32;
-    }
-
-    &__actions-wrapper {
-      display: flex;
-      gap: 1rem;
-    }
-
-    &__submit {
-      min-width: 8.625rem;
     }
   }
 }

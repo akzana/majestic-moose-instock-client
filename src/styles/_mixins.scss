@@ -351,7 +351,13 @@
 @mixin form-base {
   background-color: $White;
   border-radius: 1.25rem;
+
+  @include tablet {
+    display: flex;
+    flex-direction: column;
+  }
 }
+
 @mixin form-label {
   display: block;
   margin-bottom: $padding-4;

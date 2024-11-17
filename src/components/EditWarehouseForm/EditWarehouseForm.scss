@@ -2,21 +2,84 @@
 @use "../../styles/mixins" as *;
 
 .warehouse-form {
-    
+  @include form-base;
 
-    &__actions {
-        @include form-button-section
+  &__section {
+    padding: 0rem 2rem 2rem 2rem;
+
+    &--details {
+      border-bottom: 0.0625rem solid $Cloud;
+    }
+  }
+
+  &__title {
+    @include mobile-subheader;
+  }
+
+  &__label {
+    @include form-label;
+  }
+
+  &__input {
+    @include form-input;
+  }
+
+  &__actions {
+    @include form-button-section;
+  }
+
+  &__actions-wrapper {
+    @include form-button-container;
+  }
+
+  &__submit {
+    @include form-button-submit;
+  }
+
+  &__cancel {
+    @include form-button-cancel;
+  }
+
+  &__error-message {
+    @include form-error-message;
+  }
+
+  &__error-icon {
+    @include form-error-icon;
+  }
+
+  &__input--error {
+    border: 2px solid red;
+  }
+}
+
+@include tablet {
+  .warehouse-form {
+    &__section-wrapper {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      padding: 0rem;
+      margin: 1.5rem 0rem;
     }
 
-    &__actions-wrapper {
-        @include form-button-container
+    &__section--details {
+      border-right: 0.0625rem solid $Cloud;
     }
 
-    &__submit {
-       @include form-button-submit
+    &__section--details,
+    &__section--contact {
+      flex: 1;
+      max-width: 48%;
+      border-bottom: none;
     }
+  }
+}
 
-    &__cancel {
-       @include form-button-cancel
+@include desktop {
+  .warehouse-form {
+    &__input {
+      width: 93%;
     }
+  }
 }

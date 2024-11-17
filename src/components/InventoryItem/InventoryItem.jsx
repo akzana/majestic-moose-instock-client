@@ -14,7 +14,6 @@ function InventoryItem() {
     try {
       const response = await axios.get(`${baseURL}/api/inventories/${itemId}`);
       setItemData(response.data);
-      console.log(response.data);
     } catch (err) {
       console.error("Error fetching item:", err);
     }

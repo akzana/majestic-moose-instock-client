@@ -14,7 +14,14 @@
 }
 
 .text-field-group {
+  .quantity_field {
+    width: 25%;
+  }
+
   margin-bottom: 16px;
+  .description_field {
+    height: 100px;
+  }
 }
 
 

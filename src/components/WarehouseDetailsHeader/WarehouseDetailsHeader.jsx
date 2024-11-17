@@ -10,7 +10,7 @@ export default function WarehouseDetailsHeader(){
         <>
         <div className='WarehouseDetails__header'>
             <div className="WarehouseDetails__header--layout">
-            <Link to="/warehouse">
+            <Link to="/warehouses">
                 <img className="arrow_back" src={Arrow_back} alt="back to warehouse page" />
             </Link>
             <h1 className="WarehouseDetails__title">

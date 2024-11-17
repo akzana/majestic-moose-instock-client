@@ -14,20 +14,27 @@ import Footer from "./components/footer/footer";
 function App() {
   return (
     <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="/" element={<WarehouseList />} />
-        <Route path="/warehouses" element={<WarehouseList />} />
-        <Route path="/warehouses/:id" element={<WarehouseDetails />} />
-        <Route path="/warehouses/add" element={<AddWarehouse />} />
-        <Route path="/warehouses/edit/:id" element={<EditWarehouse />} />
-        <Route path="/inventory" element={<InventoryPage />} />
-        <Route path="/inventory/:id" element={<InventoryItemDetailsPage />} />
-        <Route path="/inventory/add" element={<AddInventoryItemPage />} />
-        <Route path="/inventory/edit/:id" element={<EditInventoryItem />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-      <Footer />
+      <div className="root">
+        <Header />
+        <div className="page-content">
+          <Routes>
+            <Route path="/" element={<WarehouseList />} />
+            <Route path="/warehouses" element={<WarehouseList />} />
+            <Route path="/warehouses/:id" element={<WarehouseDetails />} />
+            <Route path="/warehouses/add" element={<AddWarehouse />} />
+            <Route path="/warehouses/edit/:id" element={<EditWarehouse />} />
+            <Route path="/inventory" element={<InventoryPage />} />
+            <Route
+              path="/inventory/:id"
+              element={<InventoryItemDetailsPage />}
+            />
+            <Route path="/inventory/add" element={<AddInventoryItemPage />} />
+            <Route path="/inventory/edit/:id" element={<EditInventoryItem />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </div>
+        <Footer />{" "}
+      </div>
     </BrowserRouter>
   );
 }

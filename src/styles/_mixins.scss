@@ -104,8 +104,8 @@
 }
 
 @mixin primary-hover-state {
-  background-color: $Graphite;
   @include primary-button;
+  &{background-color: $Graphite;}
 }
 
 @mixin secondary-button {
@@ -122,8 +122,8 @@
 
 @mixin secondary-hover-state {
   @include secondary-button;
-  color: $Instock-Indigo;
-  border-color: $Instock-Indigo;
+  &{color: $Instock-Indigo;
+  border-color: $Instock-Indigo};
 }
 
 @mixin delete-button {

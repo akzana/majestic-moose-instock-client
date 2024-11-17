@@ -116,9 +116,9 @@
   }
 
   &__input {
-    @include form-field;
     padding-left: $padding-16;
     @include mobile-p2-body-medium;
+    @include form-field;
 
     @include tablet {
       @include tablet-p2-body-medium;
@@ -182,9 +182,9 @@
   }
 
   &__input {
-    @include form-field;
     padding-left: $padding-16;
     margin-bottom: $padding-16;
+    @include form-field;
     &:focus {
       border-color: $Instock-Indigo;
       color: $Instock-Black;
@@ -229,13 +229,20 @@
     }
   }
   &__cancel {
-    @include secondary-button;
     width: 100%;
+    @include secondary-button;
+    &:hover {
+      @include secondary-hover-state;
+    }
   }
 
   &__add-item {
-    @include primary-button;
     width: 47%;
+    @include primary-button;
+    &:hover {
+      @include primary-hover-state;
+    }
+
     @include tablet {
       width: auto;
     }

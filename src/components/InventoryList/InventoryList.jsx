@@ -13,6 +13,7 @@ export default function InventoryList() {
   const [inventory, setInventory] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
+
   const { id } = useParams();
 
   const getInventory = async () => {
@@ -34,44 +35,39 @@ export default function InventoryList() {
 
   useEffect(() => {
     getInventory();
-  }, [id]);
+  }, []);
 
-  // Function to handle the delete button click
-  const handleDeleteClick = (inventoryItem) => {
-    setSelectedItem(inventoryItem);
+  const handleDeleteClick = (item) => {
+    setSelectedItem(item);
+    console.log(item);
     setShowModal(true);
   };
 
-  // Function to close the delete modal
   const handleCloseModal = () => {
     setShowModal(false);
     setSelectedItem(null);
   };
 
-  // Function to confirm and delete the inventory item
   const handleConfirmDelete = async () => {
     try {
-      await axios.delete(`${baseURL}/api/inventories/${selectedItem.id}`);
-      setInventory(inventory.filter((item) => item.id !== selectedItem.id));
-      setShowModal(false);
-      setSelectedItem(null);
+      console.log("Selected Item:", selectedItem);
+      const response = await axios.delete(`${baseURL}/api/inventories/${selectedItem.id}`);
+      if (response.ok) {
+        useEffect (()=>{
+          setInventory(inventory.filter((item) => item.id !== selectedItem.id));
+          handleCloseModal();
+        }, [])
+      }
+      
+      console.log(`Deleting item with ID: ${selectedItem.id}`);
     } catch (err) {
-      console.error("Error deleting inventory item", err);
+      console.error("Error deleting inventory item:", err);
     }
   };
-  
-  
-
 
   return (
     <div>
       <ul className="inventoryList">
-      <DeleteModalInventoryItem
-              itemName={selectedItem?.item_name}
-              show={showModal}
-              onClose={handleCloseModal}
-              onConfirm={handleConfirmDelete}/>
-
         {inventory.map((item) => (
           <li className="inventoryList__item" key={item.id}>
             <label for="item-name" className="inventoryList__item-label">
@@ -106,7 +102,7 @@ export default function InventoryList() {
             </label>
             <button
               className="inventory__delete"
-              onClick={() => handleDeleteClick(item)}>
+              onClick={() => handleDeleteClick(item)}  >
               <img
                 src={DeleteButton}
                 alt="Delete Icon"
@@ -117,10 +113,15 @@ export default function InventoryList() {
             <Link to="/inventory/edit/">
               <img src={EditButton} alt="edit inventory item button" />
             </Link>
-
-          
           </li>
         ))}
+
+        <DeleteModalInventoryItem
+          itemName={selectedItem?.item_name}
+          show={showModal}
+          onClose={handleCloseModal}
+          onConfirm={handleConfirmDelete}
+        />
       </ul>
     </div>
   );

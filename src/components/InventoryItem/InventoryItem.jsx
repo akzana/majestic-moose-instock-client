@@ -24,7 +24,7 @@ function InventoryItem() {
   }, []);
 
   return (
-    <section className="item-details">
+    <section className="item-details-page">
       <div className="item-details__header">
         <Link to="/inventory">
           <img

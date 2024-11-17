@@ -1,22 +1,22 @@
-@use '../../../src/styles/variables' as *;
-@use '../../../src/styles/mixins' as *;
+@use "../../../src/styles/variables" as *;
+@use "../../../src/styles/mixins" as *;
 // card
-.card{
-    width: 85%;    
-    margin: 0 auto;
-    background-color: $White; 
-    border-radius: 5px;     
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+.card {
+  width: 85%;
+  margin: 0 auto;
+  background-color: $White;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 @media (min-width: $tablet-breakpoint) {
-    .card{
-        width: 93%;    
-    }
+  .card {
+    width: 93%;
+  }
 }
 
 @media (min-width: $desktop-breakpoint) {
-    .card{
-        width: 96%;    
-    }
+  .card {
+    width: 80%;
+  }
 }

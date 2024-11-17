@@ -66,7 +66,7 @@ function AddInventoryItem() {
         setErrorState((prevState) => ({ ...prevState, warehouse_id: true }));
         isValid = false;
       }
-      if (formData.category === "--- Select a Category ---") {
+      if (formData.category === "Please Select") {
         setErrorState((prevState) => ({ ...prevState, category: false }));
         isValid = false;
       }
@@ -139,7 +139,9 @@ function AddInventoryItem() {
       <form onSubmit={handleSubmit}>
         <div className="item-details">
           <h2 className="item-details__title">Item Details</h2>
-          <label htmlFor="itemName">Item Name </label>
+          <label htmlFor="itemName" className="item-details__form-label">
+            Item Name
+          </label>
           <input
             type="text"
             id="itemName"
@@ -154,7 +156,9 @@ function AddInventoryItem() {
               This field is required
             </p>
           )}
-          <label htmlFor="itemDescription">Item Description </label>
+          <label htmlFor="itemDescription" className="item-details__form-label">
+            Item Description{" "}
+          </label>
           <textarea
             name="description"
             id="itemDescription"
@@ -168,14 +172,16 @@ function AddInventoryItem() {
               This field is required
             </p>
           )}
-          <label htmlFor="category">Category </label>
+          <label htmlFor="category" className="item-details__form-label">
+            Category{" "}
+          </label>
           <select
             name="category"
             id="category"
             value={formData.category}
             onChange={handleChange}
           >
-            <option>--- Select a Category ---</option>
+            <option>Please Select</option>
             {[...uniqueCategories].map((category) => (
               <option key={category} value={category}>
                 {category}
@@ -244,7 +250,7 @@ function AddInventoryItem() {
             value={formData.warehouse_id}
             onChange={handleChange}
           >
-            <option>--- Select A Warehouse ---</option>
+            <option>Please Select</option>
             {warehouses.map((warehouse) => (
               <option key={warehouse.id} value={warehouse.id}>
                 {warehouse.warehouse_name}

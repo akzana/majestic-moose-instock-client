@@ -27,22 +27,55 @@ form {
     display: flex;
     align-items: baseline;
     border-bottom: 1px solid $Cloud;
-    padding: $padding-16;
+    padding: $padding-24 $padding-16 $padding-16 $padding-16;
+    @include tablet {
+      padding: $padding-32 $padding-24 $padding-24 $padding-24;
+    }
   }
   &__title {
-    margin: $padding-24 0 0 $padding-8;
+    margin: 0 0 0 $padding-8;
     @include mobile-page-header;
+    @include tablet {
+      @include tablet-page-header;
+    }
   }
   &__back-icon {
     padding: 0;
     margin: 0;
   }
 }
+
+.item-details {
+  padding: 0 $padding-16;
+  &__title {
+    @include mobile-subheader;
+    color: $Instock-Black;
+    padding: $padding-16 0;
+  }
+
+  &__form-label {
+    @include mobile-labels-links-buttons;
+    padding-bottom: $padding-8;
+
+    @include tablet {
+      @include tablet-labels-links-buttons;
+    }
+  }
+}
+
 input,
 textarea,
 select {
   @include form-field;
+  padding-left: $padding-16;
+  margin-bottom: $padding-16;
 }
 textarea {
   height: 7.5rem;
+  padding-top: $padding-8;
+  resize: none;
+}
+
+.error-message {
+  color: $Red;
 }

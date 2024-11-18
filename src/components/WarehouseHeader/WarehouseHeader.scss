@@ -1,0 +1,104 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
+
+.primary-button {
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  @include primary-button;
+
+  &:hover {
+    @include primary-hover-state;
+  }
+}
+
+.warehouse {
+  display: flex;
+  flex-direction: column;
+  padding: $padding-24;
+  padding-top: 0;
+
+  @include tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  @include desktop {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    color: $Instock-Black;
+    @include tablet-page-header;
+  }
+
+  &__controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include tablet {
+      flex-direction: row;
+    }
+    @include desktop {
+      flex-direction: row;
+    }
+  }
+
+  &__search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: 1px solid $Cloud;
+    border-radius: 20px;
+    padding: $padding-8 $padding-40 $padding-8 $padding-16;
+    background-color: $White;
+    margin-bottom: $padding-24;
+
+    @include tablet {
+      margin-bottom: 0rem;
+      margin-right: 1rem;
+    }
+    @include desktop {
+      margin-bottom: 0rem;
+    }
+  }
+
+  &__input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    color: $Slate;
+    background-color: transparent;
+    padding: 0;
+  }
+
+  &__icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    opacity: 0.6;
+    margin-left: auto;
+    pointer-events: none;
+  }
+
+  &__add-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1rem;
+    line-height: 2rem;
+    font-weight: 600;
+    @include primary-button;
+
+    &:hover {
+      @include primary-hover-state;
+    }
+  }
+}

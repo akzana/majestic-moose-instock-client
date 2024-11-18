@@ -1,0 +1,31 @@
+@use "./styles/variables" as *;
+@use "./styles/mixins" as *;
+
+* {
+  font-family: "Titillium Web", "Arial", sans-serif;
+}
+
+li {
+  list-style-type: none;
+}
+
+ul {
+  padding-inline-start: 0;
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  background: linear-gradient(rgba($Graphite, 1) 200px, rgba($White, 1) 200px);
+  min-height: 100vh;
+}
+
+.root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page-content {
+  flex: 1;
+}

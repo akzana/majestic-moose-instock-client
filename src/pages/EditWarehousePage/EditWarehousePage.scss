@@ -1,0 +1,48 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.card {
+  width: 90%;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media (min-width: $tablet-breakpoint) {
+  .card {
+    width: 93%;
+  }
+}
+
+@media (min-width: $desktop-breakpoint) {
+  .card {
+    width: 80%;
+  }
+}
+
+.WarehouseAdd__header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid $Cloud;
+  height: 5.9375rem;
+
+  &--layout {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0 1.5rem;
+  }
+}
+
+.arrow_back {
+  padding-right: 0.625rem;
+  vertical-align: middle;
+}
+
+.WarehouseAdd__title {
+  @include mobile-page-header;
+  margin: 24px 0px;
+}

@@ -27,7 +27,7 @@ export default function WarehouseDetails(){
     return (
         <>
         <div className="warehouse_details card">
-          <WarehouseDetailsHeader warehouseName={warehouseData?.warehouse_name}/>
+          <WarehouseDetailsHeader warehouseName={warehouseData?.warehouse_name} id={id}/>
           <WarehouseDetailsGeneralInfo warehouseData={warehouseData}/>
           <InventoryList />
         </div>

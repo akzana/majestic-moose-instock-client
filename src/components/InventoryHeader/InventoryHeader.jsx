@@ -1,15 +1,29 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import "./InventoryHeader.scss";
-
+import searchIcon from "../../assets/Icons/search-24px.svg";
+import { Link } from "react-router-dom";
 
 export default function InventoryHeader() {
-    const navigate = useNavigate();
     return (
-        <div className='inventory'>
-            <h1 className="inventory__heading">Inventory</h1>
-            <input type="text" className="inventory__search-bar" placeholder='Search...'/>
-            <button className="inventory__button" onClick={() => navigate("/inventory/add")}>+ Add New Item</button>
+        <div className="inventory">
+            <h2 className="inventory__title">Inventory</h2>
+            <div className="inventory__controls">
+                <div className="inventory__search">
+                    <input
+                        type="text"
+                        className="inventory__input"
+                        placeholder="Search..."
+                        disabled
+                    />
+                    <img src={searchIcon} alt="Search Icon" className="inventory__icon" />
+                </div>
+
+                <Link
+                    to="/inventory/add"
+                    className="inventory__add-button primary-button" >
+                    + Add New Item
+                </Link>
+            </div>
         </div>
     )
 }

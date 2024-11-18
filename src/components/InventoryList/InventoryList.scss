@@ -7,6 +7,20 @@
     flex-direction: column;
 }
 
+.inventory {
+    &__tag {
+        &--in-stock {
+          margin: 0;
+          @include in-stock-tag;
+        }
+    
+        &--out-of-stock {
+          margin: 0;
+          @include out-of-stock-tag;
+        }
+      }
+}
+
 .inventory-card {
     display: flex;
     flex-direction: column;

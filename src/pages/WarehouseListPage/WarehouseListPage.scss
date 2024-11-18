@@ -10,7 +10,6 @@
 .warehouse__list {
   display: flex;
   flex-direction: column;
-  padding: $padding-24;
 
   &-header {
     @include header;

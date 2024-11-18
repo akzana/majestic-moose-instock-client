@@ -26,11 +26,11 @@
     align-self: center;
     padding-bottom: $padding-24;
     @include tablet {
-        padding-bottom: 0rem;
+      padding-bottom: 0rem;
     }
 
     @include desktop {
-        padding-bottom: 0rem;
+      padding-bottom: 0rem;
     }
   }
   &__nav {
@@ -59,13 +59,14 @@
     }
 
     &-link:hover {
-      text-decoration: underline;
+      text-decoration: none;
       color: $White;
     }
 
     &-link:active {
-        text-decoration: underline;
-        color: $White;
-      }
+      text-decoration: none;
+      color: $White;
+      background-color: $Instock-Black;
+    }
   }
 }

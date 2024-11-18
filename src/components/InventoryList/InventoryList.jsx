@@ -117,8 +117,14 @@ export default function InventoryList() {
 
 
                             <td className="inventory__body-cell">
-                                <span className="inventory__cell-header">status</span>
-                                {inventory.status}
+                            <span className="inventory__cell-header">Status</span>
+                                <span className={
+                                    inventory.status === "In Stock"
+                                    ? "item-details__tag--in-stock"
+                                    : "item-details__tag--out-of-stock"}>
+                                        {inventory.status}
+                                </span>
+                                
                             </td>
 
                             <td className="inventory__body-cell">
